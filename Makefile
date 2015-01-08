@@ -5,6 +5,15 @@ CTAGS ?= ctags
 
 all: clean inplace test
 
+inplace:
+	$(PYTHON) setup.py build_ext -i
+
+
+test: test-code
+
+test-code: inplace
+	$(NOSETESTS) -s -v iced
+
 clean-ctags:
 	rm -f tags
 
