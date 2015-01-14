@@ -14,6 +14,10 @@ test: test-code
 test-code: inplace
 	$(NOSETESTS) -s -v iced
 
+test-coverage:
+	rm -rf coverage .coverage
+	$(NOSETESTS) -s -v --with-coverage iced
+
 clean-ctags:
 	rm -f tags
 
