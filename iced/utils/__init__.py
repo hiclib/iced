@@ -1,2 +1,2 @@
 from ._genome import *
-from .validation import is_symetric_or_tri
+from .validation import is_symetric_or_tri, is_tri
