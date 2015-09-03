@@ -21,7 +21,7 @@ def get_nline(filename):
 def read(np.ndarray[int, ndim=1, mode="c"] X not None, filename):
     n_lines = get_num_line(filename)
     read_counts(filename, <int*> X.data)
-    return n_lines 
+    return n_lines
 
 
 def loadtxt(filename):
@@ -41,9 +41,9 @@ def loadtxt(filename):
     n_lines = get_num_line(filename)
     # We need twice the amount of line because we don't use the fact that the
     # matrix is symmetric, and we need three cols per row
-    X = np.empty((n_lines * 3 * 2), dtype=np.int32)
+    X = np.empty((n_lines * 3), dtype=np.int32)
     read(X, filename)
-    return X.reshape((n_lines * 2, 3))
+    return X.reshape((n_lines, 3))
 
 
 def savetxt(filename, np.ndarray[int, ndim=1, mode="c"] col not None,

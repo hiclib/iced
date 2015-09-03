@@ -3,6 +3,7 @@
 |Travis|_ |AppVeyor|_
 
 .. |Travis| image:: https://api.travis-ci.org/hiclib/iced.png?branch=master
+.. _Travis: https://travis-ci.org/hiclib/iced
 
 
 iced
