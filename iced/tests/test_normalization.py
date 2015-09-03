@@ -31,6 +31,21 @@ def test_sparse_ICE_normalization():
     assert_array_almost_equal(true_normed_X, np.array(normed_X.todense()))
 
 
+def test_sparse_ICE_normalization_triu():
+    n = 100
+    X = np.random.random((n, n))
+    thres = (np.random.random((n, n)) > 0.5).astype(bool)
+    X[thres] = 0
+    X = X + X.T
+    sparse_X = sparse.triu(X)
+    true_normed_X = ICE_normalization(X, eps=1e-10, max_iter=10)
+    true_normed_X = np.triu(true_normed_X)
+    X = np.triu(X)
+    normed_X = ICE_normalization(sparse_X, eps=1e-10, max_iter=10)
+    assert_array_almost_equal(X, sparse_X.todense())
+    assert_array_almost_equal(true_normed_X, np.array(normed_X.todense()))
+
+
 def test_SCN_normalization():
     n = 100
     X = np.random.random((n, n))

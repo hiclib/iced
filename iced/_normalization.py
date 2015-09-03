@@ -1,7 +1,7 @@
 import numpy as np
 from scipy import sparse
 from _normalization_ import _update_normalization_csr
-from .utils import is_symetric_or_tri
+from .utils import is_symetric_or_tri, is_tri
 
 
 def ICE_normalization(X, SS=None, max_iter=3000, eps=1e-4, copy=True,
@@ -49,7 +49,7 @@ def ICE_normalization(X, SS=None, max_iter=3000, eps=1e-4, copy=True,
 
     if sparse.issparse(X):
         if not sparse.isspmatrix_csr(X):
-            X = sparse.csr_matrix(sparse)
+            X = sparse.csr_matrix(X)
         X.sort_indices()
     else:
         X[np.isnan(X)] = 0
@@ -61,16 +61,28 @@ def ICE_normalization(X, SS=None, max_iter=3000, eps=1e-4, copy=True,
     bias = np.ones((m, 1))
     for it in xrange(max_iter):
         if norm == 'l1':
-            sum_ds = X.sum(axis=0)
+            # Actually, this should be done if the matrix is diag sup or diag
+            # inf
+            if is_tri(X):
+                sum_ds = X.sum(axis=0) + X.sum(axis=1).T - X.diagonal()
+            else:
+                sum_ds = X.sum(axis=0)
         elif norm == 'l2':
-            sum_ds = np.sqrt((X ** 2).sum(axis=0))
+            if is_tri(X):
+                sum_ds = ((X**2).sum(axis=0) +
+                          (X**2).sum(axis=1).T -
+                          (X**2).diagonal())
+            else:
+                sum_ds = (X**2).sum(axis=0)
+
         if SS is not None:
             raise NotImplementedError
+
         dbias = sum_ds.reshape((m, 1))
         dbias /= dbias[dbias != 0].mean()
         dbias[dbias == 0] = 1
         bias *= dbias
-        # FIXME for sparse format, how can we do this ?
+
         if sparse.issparse(X):
             X = _update_normalization_csr(X, np.array(dbias).flatten())
         else:
