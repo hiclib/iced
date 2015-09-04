@@ -1,4 +1,4 @@
-from iced._filter import filter_low_counts
+from iced.filter import filter_low_counts
 import numpy as np
 from numpy.testing import assert_array_equal
 from scipy import sparse

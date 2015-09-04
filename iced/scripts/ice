@@ -49,9 +49,9 @@ if args.verbose:
     print "Normalizing..."
 
 if args.filtering_perc != 0:
-    counts = iced.filter_low_counts(counts, percentage=args.filtering_perc,
+    counts = iced.filter.filter_low_counts(counts, percentage=args.filtering_perc,
                                     copy=False, sparsity=False)
-counts = iced.ICE_normalization(counts, max_iter=args.max_iter, copy=False,
+counts = iced.normalization.ICE_normalization(counts, max_iter=args.max_iter, copy=False,
                                 verbose=args.verbose, eps=args.eps)
 
 if args.results_filename is None:
