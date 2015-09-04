@@ -16,7 +16,7 @@ test-code: inplace
 
 test-coverage:
 	rm -rf coverage .coverage
-	$(NOSETESTS) -s -v --with-coverage iced
+	$(NOSETESTS) -s -v --with-coverage iced --cover-package iced
 
 clean-ctags:
 	rm -f tags
