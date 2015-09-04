@@ -1,6 +1,6 @@
 import numpy as np
 from scipy import sparse
-from _normalization_ import _update_normalization_csr
+from ._normalization_ import _update_normalization_csr
 from .utils import is_symetric_or_tri, is_tri
 
 
@@ -59,7 +59,7 @@ def ICE_normalization(X, SS=None, max_iter=3000, eps=1e-4, copy=True,
     is_symetric_or_tri(X)
     old_dbias = None
     bias = np.ones((m, 1))
-    for it in xrange(max_iter):
+    for it in np.arange(max_iter):
         if norm == 'l1':
             # Actually, this should be done if the matrix is diag sup or diag
             # inf
@@ -90,12 +90,12 @@ def ICE_normalization(X, SS=None, max_iter=3000, eps=1e-4, copy=True,
 
         if old_dbias is not None and np.abs(old_dbias - dbias).sum() < eps:
             if verbose > 1:
-                print "break at iteration %d" % (it,)
+                print("break at iteration %d" % (it,))
             break
 
         if verbose > 1 and old_dbias is not None:
-            print ('ICE at iteration %d %s' %
-                   (it, np.abs(old_dbias - dbias).sum()))
+            print('ICE at iteration %d %s' %
+                  (it, np.abs(old_dbias - dbias).sum()))
         old_dbias = dbias.copy()
     if output_bias:
         return X, bias
@@ -135,7 +135,7 @@ def SCN_normalization(X, max_iter=300, eps=1e-6, copy=True):
     if copy:
         X = X.copy()
 
-    for it in xrange(max_iter):
+    for it in np.arange(max_iter):
         sum_X = np.sqrt((X ** 2).sum(0))
         sum_X[sum_X == 0] = 1
         X /= sum_X
@@ -146,7 +146,7 @@ def SCN_normalization(X, max_iter=300, eps=1e-6, copy=True):
         X = X.T
 
         if np.abs(X - X.T).sum() < eps:
-            print "break at iteration %d" % (it,)
+            print("break at iteration %d" % (it,))
             break
 
     return X
