@@ -46,6 +46,10 @@ if "--filtering_perc" in sys.argv:
     DeprecationWarning(
         "Option '--filtering_perc' is deprecated. Please use "
         "'--filter_low_counts_perc' instead.'")
+    # And print it again because deprecation warnings are not displayed for
+    # recent versions of python
+    print "--filtering_perc is deprecated. Please use filter_low_counts_perc"
+    print "instead. This option will be removed in ice 0.3"
 if "--filter_low_counts_perc" in sys.argv and "--filtering_perc" in sys.argv:
     raise Warning("This two options are incompatible")
 
