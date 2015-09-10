@@ -1,5 +1,6 @@
 #! /usr/bin/env python
 
+import sys
 import argparse
 import numpy as np
 from scipy import sparse
@@ -20,6 +21,14 @@ parser.add_argument("--results_filename",
                     help="results_filename")
 parser.add_argument("--filtering_perc", "-f",
                     type=float,
+                    default=None,
+                    help="Percentage of reads to filter out")
+parser.add_argument("--filter_low_counts_perc",
+                    type=float,
+                    default=0.0,
+                    help="Percentage of reads to filter out")
+parser.add_argument("--filter_high_counts_perc",
+                    type=float,
                     default=0.02,
                     help="Percentage of reads to filter out")
 parser.add_argument("--max_iter", "-m", default=100, type=int,
@@ -32,6 +41,13 @@ parser.add_argument("--verbose", "-v", default=False)
 
 args = parser.parse_args()
 filename = args.filename
+
+if "--filtering_perc" in sys.argv:
+    DeprecationWarning(
+        "Option '--filtering_perc' is deprecated. Please use "
+        "'--filter_low_counts_perc' instead.'")
+if "--filter_low_counts_perc" in sys.argv and "--filtering_perc" in sys.argv:
+    raise Warning("This two options are incompatible")
 
 if args.verbose:
     print "Loading files..."
@@ -49,10 +65,18 @@ if args.verbose:
     print "Normalizing..."
 
 if args.filtering_perc != 0:
-    counts = iced.filter.filter_low_counts(counts, percentage=args.filtering_perc,
-                                    copy=False, sparsity=False)
-counts = iced.normalization.ICE_normalization(counts, max_iter=args.max_iter, copy=False,
-                                verbose=args.verbose, eps=args.eps)
+    counts = iced.filter.filter_low_counts(counts,
+                                           percentage=args.filtering_perc,
+                                           copy=False, sparsity=False)
+if args.filter_high_counts_perc != 0:
+    counts = iced.filter.filter_high_counts(
+        counts,
+        percentage=args.filter_high_counts_perc,
+        copy=False)
+
+counts = iced.normalization.ICE_normalization(
+    counts, max_iter=args.max_iter, copy=False,
+    verbose=args.verbose, eps=args.eps)
 
 if args.results_filename is None:
     results_filename = ".".join(
