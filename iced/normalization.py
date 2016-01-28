@@ -49,12 +49,13 @@ def ICE_normalization(X, SS=None, max_iter=3000, eps=1e-4, copy=True,
 
     if sparse.issparse(X):
         if not sparse.isspmatrix_csr(X):
-            X = sparse.csr_matrix(X)
+            X = sparse.csr_matrix(X, dtype="float")
         X.sort_indices()
     else:
         X[np.isnan(X)] = 0
-        X = X.astype('float')
+    X = X.astype('float')
 
+    mean = X.mean()
     m = X.shape[0]
     is_symetric_or_tri(X)
     old_dbias = None
@@ -79,7 +80,9 @@ def ICE_normalization(X, SS=None, max_iter=3000, eps=1e-4, copy=True,
             raise NotImplementedError
 
         dbias = sum_ds.reshape((m, 1))
+        # To avoid numerical instabilities
         dbias /= dbias[dbias != 0].mean()
+
         dbias[dbias == 0] = 1
         bias *= dbias
 
@@ -87,6 +90,9 @@ def ICE_normalization(X, SS=None, max_iter=3000, eps=1e-4, copy=True,
             X = _update_normalization_csr(X, np.array(dbias).flatten())
         else:
             X /= dbias * dbias.T
+
+        bias *= np.sqrt(X.mean() / mean)
+        X *= mean / X.mean()
 
         if old_dbias is not None and np.abs(old_dbias - dbias).sum() < eps:
             if verbose > 1:
@@ -96,6 +102,7 @@ def ICE_normalization(X, SS=None, max_iter=3000, eps=1e-4, copy=True,
         if verbose > 1 and old_dbias is not None:
             print('ICE at iteration %d %s' %
                   (it, np.abs(old_dbias - dbias).sum()))
+
         old_dbias = dbias.copy()
     if output_bias:
         return X, bias
@@ -134,6 +141,7 @@ def SCN_normalization(X, max_iter=300, eps=1e-6, copy=True):
 
     if copy:
         X = X.copy()
+    X = X.astype(float)
 
     for it in np.arange(max_iter):
         sum_X = np.sqrt((X ** 2).sum(0))
