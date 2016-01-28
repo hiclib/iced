@@ -23,6 +23,7 @@ Functions
     :template: function.rst
 
     normalization.ICE_normalization
+    normalization.SCN_normalization
 
 .. _normalization_ref:
 
@@ -44,5 +45,6 @@ Functions
     :template: function.rst
 
     filter.filter_low_counts
+    filter.filter_high_counts
 
 .. _filter_ref:
