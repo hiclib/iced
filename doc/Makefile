@@ -177,3 +177,6 @@ pseudoxml:
 	$(SPHINXBUILD) -b pseudoxml $(ALLSPHINXOPTS) $(BUILDDIR)/pseudoxml
 	@echo
 	@echo "Build finished. The pseudo-XML files are in $(BUILDDIR)/pseudoxml."
+
+deploy:
+	rsync -avz _build/html/ nvaroquaux@cbio.ensmp.fr:public_html/iced/
