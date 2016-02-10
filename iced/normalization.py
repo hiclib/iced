@@ -5,7 +5,8 @@ from .utils import is_symetric_or_tri, is_tri
 
 
 def ICE_normalization(X, SS=None, max_iter=3000, eps=1e-4, copy=True,
-                      norm='l1', verbose=0, output_bias=False):
+                      norm='l1', verbose=0, output_bias=False,
+                      total_counts=None):
     """
     ICE normalization
 
@@ -35,6 +36,12 @@ def ICE_normalization(X, SS=None, max_iter=3000, eps=1e-4, copy=True,
     output_bias : boolean, optional, default: False
         whether to output the bias vector.
 
+    total_counts : float, optional, default: None
+        the total number of contact counts that the normalized matrix should
+        contain. If set to None, the normalized contact count matrix will be
+        such that the total number of contact counts equals the initial number
+        of interactions.
+
     Returns
     -------
     X, (bias) : ndarray (n, n)
@@ -55,11 +62,13 @@ def ICE_normalization(X, SS=None, max_iter=3000, eps=1e-4, copy=True,
         X[np.isnan(X)] = 0
     X = X.astype('float')
 
-    mean = X.mean()
     m = X.shape[0]
     is_symetric_or_tri(X)
     old_dbias = None
     bias = np.ones((m, 1))
+
+    if total_counts is None:
+        total_counts = X.sum()
     for it in np.arange(max_iter):
         if norm == 'l1':
             # Actually, this should be done if the matrix is diag sup or diag
@@ -91,8 +100,8 @@ def ICE_normalization(X, SS=None, max_iter=3000, eps=1e-4, copy=True,
         else:
             X /= dbias * dbias.T
 
-        bias *= np.sqrt(X.mean() / mean)
-        X *= mean / X.mean()
+        bias *= np.sqrt(X.sum() / total_counts)
+        X *= total_counts / X.sum()
 
         if old_dbias is not None and np.abs(old_dbias - dbias).sum() < eps:
             if verbose > 1:
