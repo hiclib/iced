@@ -2,6 +2,7 @@ import numpy as np
 from scipy import sparse
 from numpy.testing import assert_array_almost_equal
 import nose
+from nose.tools import assert_almost_equal
 
 from iced.normalization import ICE_normalization
 from iced.normalization import SCN_normalization
@@ -57,6 +58,11 @@ def test_sparse_ICE_normalization_triu():
 
     normed_X *= true_normed_X.mean() / normed_X.mean()
     assert_array_almost_equal(true_normed_X, np.array(normed_X.todense()))
+
+    total_counts = 5000
+    normed_X = ICE_normalization(sparse_X, eps=1e-10,
+                                 total_counts=total_counts)
+    assert_almost_equal(normed_X.sum(), total_counts)
 
 
 def test_SCN_normalization():
