@@ -502,7 +502,7 @@ def generate_dir_rst(dir, fhindex, example_dir, root_dir, plot_gallery):
     """)  # clear at the end of the section
 
 # modules for which we embed links into example code
-DOCMODULES = ['sklearn', 'matplotlib', 'numpy', 'scipy', "pastis"]
+DOCMODULES = ['iced', 'sklearn', 'matplotlib', 'numpy', 'scipy', "pastis"]
 
 
 def make_thumbnail(in_fname, out_fname, width, height):
@@ -773,6 +773,9 @@ def embed_code_links(app, exception):
 
     doc_resolvers['scipy'] = SphinxDocLinkResolver(
         'http://docs.scipy.org/doc/scipy-0.11.0/reference')
+
+    doc_resolvers['iced'] = SphinxDocLinkResolver(
+        'http://cbio.ensmp.fr/iced')
 
     example_dir = os.path.join(app.builder.srcdir, 'auto_examples')
     html_example_dir = os.path.abspath(os.path.join(app.builder.outdir,
