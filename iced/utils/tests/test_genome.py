@@ -9,7 +9,7 @@ from iced.utils._genome import undersample_per_chr
 
 def test_get_intra_mask():
     lengths = np.array([5, 5])
-    mask = get_intra_mask(lengths, resolution=1)
+    mask = get_intra_mask(lengths)
     true_mask = np.zeros((10, 10))
     true_mask[:5, :5] = 1
     true_mask[5:, 5:] = 1
@@ -24,7 +24,7 @@ def test_change_lengths_resolution():
 
 def test_get_inter_mask():
     lengths = np.array([5, 5])
-    mask = get_inter_mask(lengths, resolution=1)
+    mask = get_inter_mask(lengths)
     true_mask = np.zeros((10, 10))
     true_mask[:5, :5] = 1
     true_mask[5:, 5:] = 1
@@ -37,7 +37,7 @@ def test_undersample_per_chr():
                   [0, 0, 0.5, 0.5],
                   [0, 0, 0.5, 0.5]])
     lengths = np.array([2, 2])
-    undersampled_X = undersample_per_chr(X, lengths, resolution=1)
+    undersampled_X = undersample_per_chr(X, lengths)
     undersampled_X_true = np.array([[1, 0],
                                     [0, 0.5]])
     assert_array_equal(undersampled_X_true, undersampled_X)

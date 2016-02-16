@@ -1,7 +1,7 @@
 import numpy as np
 
 
-def get_intra_mask(lengths, resolution=10000):
+def get_intra_mask(lengths):
     """
     Returns a mask for intrachromosomal interactions
 
@@ -10,16 +10,12 @@ def get_intra_mask(lengths, resolution=10000):
     lengths : ndarray, (n, )
         lengths of the chromosomes
 
-    resolution : int, optional, default: 10000
-        resolution in which the mask should be created
-
     Returns
     -------
     mask : ndarray (m, m)
         boolean mask
     """
     # Copy the lengths in order not to modify the original matrix
-    lengths = _change_lengths_resolution(lengths, resolution=resolution)
     mask = np.zeros((lengths.sum(), lengths.sum()))
     begin = 0
     for end in lengths.cumsum():
@@ -28,7 +24,7 @@ def get_intra_mask(lengths, resolution=10000):
     return mask.astype(bool)
 
 
-def get_inter_mask(lengths, resolution=10000):
+def get_inter_mask(lengths):
     """
     Returns a mask for interchromosomal interactions
 
@@ -37,19 +33,16 @@ def get_inter_mask(lengths, resolution=10000):
     lengths : ndarray, (n, )
         lengths of the chromosomes
 
-    resolution : int, optional, default: 10000
-        resolution in which the mask should be created
-
     Returns
     -------
     mask : ndarray of dtype boolean
         boolean mask
     """
-    intra_mask = get_intra_mask(lengths, resolution=resolution)
+    intra_mask = get_intra_mask(lengths)
     return np.invert(intra_mask)
 
 
-def get_genomic_distances(lengths, resolution=10000):
+def get_genomic_distances(lengths):
     """
     Returns a matrix of the genomic distances
 
@@ -60,17 +53,13 @@ def get_genomic_distances(lengths, resolution=10000):
     lengths : ndarray (n, )
         lengths of the chromosomes
 
-    resolution : int, optional, default: 10000
-        resolution in which to compute the matrix
-
     Returns
     -------
     dis: ndarray (n, n), dtype: int
         returns the genomic distance matrix, with -1 for inter chromosomal
         interactions
     """
-    inter_mask = get_inter_mask(lengths, resolution=resolution)
-    lengths = _change_lengths_resolution(lengths, resolution=resolution)
+    inter_mask = get_inter_mask(lengths)
     n = lengths.sum()
 
     dis = np.concatenate([np.concatenate([np.arange(i, 0, -1),
@@ -82,7 +71,7 @@ def get_genomic_distances(lengths, resolution=10000):
     return dis.astype(int)
 
 
-def undersample_per_chr(X, lengths, resolution=10000):
+def undersample_per_chr(X, lengths):
     """
     Undersample matrix to chromosomes
 
@@ -96,15 +85,11 @@ def undersample_per_chr(X, lengths, resolution=10000):
     lengths : ndarray (L, )
         Lengths of the chromosomes
 
-    resolution : integer, optional, default: 10000
-        Resolution in which the matrix `X` is provided
-
     Returns
     -------
     undersampled_X : ndarray (L, L)
         `X` undersampled per chromosome
     """
-    lengths = _change_lengths_resolution(lengths, resolution=resolution)
     lengths_cum = lengths.cumsum()
     chr1_begin = 0
     undersampled_X = np.zeros((len(lengths), len(lengths)))
