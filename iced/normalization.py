@@ -6,7 +6,7 @@ from .utils import is_symetric_or_tri, is_tri
 
 def ICE_normalization(X, SS=None, max_iter=3000, eps=1e-4, copy=True,
                       norm='l1', verbose=0, output_bias=False,
-                      total_counts=None):
+                      total_counts=None, counts_profile=None):
     """
     ICE normalization
 
@@ -89,6 +89,8 @@ def ICE_normalization(X, SS=None, max_iter=3000, eps=1e-4, copy=True,
             raise NotImplementedError
 
         dbias = sum_ds.reshape((m, 1))
+        if counts_profile is not None:
+            dbias /= counts_profile[:, np.newaxis]
         # To avoid numerical instabilities
         dbias /= dbias[dbias != 0].mean()
 
