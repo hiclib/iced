@@ -48,3 +48,27 @@ Functions
     filter.filter_high_counts
 
 .. _filter_ref:
+
+
+:mod:`iced.datasets`: Datasets
+===============================================
+
+.. automodule:: iced.datasets
+    :no-members:
+    :no-inherited-members:
+
+
+Functions
+---------
+.. currentmodule:: iced
+
+.. autosummary::
+    :toctree: generated/
+    :template: function.rst
+
+    datasets.load_sample_yeast
+
+
+.. _datasets_ref:
+
+
