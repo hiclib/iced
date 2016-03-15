@@ -46,7 +46,8 @@ def load_sample_yeast():
     Load and return a sample of S. cerevisiae contact count matrix from duan
     et al, Nature, 2009
 
-    Returns:
+    Returns
+    -------
         counts, lengths:
             tuple of two elements, the first a contact count matrix, the
             second an ndarray containing the lengths of the chromosomes.
