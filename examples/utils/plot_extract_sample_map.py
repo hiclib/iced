@@ -20,7 +20,7 @@ fig, ax = plt.subplots()
 m = ax.matshow(sub_counts, cmap="Blues", norm=colors.SymLogNorm(1),
                origin="bottom",
                extent=(0, len(sub_counts), 0, len(sub_counts)))
-[ax.axhline(i, linewidth=1, color="#000000") for i in lengths.cumsum()]
-[ax.axvline(i, linewidth=1, color="#000000") for i in lengths.cumsum()]
+[ax.axhline(i, linewidth=1, color="#000000") for i in sub_lengths.cumsum()]
+[ax.axvline(i, linewidth=1, color="#000000") for i in sub_lengths.cumsum()]
 cb = fig.colorbar(m)
 ax.set_title("Chromosomes I, IV and V of yeast")
