@@ -1,4 +1,5 @@
 import numpy as np
+from .validation import is_symetric_or_tri
 
 
 def get_intra_mask(lengths):
@@ -69,6 +70,86 @@ def get_genomic_distances(lengths):
     dis[inter_mask] = -1
 
     return dis.astype(int)
+
+
+def extract_sub_contact_map(counts, lengths, chromosomes):
+    """
+    Extract the contact map associated to a given list of chromosome
+
+    Parameters
+    ----------
+    counts : ndarray (n, n)
+
+    lengths : ndarray (L, )
+
+    chromosomes : list of ids
+
+    Returns
+    -------
+    sub_counts, sub_lengths : (ndarray, ndarray)
+
+    Examples
+    --------
+
+    >>> from iced import datasets
+    >>> from iced.utils import extract_sub_contact_map
+    >>> counts, lengths = datasets.load_sample_yeast()
+    >>> scounts, slengths = extract_sub_contact_map(counts, lengths, [0, 2])
+    >>> print len(counts), len(scounts)
+    ... # doctest: +ELLIPSIS, +NORMALIZE_WHITESPACE
+    350 56
+    """
+    chromosomes = np.array(chromosomes)
+    if chromosomes.max() >= len(lengths):
+        raise ValueError(
+            "The chromosomes provided are not compatible with the "
+            "lengths array. Possible values are"
+            " %s" % " ".join("%s" % i for i in np.arange(len(lengths))))
+    if lengths.sum() != counts.shape[0]:
+        raise ValueError(
+            "The lengths provided is incompatible with the counts matrix"
+            "shape. The total lengths is %d while the contact count matrix "
+            "is %d" % (lengths.sum(), counts.shape[0]))
+
+    is_symetric_or_tri(counts)
+    chromosomes.sort()
+
+    new_lengths = lengths[chromosomes]
+    new_counts = np.zeros((new_lengths.sum(), new_lengths.sum()))
+    begin1, end1 = 0, 0
+    for i, l1 in enumerate(lengths):
+        end1 += l1
+        if i not in chromosomes:
+            begin1 = end1
+            continue
+        # Find position of this pair of chromosome in the matrix
+        new_num_chrom = (chromosomes == i).argmax()
+        if new_num_chrom == 0:
+            new_begin1 = 0
+        else:
+            new_begin1 = new_lengths.cumsum()[new_num_chrom - 1]
+        new_end1 = new_lengths.cumsum()[new_num_chrom]
+
+        begin2, end2 = 0, 0
+        for j, l2 in enumerate(lengths):
+            end2 += l2
+            if j not in chromosomes:
+                begin2 = end2
+                continue
+            # Find position of this pair of chromosome in the matrix
+            new_num_chrom = (chromosomes == j).argmax()
+            if new_num_chrom == 0:
+                new_begin2 = 0
+            else:
+                new_begin2 = new_lengths.cumsum()[new_num_chrom - 1]
+            new_end2 = new_lengths.cumsum()[new_num_chrom]
+            new_counts[new_begin1:new_end1,
+                       new_begin2:new_end2] = counts[begin1:end1, begin2:end2]
+            begin2 = end2
+
+        begin1 = end1
+
+    return new_counts, new_lengths
 
 
 def undersample_per_chr(X, lengths):

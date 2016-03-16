@@ -49,14 +49,12 @@ Functions
 
 .. _filter_ref:
 
-
 :mod:`iced.datasets`: Datasets
 ===============================================
 
 .. automodule:: iced.datasets
     :no-members:
     :no-inherited-members:
-
 
 Functions
 ---------
@@ -72,3 +70,25 @@ Functions
 .. _datasets_ref:
 
 
+:mod:`iced.utils`: Utils
+===============================================
+
+.. automodule:: iced.utils
+    :no-members:
+    :no-inherited-members:
+
+
+Functions
+---------
+.. currentmodule:: iced
+
+.. autosummary::
+    :toctree: generated/
+    :template: function.rst
+
+
+    utils.get_intra_mask
+    utils.get_inter_mask
+    utils.extract_sub_contact_map
+
+.. _utils_ref:
