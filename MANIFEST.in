@@ -1,1 +1,2 @@
 recursive-include iced *.c *.h *.py
+recursive-include *.matrix *.bed

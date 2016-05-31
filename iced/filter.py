@@ -44,7 +44,7 @@ def filter_low_counts(X, lengths=None, percentage=0.02, copy=True,
             weights = []
             [weights.append(i) for i in lengths for j in range(i)]
             weights = np.array(weights)
-            mask = utils.get_inter_mask(lengths, resolution=1)
+            mask = utils.get_inter_mask(lengths)
         else:
             weights = np.ones(X.shape[0])
             mask = np.zeros(X.shape, dtype=np.bool)
