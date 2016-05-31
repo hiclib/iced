@@ -1,14 +1,9 @@
 .. -*- mode: rst -*-
 
-|Travis|_ |AppVeyor|_ |Coveralls|_
+|Travis|_ |Coveralls|_
 
 .. |Travis| image:: https://api.travis-ci.org/hiclib/iced.png?branch=master
 .. _Travis: https://travis-ci.org/hiclib/iced
-
-.. |AppVeyor| image::
-   https://ci.appveyor.com/api/projects/status/github/hiclib/iced?branch=master&svg=true
-.. _AppVeyor:
-   https://ci.appveyor.com/project/sklearn-ci/scikit-learn/history
 
 .. |Coveralls| image::
    https://coveralls.io/repos/hiclib/iced/badge.svg?branch=master&service=github

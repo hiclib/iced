@@ -13,6 +13,8 @@ The dependencies are:
 - scipy (>= 0.7)
 - argparse if python <2.7
 
+In addition, pandas is recommanded for fast data loading.
+
 
 All of these dependencies can be installed at once using `Anaconda
 <http://docs.continuum.io/anaconda/install.html>`_

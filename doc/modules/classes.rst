@@ -48,3 +48,47 @@ Functions
     filter.filter_high_counts
 
 .. _filter_ref:
+
+:mod:`iced.datasets`: Datasets
+===============================================
+
+.. automodule:: iced.datasets
+    :no-members:
+    :no-inherited-members:
+
+Functions
+---------
+.. currentmodule:: iced
+
+.. autosummary::
+    :toctree: generated/
+    :template: function.rst
+
+    datasets.load_sample_yeast
+
+
+.. _datasets_ref:
+
+
+:mod:`iced.utils`: Utils
+===============================================
+
+.. automodule:: iced.utils
+    :no-members:
+    :no-inherited-members:
+
+
+Functions
+---------
+.. currentmodule:: iced
+
+.. autosummary::
+    :toctree: generated/
+    :template: function.rst
+
+
+    utils.get_intra_mask
+    utils.get_inter_mask
+    utils.extract_sub_contact_map
+
+.. _utils_ref:
