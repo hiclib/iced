@@ -115,6 +115,15 @@ def ICE_normalization(X, SS=None, max_iter=3000, eps=1e-4, copy=True,
                   (it, np.abs(old_dbias - dbias).sum()))
 
         old_dbias = dbias.copy()
+    # Now that we are finished with the bias estimation, set all biases
+    # corresponding to filtered rows to np.nan
+    if sparse.issparse(X):
+        X = X.tocoo()
+        to_rm = (np.array(X.sum(axis=0)).flatten() +
+                 np.array(X.sum(axis=1)).flatten()) == 0
+    else:
+        to_rm = (X.sum(axis=0) + X.sum(axis=1)) == 0
+    bias[to_rm] = np.nan
     if output_bias:
         return X, bias
     else:
