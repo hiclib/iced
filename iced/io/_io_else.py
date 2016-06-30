@@ -27,7 +27,8 @@ def load_counts(filename, lengths=None):
     else:
         shape = None
     X = loadtxt(filename.encode())
-    counts = sparse.coo_matrix((X[:, 2], (X[:, 0], X[:, 1])), shape=shape)
+    counts = sparse.coo_matrix((X[:, 2], (X[:, 0], X[:, 1])), shape=shape,
+                               dtype=float)
     return counts
 
 
