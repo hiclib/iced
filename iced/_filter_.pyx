@@ -1,20 +1,20 @@
 import numpy as np
 cimport cython
-cimport numpy as np
+cimport numpy as cnp
 
-ctypedef np.float64_t DOUBLE
-ctypedef np.int32_t INT
+ctypedef cnp.float64_t DOUBLE
+ctypedef cnp.int8_t BOOL
 
 
 @cython.boundscheck(False)
 @cython.wraparound(False)
 @cython.cdivision(True)
-def _filter_csr(X, np.ndarray[INT, ndim=1] bias):
+def _filter_csr(X, cnp.ndarray[BOOL, ndim=1, cast=True] bias):
 
     cdef:
-        np.ndarray[DOUBLE, ndim=1] X_data = X.data
-        np.ndarray[int, ndim=1] X_indices = X.indices
-        np.ndarray[int, ndim=1] X_indptr = X.indptr
+        cnp.ndarray[DOUBLE, ndim=1] X_data = X.data
+        cnp.ndarray[int, ndim=1] X_indices = X.indices
+        cnp.ndarray[int, ndim=1] X_indptr = X.indptr
         unsigned int m = X.shape[0]
         unsigned int i, j, row
 

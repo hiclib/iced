@@ -122,7 +122,7 @@ def _filter_high_sum(X, percentage=0.02):
     X_sum = np.array(X.sum(axis=0)).flatten()
 
     if sparse.issparse(X):
-        _filter_csr(X, (X_sum > x).astype(np.int32))
+        _filter_csr(X, (X_sum > x))
     else:
         X[X_sum > x, :] = np.nan
         X[:, X_sum > x] = np.nan
@@ -138,7 +138,7 @@ def _filter_low_sum(X, percentage=0.02):
     X_sum = np.array(X.sum(axis=0)).flatten()
 
     if sparse.issparse(X):
-        _filter_csr(X, (X_sum < x).astype(np.int32))
+        _filter_csr(X, (X_sum < x))
     else:
         X[X_sum < x, :] = np.nan
         X[:, X_sum < x] = np.nan
