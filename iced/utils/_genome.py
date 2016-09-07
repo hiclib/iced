@@ -185,6 +185,60 @@ def undersample_per_chr(X, lengths):
     return undersampled_X
 
 
+def downsample_resolution(counts, lengths, factor=2):
+    """
+    Downsamples the resolution of a matrix
+
+    Parameters
+    ----------
+    counts : ndarray (N, N)
+        contact counts matrix to downsample
+
+    lengths : ndarray (L, )
+        chromosomes lengths
+
+    coef : int, optionnal, default: 2
+        downsample resolution of the counts matrix by `coef`
+
+    Returns
+    -------
+    target_counts, target_lengths : ndarray
+    """
+    if factor == 1:
+        return counts, lengths
+    # FIXME there is probably a better way to do this
+    target_lengths = np.ceil(lengths.astype(float) / factor).astype(int)
+    target_counts = np.zeros((target_lengths.sum(),
+                              target_lengths.sum()))
+    begin_i, end_i = 0, 0
+    target_begin_i, target_end_i = 0, 0
+    for i, length_i in enumerate(lengths):
+        end_i += length_i
+        target_end_i += target_lengths[i]
+        begin_j, end_j = 0, 0
+        target_begin_j, target_end_j = 0, 0
+        for j, length_j in enumerate(lengths):
+            end_j += length_j
+            target_end_j += target_lengths[j]
+
+            sub_counts = counts[begin_i:end_i, begin_j:end_j]
+            sub_target_counts = target_counts[target_begin_i:target_end_i,
+                                              target_begin_j:target_end_j]
+            d = np.zeros(sub_target_counts.shape)
+            for start in range(factor):
+                s = sub_counts[start::factor, start::factor]
+                d[:s.shape[0], :s.shape[1]] += np.invert(np.isnan(s))
+                s[np.isnan(s)] = 0
+                sub_target_counts[:s.shape[0], :s.shape[1]] += s
+            sub_target_counts /= d
+
+            begin_j = end_j
+            target_begin_j = target_end_j
+        begin_i = end_i
+        target_begin_i = target_end_i
+    return target_counts, target_lengths
+
+
 def _change_lengths_resolution(lengths, resolution=10000, copy=True):
     if copy:
         lengths = lengths.copy()
