@@ -90,5 +90,6 @@ Functions
     utils.get_intra_mask
     utils.get_inter_mask
     utils.extract_sub_contact_map
+    utils.downsample_resolution
 
 .. _utils_ref:
