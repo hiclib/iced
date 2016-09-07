@@ -27,7 +27,7 @@ def load_counts(filename, lengths=None):
     else:
         shape = None
     # This is the interaction count files
-    dataframe = pd.read_csv(filename, sep="\t", header=None)
+    dataframe = pd.read_csv(filename, sep="\t", comment="#", header=None)
     row, col, data = dataframe.as_matrix().T
     # XXX We need to deal with the fact that we should not duplicate entries
     # for the diagonal.
@@ -57,7 +57,7 @@ def load_lengths(filename):
     -------
     lengths : the lengths of each chromosomes
     """
-    data = pd.read_csv(filename, sep="\t", header=None)
+    data = pd.read_csv(filename, sep="\t", comment="#", header=None)
     data = data.as_matrix()
     lengths = [(data[:, 0] == i).sum() for i in np.unique(data[:, 0])]
     return np.array(lengths)
