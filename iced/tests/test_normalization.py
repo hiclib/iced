@@ -51,13 +51,20 @@ def test_sparse_ICE_normalization_triu():
     true_normed_X = ICE_normalization(X, eps=1e-10, max_iter=10)
     true_normed_X = np.triu(true_normed_X)
     X = np.triu(X)
-    normed_X = ICE_normalization(sparse_X, eps=1e-10, max_iter=10)
+
+    normed_X_sparse = ICE_normalization(sparse_X, eps=1e-10, max_iter=10)
+    normed_X_dense = ICE_normalization(X, eps=1e-10, max_iter=10)
+
     assert_array_almost_equal(X, sparse_X.todense())
     # The sparse and dense version are going to be equal up to a constant
     # factor
 
-    normed_X *= true_normed_X.mean() / normed_X.mean()
-    assert_array_almost_equal(true_normed_X, np.array(normed_X.todense()))
+    normed_X_sparse *= true_normed_X.mean() / normed_X_sparse.mean()
+    normed_X_dense *= true_normed_X.mean() / normed_X_dense.mean()
+
+    assert_array_almost_equal(true_normed_X,
+                              np.array(normed_X_sparse.todense()))
+    assert_array_almost_equal(true_normed_X, normed_X_dense)
 
     total_counts = 5000
     normed_X = ICE_normalization(sparse_X, eps=1e-10,
