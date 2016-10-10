@@ -66,6 +66,7 @@ def ICE_normalization(X, SS=None, max_iter=3000, eps=1e-4, copy=True,
     is_symetric_or_tri(X)
     old_dbias = None
     bias = np.ones((m, 1))
+    _is_tri = is_tri(X)
 
     if total_counts is None:
         total_counts = X.sum()
@@ -73,12 +74,12 @@ def ICE_normalization(X, SS=None, max_iter=3000, eps=1e-4, copy=True,
         if norm == 'l1':
             # Actually, this should be done if the matrix is diag sup or diag
             # inf
-            if is_tri(X):
+            if _is_tri:
                 sum_ds = X.sum(axis=0) + X.sum(axis=1).T - X.diagonal()
             else:
                 sum_ds = X.sum(axis=0)
         elif norm == 'l2':
-            if is_tri(X):
+            if _is_tri:
                 sum_ds = ((X**2).sum(axis=0) +
                           (X**2).sum(axis=1).T -
                           (X**2).diagonal())
@@ -87,7 +88,6 @@ def ICE_normalization(X, SS=None, max_iter=3000, eps=1e-4, copy=True,
 
         if SS is not None:
             raise NotImplementedError
-
         dbias = sum_ds.reshape((m, 1))
         if counts_profile is not None:
             dbias /= counts_profile[:, np.newaxis]
@@ -100,7 +100,8 @@ def ICE_normalization(X, SS=None, max_iter=3000, eps=1e-4, copy=True,
         if sparse.issparse(X):
             X = _update_normalization_csr(X, np.array(dbias).flatten())
         else:
-            X /= dbias * dbias.T
+            X /= dbias
+            X /= dbias.T
 
         bias *= np.sqrt(X.sum() / total_counts)
         X *= total_counts / X.sum()
