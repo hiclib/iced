@@ -87,7 +87,6 @@ def ICE_normalization(X, SS=None, max_iter=3000, eps=1e-4, copy=True,
 
         if SS is not None:
             raise NotImplementedError
-
         dbias = sum_ds.reshape((m, 1))
         if counts_profile is not None:
             dbias /= counts_profile[:, np.newaxis]
@@ -100,7 +99,8 @@ def ICE_normalization(X, SS=None, max_iter=3000, eps=1e-4, copy=True,
         if sparse.issparse(X):
             X = _update_normalization_csr(X, np.array(dbias).flatten())
         else:
-            X /= dbias * dbias.T
+            X /= dbias
+            X /= dbias.T
 
         bias *= np.sqrt(X.sum() / total_counts)
         X *= total_counts / X.sum()
