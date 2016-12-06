@@ -59,8 +59,9 @@ def load_lengths(filename):
     """
     data = pd.read_csv(filename, sep="\t", comment="#", header=None)
     data = data.as_matrix()
-    lengths = [(data[:, 0] == i).sum() for i in np.unique(data[:, 0])]
-    return np.array(lengths)
+    _, idx, lengths = np.unique(data[:, 0], return_counts=True,
+                                return_index=True)
+    return lengths[idx.argsort()]
 
 
 def write_counts(filename, counts):
