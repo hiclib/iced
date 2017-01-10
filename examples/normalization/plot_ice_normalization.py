@@ -1,3 +1,11 @@
+"""
+==================================
+Normalizing a contact count matrix
+==================================
+
+This example showcases some basic filtering and normalization.
+
+"""
 import matplotlib.pyplot as plt
 from matplotlib import colors
 
@@ -5,9 +13,6 @@ from iced import datasets
 from iced import filter
 from iced import normalization
 
-"""
-Normalizing a contact count matrix.
-"""
 
 # Loading a sample dataset
 counts, lengths = datasets.load_sample_yeast()
