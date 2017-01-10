@@ -86,7 +86,47 @@ also match the lengths vector::
 
 The ``counts`` matrix is here of size 350 by 350.
 
-You've successfully loaded your first Hi-C data! Let's plot it.
+You've successfully loaded your first Hi-C data! 
+The corresponding image is the following.
+
+.. image:: /auto_examples/datasets/images/sphx_glr_plot_yeast_sample_001.png
+    :target: ../../auto_examples/datasets/plot_yeast_sample.html                               
+    :align: center                                                                                        
+    :scale: 50 
 
 
+Normalizing a data set
+=======================
 
+Now that we have some data loaded, let's proceed to normalizing it. There are
+two normalization algorithms implemented in `iced`: ICE and SCN. ICE is the
+most widely used normalization technique on Hi-C data, so this is the one we
+will showcase.
+
+ICE is based on a matrix balancing algorithm. The underlying assumptions are
+that the contact map suffers from biases that can be decomposable as a product
+of regionale biases: :math:`C_{ij} = \beta_i \beta_j N_{ij}`, where
+:math:`C_{ij}` is the raw contact counts between loci :math:`i` and :math:`j`,
+:math:`N_{ij}` the normalized contact counts, and :math:`\beta` the bias
+vector.
+
+Normalizing the data is as simple as follows ::
+
+  >>> from iced import normalization
+  >>> normed = normalization.ICE_normalization(counts)
+
+But the estimation of the bias vector can be severely problematic in low
+coverage regions. In fact, if the matrix is too sparse, the algorithm may not
+converge at all! To avoid this, Imakaev et al recommend filtering out a
+certain percentage of rows and columns that interact the least. This has to
+be performed prior to applying the normalization algorithm::
+  
+  >>> from iced import filter
+  >>> counts = filter.filter_low_counts(counts, percentage=0.04)
+  >>> normed = normalization.ICE_normalization(counts)
+
+
+.. image:: /auto_examples/normalization/images/sphx_glr_plot_ice_normalization_001.png
+   :target: ../../auto_examples/normalization/plot_ice_normalization.html
+   :align: center
+   :scale: 75
