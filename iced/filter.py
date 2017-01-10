@@ -160,7 +160,7 @@ def _filter_low_sum(X, percentage=0.02, remove_all_zeros_loci=False,
     X_sum = np.array(X.sum(axis=0)).flatten()
 
     if verbose:
-        print("Filter %s bins ..." % sum(X_sum < x))
+        print("Filter %s out of %s bins ..." % (sum(X_sum < x), m))
 
     if sparse.issparse(X):
         _filter_csr(X, (X_sum < x))
