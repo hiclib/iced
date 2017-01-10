@@ -40,7 +40,7 @@ parser.add_argument("--max_iter", "-m", default=100, type=int,
 parser.add_argument("--eps", "-e", default=0.1, type=float,
                     help="Precision")
 parser.add_argument("--dense", "-d", default=False, action="store_true")
-parser.add_argument("--get-bias", "-b", default=False, help="Output the bias vector")
+parser.add_argument("--output-bias", "-b", default=False, help="Output the bias vector")
 parser.add_argument("--verbose", "-v", default=False)
 
 
@@ -108,5 +108,5 @@ if args.verbose:
     print "Writing results..."
 savetxt(results_filename, counts.col, counts.row, counts.data)
 
-if args.get_bias:
+if args.output_bias:
     np.savetxt(results_filename + ".biases", bias)

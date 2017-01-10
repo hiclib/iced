@@ -16,3 +16,7 @@ New features
     non-interacting rows and columns from the count matrix *prior* to applying
     the filtering strategy.
     By Nicolas Servant and Nelle Varoquaux 
+
+  - `ice` now has a new option `--output-bias`. If provided, the bias vector
+    will be saved in a file in addition of the normalized contact counts.
+    By Nicolas Servant and Nelle Varoquaux
