@@ -5,7 +5,8 @@ from . import utils
 
 
 def filter_low_counts(X, lengths=None, percentage=0.02, copy=True,
-                      sparsity=True, remove_all_zeros_loci=False):
+                      sparsity=True, remove_all_zeros_loci=False,
+                      verbose=False):
     """
     Filter rows and columns with low counts
 
@@ -54,10 +55,12 @@ def filter_low_counts(X, lengths=None, percentage=0.02, copy=True,
             mask = np.zeros(X.shape, dtype=np.bool)
 
         return _filter_low_sparse(X, weights, mask, percentage=percentage,
-                                  remove_all_zeros_loci=remove_all_zeros_loci)
+                                  remove_all_zeros_loci=remove_all_zeros_loci,
+                                  verbose=verbose)
     else:
         return _filter_low_sum(X, percentage=percentage,
-                               remove_all_zeros_loci=remove_all_zeros_loci)
+                               remove_all_zeros_loci=remove_all_zeros_loci,
+                               verbose=verbose)
 
 
 def filter_high_counts(X, lengths=None, percentage=0.02, copy=True):
@@ -98,7 +101,7 @@ def filter_high_counts(X, lengths=None, percentage=0.02, copy=True):
 
 
 def _filter_low_sparse(X, weights, mask, percentage=0.02,
-                       remove_all_zeros_loci=False):
+                       remove_all_zeros_loci=False, verbose=False):
     # This is NOT going to work on sparse data. For now, raise a Not
     # implemented error
 
@@ -151,13 +154,13 @@ def _filter_low_sum(X, percentage=0.02, remove_all_zeros_loci=False,
     if not remove_all_zeros_loci:
         x = X_sum[int(m * percentage)]
     else:
-        num_noninteracting_loci = X_sum == 0
+        num_noninteracting_loci = sum(X_sum == 0)
         x = X_sum[int(m * percentage) + num_noninteracting_loci]
 
     X_sum = np.array(X.sum(axis=0)).flatten()
 
     if verbose:
-        print("Filter %s bins ..." % sum(X_sum < x))
+        print("Filter %s out of %s bins ..." % (sum(X_sum < x), m))
 
     if sparse.issparse(X):
         _filter_csr(X, (X_sum < x))
