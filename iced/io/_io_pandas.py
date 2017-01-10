@@ -1,3 +1,4 @@
+import warnings
 import numpy as np
 from scipy import sparse
 import pandas as pd
@@ -29,6 +30,17 @@ def load_counts(filename, lengths=None):
     # This is the interaction count files
     dataframe = pd.read_csv(filename, sep="\t", comment="#", header=None)
     row, col, data = dataframe.as_matrix().T
+
+    # If there are NAs remove them
+    mask = np.isnan(data)
+    if np.any(mask):
+        warnings.warn(
+            "NAs detected in %s. "
+            "Removing NAs and replacing with 0." % filename)
+        row = row[np.invert(mask)]
+        col = col[np.invert(mask)]
+        data = data[np.invert(mask)]
+
     # XXX We need to deal with the fact that we should not duplicate entries
     # for the diagonal.
     # XXX what if n doesn't exist?
@@ -38,6 +50,10 @@ def load_counts(filename, lengths=None):
         # indexed at 1 and not 0
         col -= 1
         row -= 1
+
+    if shape is None:
+        n = max(col.max(), row.max()) + 1
+        shape = (n, n)
 
     data = data.astype(float)
     counts = sparse.coo_matrix((data, (row, col)), shape=shape)
