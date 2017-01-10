@@ -5,7 +5,7 @@ from . import utils
 
 
 def filter_low_counts(X, lengths=None, percentage=0.02, copy=True,
-                      sparsity=True):
+                      sparsity=True, use.zero=True):
     """
     Filter rows and columns with low counts
 
@@ -51,10 +51,41 @@ def filter_low_counts(X, lengths=None, percentage=0.02, copy=True,
 
         return _filter_low_sparse(X, weights, mask, percentage=percentage)
     else:
-        return _filter_low_sum(X, percentage=percentage)
+        return _filter_low_sum(X, percentage=percentage, use.zero=use.zero)
 
 
-def filter_high_counts(X, lengths=None, percentage=0.02, copy=True):
+def _filter_low_coverage(X, mincov=5):
+    """
+    Filter rows and columns with low counts
+
+    Parameters
+    ----------
+    X : ndarray (n, n)
+        Count matrix (hollow, symetric)
+
+    mincov : integer, default: 5
+        rows and columns with less counts are discarded
+
+    Return
+    ------
+    X : ndarray (n, n)
+        The filtered array
+    """
+    X_sum = np.array(X.sum(axis=0)).flatten()
+
+    print "Filter %s bins ..." % sum(X_sum < mincov)
+
+    if sparse.issparse(X):
+        _filter_csr(X, (X_sum < mincov))
+    else:
+        X[X_sum < mincov, :] = np.nan
+        X[:, X_sum < mincov] = np.nan
+
+    return X
+
+
+
+def filter_high_counts(X, lengths=None, percentage=0.02, copy=True, use.zero=True):
     """
     Filter rows and columns with high counts
 
@@ -88,7 +119,7 @@ def filter_high_counts(X, lengths=None, percentage=0.02, copy=True):
     else:
         X[np.isnan(X)] = 0
 
-    return _filter_high_sum(X, percentage=percentage)
+    return _filter_high_sum(X, percentage=percentage, use.zero=use.zero)
 
 
 def _filter_low_sparse(X, weights, mask, percentage=0.02):
@@ -114,12 +145,20 @@ def _filter_low_sparse(X, weights, mask, percentage=0.02):
     return X
 
 
-def _filter_high_sum(X, percentage=0.02):
+def _filter_high_sum(X, percentage=0.02, use.zero=True):
     X_sum = np.array(X.sum(axis=0)).flatten()
     X_sum.sort()
     m = X.shape[0]
     x = X_sum[int(m * (1-percentage))]
-    X_sum = np.array(X.sum(axis=0)).flatten()
+    X_sum = np.array(X.sum(axis=0)).flatten()  
+    if use.zero:
+        x = X_sum[int(m * percentage)]
+    else:
+        X_sum = X_sum[X_sum > 0]
+        x = X_sum[int(m * percentage)]
+
+
+    print "Filter %s bins ..." % sum(X_sum > x)
 
     if sparse.issparse(X):
         _filter_csr(X, (X_sum > x))
@@ -130,12 +169,19 @@ def _filter_high_sum(X, percentage=0.02):
     return X
 
 
-def _filter_low_sum(X, percentage=0.02):
+def _filter_low_sum(X, percentage=0.02, use.zero=True):
     X_sum = np.array(X.sum(axis=0)).flatten()
     X_sum.sort()
     m = X.shape[0]
-    x = X_sum[int(m * percentage)]
+    if use.zero:
+        x = X_sum[int(m * percentage)]
+    else:
+        X_sum = X_sum[X_sum > 0]
+        x = X_sum[int(m * percentage)]
+
     X_sum = np.array(X.sum(axis=0)).flatten()
+    
+    print "Filter %s bins ..." % sum(X_sum < x)
 
     if sparse.issparse(X):
         _filter_csr(X, (X_sum < x))
@@ -144,3 +190,4 @@ def _filter_low_sum(X, percentage=0.02):
         X[:, X_sum < x] = np.nan
 
     return X
+
