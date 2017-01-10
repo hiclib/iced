@@ -26,14 +26,14 @@ python -c "import multiprocessing as mp; print('%d CPUs' % mp.cpu_count())"
 export SKLEARN_SKIP_NETWORK_TESTS=1
 
 if [[ "$COVERAGE" == "true" ]]; then
-   nosetests -s --with-coverage --with-timer --timer-top-n 20 sklearn
+   nosetests -s --with-coverage --with-timer --timer-top-n 20 iced
 else
-   nosetests -s --with-timer --timer-top-n 20 sklearn
+   nosetests -s --with-timer --timer-top-n 20 iced
 fi
 
 # Is directory still empty ?
 ls -ltra
 
 # Test doc
-cd $CACHED_BUILD_DIR/scikit-learn
+cd $CACHED_BUILD_DIR/iced
 make test-doc test-sphinxext
