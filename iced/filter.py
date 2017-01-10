@@ -51,7 +51,7 @@ def filter_low_counts(X, lengths=None, percentage=0.02, copy=True,
 
         return _filter_low_sparse(X, weights, mask, percentage=percentage)
     else:
-        return _filter_low_sum(X, percentage=percentage, use.zero=use.zero)
+        return _filter_low_sum(X, percentage=percentage, use_zeros=use_zeros)
 
 
 def _filter_low_coverage(X, mincov=5):
@@ -85,7 +85,7 @@ def _filter_low_coverage(X, mincov=5):
 
 
 
-def filter_high_counts(X, lengths=None, percentage=0.02, copy=True, use.zero=True):
+def filter_high_counts(X, lengths=None, percentage=0.02, copy=True, use_zeros=True):
     """
     Filter rows and columns with high counts
 
@@ -119,7 +119,7 @@ def filter_high_counts(X, lengths=None, percentage=0.02, copy=True, use.zero=Tru
     else:
         X[np.isnan(X)] = 0
 
-    return _filter_high_sum(X, percentage=percentage, use.zero=use.zero)
+    return _filter_high_sum(X, percentage=percentage, use_zeros=use_zeros)
 
 
 def _filter_low_sparse(X, weights, mask, percentage=0.02):
@@ -145,7 +145,7 @@ def _filter_low_sparse(X, weights, mask, percentage=0.02):
     return X
 
 
-def _filter_high_sum(X, percentage=0.02, use.zero=True):
+def _filter_high_sum(X, percentage=0.02, use_zeros=True):
     X_sum = np.array(X.sum(axis=0)).flatten()
     X_sum.sort()
     m = X.shape[0]
