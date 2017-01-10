@@ -177,8 +177,8 @@ def _filter_low_sum(X, percentage=0.02, remove_all_zeros_loci=False,
     if not remove_all_zeros_loci:
         x = X_sum[int(m * percentage)]
     else:
-        X_sum = X_sum[X_sum > 0]
-        x = X_sum[int(m * percentage)]
+        num_noninteracting_loci = X_sum == 0
+        x = X_sum[int(m * percentage) + num_noninteracting_loci]
 
     X_sum = np.array(X.sum(axis=0)).flatten()
 
