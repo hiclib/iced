@@ -5,7 +5,7 @@ from . import utils
 
 
 def filter_low_counts(X, lengths=None, percentage=0.02, copy=True,
-                      sparsity=True, use_zeros=True):
+                      sparsity=True, remove_all_zeros_loci=False):
     """
     Filter rows and columns with low counts
 
@@ -19,6 +19,10 @@ def filter_low_counts(X, lengths=None, percentage=0.02, copy=True,
 
     percentage : float, optional, default: 0.02
         percentage of rows and columns to discard
+
+    remove_all_zeros_loci : bool, optional, default: False
+        if set to True, the filtering will remove first all the non
+        interacting loci, and then apply the filtering strategy chosen.
 
     copy : boolean, optional, default: True
         If set to true, copies the count matrix
@@ -51,7 +55,8 @@ def filter_low_counts(X, lengths=None, percentage=0.02, copy=True,
 
         return _filter_low_sparse(X, weights, mask, percentage=percentage)
     else:
-        return _filter_low_sum(X, percentage=percentage, use_zeros=use_zeros)
+        return _filter_low_sum(X, percentage=percentage,
+                               remove_all_zeros_loci=remove_all_zeros_loci)
 
 
 def _filter_low_coverage(X, mincov=5, verbose=False):
@@ -150,8 +155,6 @@ def _filter_high_sum(X, percentage=0.02, verbose=False):
     X_sum.sort()
     m = X.shape[0]
     x = X_sum[int(m * (1-percentage))]
-    X_sum = np.array(X.sum(axis=0)).flatten()
-    x = X_sum[int(m * percentage)]
 
     if verbose:
         print("Filter %s bins ..." % sum(X_sum > x))
@@ -165,12 +168,13 @@ def _filter_high_sum(X, percentage=0.02, verbose=False):
     return X
 
 
-def _filter_low_sum(X, percentage=0.02, use_zeros=True, verbose=False):
+def _filter_low_sum(X, percentage=0.02, remove_all_zeros_loci=False,
+                    verbose=False):
     X_sum = np.array(X.sum(axis=0)).flatten()
     X_sum.sort()
     m = X.shape[0]
 
-    if use_zeros:
+    if not remove_all_zeros_loci:
         x = X_sum[int(m * percentage)]
     else:
         X_sum = X_sum[X_sum > 0]
