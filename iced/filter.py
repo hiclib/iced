@@ -53,7 +53,8 @@ def filter_low_counts(X, lengths=None, percentage=0.02, copy=True,
             weights = np.ones(X.shape[0])
             mask = np.zeros(X.shape, dtype=np.bool)
 
-        return _filter_low_sparse(X, weights, mask, percentage=percentage)
+        return _filter_low_sparse(X, weights, mask, percentage=percentage,
+                                  remove_all_zeros_loci=remove_all_zeros_loci)
     else:
         return _filter_low_sum(X, percentage=percentage,
                                remove_all_zeros_loci=remove_all_zeros_loci)
@@ -127,12 +128,16 @@ def filter_high_counts(X, lengths=None, percentage=0.02, copy=True):
     return _filter_high_sum(X, percentage=percentage)
 
 
-def _filter_low_sparse(X, weights, mask, percentage=0.02):
+def _filter_low_sparse(X, weights, mask, percentage=0.02,
+                       remove_all_zeros_loci=False):
     # This is NOT going to work on sparse data. For now, raise a Not
     # implemented error
 
     if sparse.issparse(X):
         raise NotImplemented
+    if remove_all_zeros_loci:
+        raise NotImplemented
+
     counts = X.copy()
     counts[mask] = 1
     X_sum = (counts == 0).sum(axis=0).astype(float) / weights
