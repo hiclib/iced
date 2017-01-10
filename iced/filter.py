@@ -5,7 +5,7 @@ from . import utils
 
 
 def filter_low_counts(X, lengths=None, percentage=0.02, copy=True,
-                      sparsity=True, use.zero=True):
+                      sparsity=True, use_zeros=True):
     """
     Filter rows and columns with low counts
 
