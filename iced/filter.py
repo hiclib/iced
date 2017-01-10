@@ -54,7 +54,7 @@ def filter_low_counts(X, lengths=None, percentage=0.02, copy=True,
         return _filter_low_sum(X, percentage=percentage, use_zeros=use_zeros)
 
 
-def _filter_low_coverage(X, mincov=5):
+def _filter_low_coverage(X, mincov=5, verbose=True):
     """
     Filter rows and columns with low counts
 
@@ -73,7 +73,8 @@ def _filter_low_coverage(X, mincov=5):
     """
     X_sum = np.array(X.sum(axis=0)).flatten()
 
-    print "Filter %s bins ..." % sum(X_sum < mincov)
+    if verbose:
+        print "Filter %s bins ..." % sum(X_sum < mincov)
 
     if sparse.issparse(X):
         _filter_csr(X, (X_sum < mincov))
@@ -145,7 +146,7 @@ def _filter_low_sparse(X, weights, mask, percentage=0.02):
     return X
 
 
-def _filter_high_sum(X, percentage=0.02, use_zeros=True):
+def _filter_high_sum(X, percentage=0.02, use_zeros=True, verbose=True):
     X_sum = np.array(X.sum(axis=0)).flatten()
     X_sum.sort()
     m = X.shape[0]
@@ -156,9 +157,9 @@ def _filter_high_sum(X, percentage=0.02, use_zeros=True):
     else:
         X_sum = X_sum[X_sum > 0]
         x = X_sum[int(m * percentage)]
-
-
-    print "Filter %s bins ..." % sum(X_sum > x)
+    
+    if verbose:
+        print("Filter %s bins ..." % sum(X_sum > x))
 
     if sparse.issparse(X):
         _filter_csr(X, (X_sum > x))
@@ -169,7 +170,7 @@ def _filter_high_sum(X, percentage=0.02, use_zeros=True):
     return X
 
 
-def _filter_low_sum(X, percentage=0.02, use.zero=True):
+def _filter_low_sum(X, percentage=0.02, use.zero=True, verbose=True):
     X_sum = np.array(X.sum(axis=0)).flatten()
     X_sum.sort()
     m = X.shape[0]
@@ -181,7 +182,8 @@ def _filter_low_sum(X, percentage=0.02, use.zero=True):
 
     X_sum = np.array(X.sum(axis=0)).flatten()
     
-    print "Filter %s bins ..." % sum(X_sum < x)
+    if verbose:
+        print "Filter %s bins ..." % sum(X_sum < x)
 
     if sparse.issparse(X):
         _filter_csr(X, (X_sum < x))
