@@ -84,8 +84,6 @@ def _filter_low_coverage(X, mincov=5, verbose=True):
 
     return X
 
-
-
 def filter_high_counts(X, lengths=None, percentage=0.02, copy=True, use_zeros=True):
     """
     Filter rows and columns with high counts
@@ -122,7 +120,6 @@ def filter_high_counts(X, lengths=None, percentage=0.02, copy=True, use_zeros=Tr
 
     return _filter_high_sum(X, percentage=percentage, use_zeros=use_zeros)
 
-
 def _filter_low_sparse(X, weights, mask, percentage=0.02):
     # This is NOT going to work on sparse data. For now, raise a Not
     # implemented error
@@ -144,7 +141,6 @@ def _filter_low_sparse(X, weights, mask, percentage=0.02):
         X[:, X_sum > x] = np.nan
 
     return X
-
 
 def _filter_high_sum(X, percentage=0.02, use_zeros=True, verbose=True):
     X_sum = np.array(X.sum(axis=0)).flatten()
@@ -169,7 +165,6 @@ def _filter_high_sum(X, percentage=0.02, use_zeros=True, verbose=True):
 
     return X
 
-
 def _filter_low_sum(X, percentage=0.02, use.zero=True, verbose=True):
     X_sum = np.array(X.sum(axis=0)).flatten()
     X_sum.sort()
@@ -192,4 +187,3 @@ def _filter_low_sum(X, percentage=0.02, use.zero=True, verbose=True):
         X[:, X_sum < x] = np.nan
 
     return X
-
