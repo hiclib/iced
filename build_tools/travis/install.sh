@@ -53,11 +53,11 @@ if [[ "$DISTRIB" == "conda" ]]; then
     if [[ "$INSTALL_MKL" == "true" ]]; then
         conda create -n testenv --yes python=$PYTHON_VERSION pip nose \
             numpy=$NUMPY_VERSION scipy=$SCIPY_VERSION numpy scipy \
-            cython=$CYTHON_VERSION libgfortran mkl \
+            libgfortran mkl \
 	    ${PANDAS_VERSION+pandas=$PANDAS_VERSION}
     else
         conda create -n testenv --yes python=$PYTHON_VERSION pip nose \
-            numpy=$NUMPY_VERSION scipy=$SCIPY_VERSION cython=$CYTHON_VERSION \
+            numpy=$NUMPY_VERSION scipy=$SCIPY_VERSION \
             libgfortran \
 	    ${PANDAS_VERSION+pandas=$PANDAS_VERSION}
     fi
@@ -75,7 +75,7 @@ elif [[ "$DISTRIB" == "ubuntu" ]]; then
     # and scipy
     virtualenv --system-site-packages testvenv
     source testvenv/bin/activate
-    pip install nose nose-timer cython
+    pip install nose nose-timer
 
 elif [[ "$DISTRIB" == "scipy-dev-wheels" ]]; then
     # Set up our own virtualenv environment to avoid travis' numpy.
@@ -90,7 +90,7 @@ elif [[ "$DISTRIB" == "scipy-dev-wheels" ]]; then
     pip install --pre --upgrade --no-index --timeout=60 \
         --trusted-host travis-dev-wheels.scipy.org \
         -f https://travis-dev-wheels.scipy.org/ numpy scipy
-    pip install nose nose-timer cython
+    pip install nose nose-timer
 fi
 
 if [[ "$COVERAGE" == "TRUE" ]]; then
@@ -107,7 +107,7 @@ else
     python --version
     python -c "import numpy; print('numpy %s' % numpy.__version__)"
     python -c "import scipy; print('scipy %s' % scipy.__version__)"
-    python setup.py develop
+    python setup.py install
 fi
 
 if [[ "$RUN_FLAKE8" == "true" ]]; then
