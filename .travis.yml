@@ -1,5 +1,20 @@
 language: python
 
+# Pre-install packages for the ubuntu distribution
+cache:
+  apt: true
+  directories:
+    - $HOME/.cache/pip
+    - $HOME/download
+  addons:
+    apt:
+      packages:
+        - libatlas3gf-base
+        - libatlas-dev
+        # only required by the DISTRIB="ubuntu"
+      build:
+        - python-scipy
+
 virtualenv:
   system_site_packages: true
 
