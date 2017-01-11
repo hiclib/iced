@@ -12,9 +12,9 @@ class deprecated(object):
     and the docstring. Note: to use this with the default value for extra, put
     in an empty of parentheses:
 
-    >>> from sklearn.utils import deprecated
+    >>> from iced.utils import deprecated
     >>> deprecated() # doctest: +ELLIPSIS
-    <sklearn.utils.deprecated object at ...>
+    <iced.utils.deprecated object at ...>
 
     >>> @deprecated()
     ... def some_function(): pass
