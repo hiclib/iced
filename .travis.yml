@@ -34,12 +34,6 @@ env:
       NUMPY_VERSION="1.9.2" SCIPY_VERSION="0.16.0" 
       COVERAGE=TRUE
 
-install: 
-    - source continuous_integration/install.sh
-
-before_script:
-    - make clean
-
+install: source build_tools/travis/install.sh
 script: bash build_tools/travis/test_script.sh
-
 after_success: source build_tools/travis/after_success.sh
