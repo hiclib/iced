@@ -6,7 +6,7 @@
 
 set -e
 
-if [[ "$COVERAGE" == "true" ]]; then
+if [[ "$COVERAGE" == "TRUE" ]]; then
     # Need to run coveralls from a git checkout, so we copy .coverage
     # from TEST_DIR where nosetests has been run
     cp $TEST_DIR/.coverage $TRAVIS_BUILD_DIR

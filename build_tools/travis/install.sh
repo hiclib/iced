@@ -91,7 +91,7 @@ elif [[ "$DISTRIB" == "scipy-dev-wheels" ]]; then
     pip install nose nose-timer cython
 fi
 
-if [[ "$COVERAGE" == "true" ]]; then
+if [[ "$COVERAGE" == "TRUE" ]]; then
     pip install coverage coveralls
 fi
 
