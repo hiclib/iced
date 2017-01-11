@@ -28,13 +28,13 @@ env:
     # Ubuntu 14.04 versions
     - DISTRIB="conda" PYTHON_VERSION="2.6"
       NUMPY_VERSION="1.7" SCIPY_VERSION="0.13"
-      PANDAS_VERSION="0.19.1"
+      PANDAS_VERSION="0.16"
     - DISTRIB="conda" PYTHON_VERSION="2.7" 
       NUMPY_VERSION="1.8.2" SCIPY_VERSION="0.14.0"
-      PANDAS_VERSION="0.19.2"
+      PANDAS_VERSION="0.17"
     - DISTRIB="conda" PYTHON_VERSION="3.4" 
-      NUMPY_VERSION="1.9.2" SCIPY_VERSION="0.16.0" 
-      COVERAGE=TRUE PANDAS_VERSION="0.19.2"
+      NUMPY_VERSION="1.11" SCIPY_VERSION="0.16" 
+      COVERAGE=TRUE PANDAS_VERSION="0.19"
 
 install: source build_tools/travis/install.sh
 script: bash build_tools/travis/test_script.sh
