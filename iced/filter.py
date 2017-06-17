@@ -128,7 +128,8 @@ def _filter_low_sparse(X, weights, mask, percentage=0.02,
 
 
 def _filter_high_sum(X, percentage=0.02, verbose=False):
-    X_sum = np.array(X.sum(axis=0)).flatten()
+    X_sum = (np.array(X.sum(axis=0)).flatten() +
+             np.array(X.sum(axis=1)).flatten())
     X_sum.sort()
     m = X.shape[0]
     x = X_sum[int(m * (1-percentage))]
