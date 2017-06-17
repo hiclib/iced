@@ -137,6 +137,9 @@ def _filter_high_sum(X, percentage=0.02, verbose=False):
     if verbose:
         print("Filter %s bins ..." % sum(X_sum > x))
 
+    X_sum = (np.array(X.sum(axis=0)).flatten() +
+             np.array(X.sum(axis=1)).flatten())
+
     if sparse.issparse(X):
         _filter_csr(X, (X_sum > x))
     else:
@@ -160,8 +163,8 @@ def _filter_low_sum(X, percentage=0.02, remove_all_zeros_loci=False,
         x = X_sum[
             int(len(X_sum[X_sum > 0]) * percentage) + num_noninteracting_loci]
 
-    X_sum = np.array(X.sum(axis=0)).flatten()
-
+    X_sum = (np.array(X.sum(axis=0)).flatten() +
+             np.array(X.sum(axis=1)).flatten())
     if verbose:
         print("Filter %s out of %s bins ..." % (sum(X_sum < x), m))
 
