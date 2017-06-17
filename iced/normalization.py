@@ -116,7 +116,6 @@ def ICE_normalization(X, SS=None, max_iter=3000, eps=1e-4, copy=True,
         if verbose > 1 and old_bias is not None:
             print('ICE at iteration %d %s' %
                   (it, np.abs(old_bias - bias).sum()))
-
         old_bias = bias.copy()
     # Now that we are finished with the bias estimation, set all biases
     # corresponding to filtered rows to np.nan
