@@ -5,6 +5,7 @@ from scipy import sparse
 
 from iced.utils._genome import get_intra_mask
 from iced.utils._genome import get_inter_mask
+from iced.utils._genome import get_genomic_distances
 from iced.utils._genome import _change_lengths_resolution
 from iced.utils._genome import undersample_per_chr
 from iced.utils._genome import extract_sub_contact_map
@@ -97,3 +98,32 @@ def test_return_sample():
     sub_X, _ = extract_sub_contact_map(X, lengths, [0])
     assert_array_equal(X[:lengths[0], :lengths[0]],
                        sub_X)
+
+
+def test_get_genomic_distances():
+    lengths = np.array([5, 5])
+    dense_gdis = get_genomic_distances(lengths)
+
+    # FIXME we should test this!!
+    true_gdis = dense_gdis
+
+    # Now test sparse matrix
+    random_state = np.random.RandomState(seed=42)
+
+    m = 15
+    rows = random_state.randint(0, 10, size=(m,))
+    cols = random_state.randint(0, 10, size=(m,))
+    counts = np.zeros((10, 10))
+    counts[rows, cols] += 1
+    counts = sparse.coo_matrix(np.triu(counts))
+    rows = counts.row
+    cols = counts.col
+    sparse_gdis = get_genomic_distances(lengths, counts=counts)
+    sparse_true_gdis = true_gdis[rows, cols]
+    assert_array_equal(sparse_gdis, sparse_true_gdis)
+
+    # Providing a matrix that isn't coo
+    counts = counts.tocsr()
+    sparse_gdis = get_genomic_distances(lengths, counts=counts)
+    sparse_true_gdis = true_gdis[rows, cols]
+    assert_array_equal(sparse_gdis, sparse_true_gdis)
