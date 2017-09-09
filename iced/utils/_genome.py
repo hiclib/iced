@@ -3,7 +3,46 @@ from scipy import sparse
 from .validation import is_symetric_or_tri
 
 
-def get_intra_mask(lengths):
+def get_intra_mask(lengths, counts=None):
+    """
+    Returns a mask for intrachromosomal interactions
+
+    Parameters
+    ----------
+    lengths : ndarray, (n, )
+        lengths of the chromosomes
+
+    counts : ndarray or sparse matrix (n, n), optional, default: None
+        if provided, and if sparse, will only return genomic distances for
+        non-zero elements of the sparse matrix.
+
+    Returns
+    -------
+    dis: ndarray (n, n) or m, dtype: int
+        returns a boolean matrix. If counts matrix not provided, or provided
+        as dense format, returns an n-by-n matrix. Else, returns an m-vector,
+        where m is the number of data points in the sparse matrix
+
+
+    Returns
+    -------
+    mask : ndarray (m, m)
+        boolean mask
+    """
+    if counts is not None and sparse.issparse(counts):
+        return _get_intra_mask_sparse(lengths, counts)
+    else:
+        return _get_intra_mask_dense(lengths)
+
+
+def _get_intra_mask_sparse(lengths, counts):
+    chr_id = np.array([i for i, l in enumerate(lengths) for _ in range(l)])
+    mask = np.ones(counts.col.shape, dtype=bool) * True
+    mask[chr_id[counts.col] != chr_id[counts.row]] = False
+    return mask
+
+
+def _get_intra_mask_dense(lengths):
     """
     Returns a mask for intrachromosomal interactions
 
