@@ -1,4 +1,5 @@
 import numpy as np
+from scipy import sparse
 from .validation import is_symetric_or_tri
 
 
@@ -43,7 +44,47 @@ def get_inter_mask(lengths):
     return np.invert(intra_mask)
 
 
-def get_genomic_distances(lengths):
+def get_genomic_distances(lengths, counts=None):
+    """
+    Returns a matrix of the genomic distances
+
+    Inter chromosomal interactions are set to -1
+
+    Parameters
+    ----------
+    lengths : ndarray (L, )
+        lengths of the chromosomes
+
+    counts : ndarray or sparse matrix (n, n), optional, default: None
+        if provided, and if sparse, will only return genomic distances for
+        non-zero elements of the sparse matrix.
+
+    Returns
+    -------
+    dis: ndarray (n, n) or m, dtype: int
+        returns the genomic distance matrix, with -1 for inter chromosomal
+        interactions. If counts matrix not provided, or provided as dense
+        format, returns an n-by-n matrix. Else, returns an m-vector, where m
+        is the number of data points in the sparse matrix
+    """
+    if counts is not None and sparse.issparse(counts):
+        if not sparse.isspmatrix_coo(counts):
+            counts = counts.tocoo()
+        return _get_genomic_distances_sparse(lengths, counts)
+    else:
+        return _get_genomic_distances_dense(lengths)
+
+
+def _get_genomic_distances_sparse(lengths, counts):
+    """
+    """
+    chr_id = np.array([i for i, l in enumerate(lengths) for _ in range(l)])
+    gdis = np.abs(counts.col - counts.row)
+    gdis[chr_id[counts.col] != chr_id[counts.row]] = -1
+    return gdis
+
+
+def _get_genomic_distances_dense(lengths):
     """
     Returns a matrix of the genomic distances
 
