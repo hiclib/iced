@@ -1,7 +1,7 @@
 import numpy as np
 from scipy import sparse
 from ._normalization_ import _update_normalization_csr
-from .utils import is_symetric_or_tri, is_tri
+from ..utils import is_symetric_or_tri, is_tri
 
 
 def ICE_normalization(X, SS=None, max_iter=3000, eps=1e-4, copy=True,
