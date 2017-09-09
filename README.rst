@@ -19,6 +19,7 @@ The python module iced implements the ICE normalization of hic data
 Depends on
 
 python >= 2.6
-numpy >= 0.17
-scipy >= 0.13
+numpy >= 1.9
+scipy >= 0.14
+sklearn
 pandas

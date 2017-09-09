@@ -99,7 +99,8 @@ def create_missing_distances_mask(counts, lengths):
 
 def identify_missing_distances(counts, lengths):
 
-    # Find rows that are completely empty
+    # Find rows that are completely empty. These correspond to filtered loci
+    # and should be identified as missing distances
     mask = (np.array(counts.sum(axis=0)).flatten() +
             np.array(counts.sum(axis=1)).flatten()) == 0
 
