@@ -36,6 +36,8 @@ def get_intra_mask(lengths, counts=None):
 
 
 def _get_intra_mask_sparse(lengths, counts):
+    if not sparse.isspmatrix_coo(counts):
+        counts = counts.tocoo()
     chr_id = np.array([i for i, l in enumerate(lengths) for _ in range(l)])
     mask = np.ones(counts.col.shape, dtype=bool) * True
     mask[chr_id[counts.col] != chr_id[counts.row]] = False

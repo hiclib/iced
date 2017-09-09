@@ -1,6 +1,7 @@
 import numpy as np
 from nose.tools import assert_equal
 from numpy.testing import assert_array_equal
+from scipy import sparse
 
 from iced.utils._genome import get_intra_mask
 from iced.utils._genome import get_inter_mask
@@ -16,7 +17,29 @@ def test_get_intra_mask():
     true_mask = np.zeros((10, 10))
     true_mask[:5, :5] = 1
     true_mask[5:, 5:] = 1
-    assert_array_equal(mask, true_mask.astype(bool))
+    true_mask = true_mask.astype(bool)
+    assert_array_equal(mask, true_mask)
+
+    # Now test sparse matrix
+    random_state = np.random.RandomState(seed=42)
+
+    m = 15
+    rows = random_state.randint(0, 10, size=(m,))
+    cols = random_state.randint(0, 10, size=(m,))
+    counts = np.zeros((10, 10))
+    counts[rows, cols] += 1
+    counts = sparse.coo_matrix(np.triu(counts))
+    rows = counts.row
+    cols = counts.col
+    sparse_mask = get_intra_mask(lengths, counts=counts)
+    sparse_true_mask = true_mask[rows, cols]
+    assert_array_equal(sparse_mask, sparse_true_mask)
+
+    # Providing a matrix that isn't coo
+    counts = counts.tocsr()
+    sparse_mask = get_intra_mask(lengths, counts=counts)
+    sparse_true_mask = true_mask[rows, cols]
+    assert_array_equal(sparse_mask, sparse_true_mask)
 
 
 def test_change_lengths_resolution():
