@@ -55,9 +55,8 @@ def ICE_normalization(X, SS=None, max_iter=3000, eps=1e-4, copy=True,
         X = X.copy()
 
     if sparse.issparse(X):
-        if not sparse.isspmatrix_csr(X):
-            X = sparse.csr_matrix(X, dtype="float")
-        X.sort_indices()
+        if not sparse.isspmatrix_coo(X):
+            X = sparse.coo_matrix(X, dtype="float")
     else:
         X[np.isnan(X)] = 0
     X = X.astype('float')
@@ -100,7 +99,8 @@ def ICE_normalization(X, SS=None, max_iter=3000, eps=1e-4, copy=True,
         bias *= dbias
 
         if sparse.issparse(X):
-            X = _update_normalization_csr(X, np.array(dbias).flatten())
+            X.data /= dbias.A[X.row, 0]
+            X.data /= dbias.A[X.col, 0]
         else:
             X /= dbias
             X /= dbias.T
@@ -120,7 +120,6 @@ def ICE_normalization(X, SS=None, max_iter=3000, eps=1e-4, copy=True,
     # Now that we are finished with the bias estimation, set all biases
     # corresponding to filtered rows to np.nan
     if sparse.issparse(X):
-        X = X.tocoo()
         to_rm = (np.array(X.sum(axis=0)).flatten() +
                  np.array(X.sum(axis=1)).flatten()) == 0
     else:
