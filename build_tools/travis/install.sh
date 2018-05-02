@@ -16,6 +16,7 @@ pip install --upgrade pip nose \
 	numpy==$NUMPY_VERSION
 pip install --upgrade scipy==$SCIPY_VERSION \
 	scikit-learn \
+	pandas \
 	cython
 
 

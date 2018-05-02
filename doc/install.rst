@@ -11,9 +11,9 @@ The dependencies are:
 - setuptools
 - numpy (>= 1.3)
 - scipy (>= 0.7)
+- pandas
 - argparse if python <2.7
 
-In addition, pandas is recommanded for fast data loading.
 
 
 All of these dependencies can be installed at once using `Anaconda
