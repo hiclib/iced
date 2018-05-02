@@ -71,13 +71,6 @@ create_new_conda_env() {
     conda create -n testenv --yes $REQUIREMENTS
     source activate testenv
 
-    if [[ "$INSTALL_MKL" == "true" ]]; then
-        # Make sure that MKL is used
-        conda install --yes mkl
-    else
-        # Make sure that MKL is not used
-        conda remove --yes --features mkl || echo "MKL not installed"
-    fi
 }
 
 if [[ "$DISTRIB" == "neurodebian" ]]; then

@@ -12,84 +12,13 @@
 # us to keep build artefact for gcc + cython, and gain time
 
 set -e
+pip install --upgrade pip nose \
+	numpy==$NUMPY_VERSION
+pip install --upgrade scipy==$SCIPY_VERSION \
+	scikit-learn \
+	pandas \
+	cython
 
-# Fix the compilers to workaround avoid having the Python 3.4 build
-# lookup for g++44 unexpectedly.
-export CC=gcc
-export CXX=g++
-
-echo 'List files from cached directories'
-echo 'pip:'
-ls $HOME/.cache/pip
-
-
-if [[ "$DISTRIB" == "conda" ]]; then
-    # Deactivate the travis-provided virtual environment and setup a
-    # conda-based environment instead
-    deactivate
-
-    # Use the miniconda installer for faster download / install of conda
-    # itself
-    pushd .
-    cd
-    mkdir -p download
-    cd download
-    echo "Cached in $HOME/download :"
-    ls -l
-    echo
-    if [[ ! -f miniconda.sh ]]
-        then
-        wget http://repo.continuum.io/miniconda/Miniconda-3.6.0-Linux-x86_64.sh \
-            -O miniconda.sh
-        fi
-    chmod +x miniconda.sh && ./miniconda.sh -b
-    cd ..
-    export PATH=/home/travis/miniconda/bin:$PATH
-    conda update --yes conda
-    popd
-
-    # Configure the conda environment and put it in the path using the
-    # provided versions
-    if [[ "$INSTALL_MKL" == "true" ]]; then
-        conda create -n testenv --yes python=$PYTHON_VERSION pip nose \
-            numpy=$NUMPY_VERSION scipy=$SCIPY_VERSION numpy scipy \
-            cython=$CYTHON_VERSION libgfortran mkl
-    else
-        conda create -n testenv --yes python=$PYTHON_VERSION pip nose \
-            numpy=$NUMPY_VERSION scipy=$SCIPY_VERSION cython=$CYTHON_VERSION \
-            libgfortran
-    fi
-    source activate testenv
-
-    # Install nose-timer via pip
-    pip install nose-timer
-
-elif [[ "$DISTRIB" == "ubuntu" ]]; then
-    # At the time of writing numpy 1.9.1 is included in the travis
-    # virtualenv but we want to use the numpy installed through apt-get
-    # install.
-    deactivate
-    # Create a new virtualenv using system site packages for python, numpy
-    # and scipy
-    virtualenv --system-site-packages testvenv
-    source testvenv/bin/activate
-    pip install nose nose-timer cython
-
-elif [[ "$DISTRIB" == "scipy-dev-wheels" ]]; then
-    # Set up our own virtualenv environment to avoid travis' numpy.
-    # This venv points to the python interpreter of the travis build
-    # matrix.
-    virtualenv --python=python ~/testvenv
-    source ~/testvenv/bin/activate
-    pip install --upgrade pip setuptools
-
-    # We use the default Python virtualenv provided by travis
-    echo "Installing numpy master wheel"
-    pip install --pre --upgrade --no-index --timeout=60 \
-        --trusted-host travis-dev-wheels.scipy.org \
-        -f https://travis-dev-wheels.scipy.org/ numpy scipy
-    pip install nose nose-timer cython
-fi
 
 if [[ "$COVERAGE" == "true" ]]; then
     pip install coverage coveralls
@@ -110,3 +39,11 @@ python --version
 python -c "import numpy; print('numpy %s' % numpy.__version__)"
 python -c "import scipy; print('scipy %s' % scipy.__version__)"
 python setup.py develop
+
+if [[ "$RUN_FLAKE8" == "true" ]]; then
+    # flake8 version is temporarily set to 2.5.1 because the next
+    # version available on conda (3.3.0) has a bug that checks non
+    # python files and cause non meaningful flake8 errors
+    pip install flake8==2.5.1
+fi
+

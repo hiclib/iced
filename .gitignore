@@ -1,4 +1,7 @@
 *.pyc
+*.swo
+*.swp
+__pycache__
 dist
 build
 *.so
