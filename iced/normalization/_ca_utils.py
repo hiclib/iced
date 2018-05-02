@@ -1,7 +1,13 @@
 import numpy as np
+import warnings
 from scipy import sparse
 from ..utils import get_genomic_distances
 from ..utils import get_intra_mask
+
+
+warnings.warn(
+    "The API of this module is likely to change. "
+    "Use only for testing purposes")
 
 
 def normalize(counts, lengths, cnv, verbose=False):
