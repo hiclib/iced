@@ -182,5 +182,5 @@ deploy:
 	rsync -avz _build/html/ nvaroquaux@ssh.cbio.ensmp.fr:public_html/iced/dev/
 
 deploy-release:
-	rsync -avz _build/html/ nvaroquaux@cbio.ensmp.fr:public_html/iced/
+	rsync -avz _build/html/ nvaroquaux@ssh.cbio.ensmp.fr:public_html/iced/
 
