@@ -18,8 +18,6 @@ being a normalization packages, and contains a number of utilities functions
 that may be useful if you are analyzing and processing Hi-C data.
 
 
-Contents:
-
 .. toctree::
    :maxdepth: 2
 
