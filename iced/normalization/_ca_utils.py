@@ -11,6 +11,24 @@ warnings.warn(
 
 
 def estimate_block_biases(counts, lengths, cnv, verbose=False):
+    """
+    Estimates block biases
+
+    Parameters
+    ----------
+    counts : ndarray or sparse arrays (n, n)
+
+    lengths : ndarray (L, )
+        number of bins associated to each chromosomes.
+
+    cnv : ndarray (n, )
+        copy number associated to each bin. Only breakpoints are useful
+
+    Returns
+    -------
+    block_biases : ndarray or sparse array (n, n)
+        The estimated block biases
+    """
     if sparse.issparse(counts):
         bias_es = np.ones(counts.data.shape)
         loci_sums = counts.sum(axis=0).A + counts.sum(axis=1).A
