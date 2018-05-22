@@ -10,6 +10,10 @@ warnings.warn(
     "Use only for testing purposes")
 
 
+def remove_block_biases(counts, lengths, cnv, verbose=False):
+    return normalize(counts, lengths, cnv, verbose=False)
+
+
 def normalize(counts, lengths, cnv, verbose=False):
     if sparse.issparse(counts):
         bias_es = np.ones(counts.data.shape)
