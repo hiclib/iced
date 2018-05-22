@@ -5,7 +5,7 @@
 Iced tutorial
 ================
 
-
+.. contents::
 
 .. note:: **Doctest Mode**
 
@@ -95,8 +95,8 @@ The corresponding image is the following.
     :scale: 50 
 
 
-Normalizing a data set
-=======================
+Normalizing a data set with ICE
+===============================
 
 Now that we have some data loaded, let's proceed to normalizing it. There are
 two normalization algorithms implemented in `iced`: ICE and SCN. ICE is the
@@ -130,3 +130,22 @@ be performed prior to applying the normalization algorithm::
    :target: ../../auto_examples/normalization/plot_ice_normalization.html
    :align: center
    :scale: 75
+
+
+How about cancer data sets? LOIC and CAIC
+=========================================
+
+The last section discusses normalizing Hi-C data using ICE. This method is not
+adapted to normalize cancer data sets: several of the assumptions made do not
+hold in the presence of copy number variation.
+
+`ice` proposes two methods for normalizing data sets with copy number
+variations:
+
+- `LOIC`, to preserve enrichment in interactions due to copy number
+  variations
+- `CAIC` to remove copy number variation effects in the contact count matrix.
+
+Two examples are available in the gallery, showcasing how to use `LOIC`
+and `CAIC` with `ice`.
+
