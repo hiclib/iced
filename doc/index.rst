@@ -12,7 +12,10 @@ experiment, of the frequencies of physical contacts among pairs of genomic
 loci at a genome-wide scale.
 
 **Iced** implements a fast and memory efficient of the ICE normalization
-strategy.
+strategy. It is included in the HiC-pro pipeline, that processes data from raw
+fastq files to normalized contact maps. ``iced`` grew bigger than just
+being a normalization packages, and contains a number of utilities functions
+that may be useful if you are analyzing and processing Hi-C data.
 
 
 Contents:

@@ -139,13 +139,13 @@ The last section discusses normalizing Hi-C data using ICE. This method is not
 adapted to normalize cancer data sets: several of the assumptions made do not
 hold in the presence of copy number variation.
 
-`ice` proposes two methods for normalizing data sets with copy number
+``iced`` proposes two methods for normalizing data sets with copy number
 variations:
 
-- `LOIC`, to preserve enrichment in interactions due to copy number
+- ``LOIC``, to preserve enrichment in interactions due to copy number
   variations
-- `CAIC` to remove copy number variation effects in the contact count matrix.
+- ``CAIC`` to remove copy number variation effects in the contact count matrix.
 
-Two examples are available in the gallery, showcasing how to use `LOIC`
-and `CAIC` with `ice`.
+Two examples are available in the gallery, showcasing how to use ``LOIC``
+and ``CAIC`` with ``ice``.
 
