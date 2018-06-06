@@ -70,6 +70,17 @@ def ICE_normalization(X, SS=None, max_iter=3000, eps=1e-4, copy=True,
     if verbose:
         print("Matrix is triangular superior")
 
+    if counts_profile is not None:
+        rows_to_remove = counts_profile == 0
+        if sparse.issparse(X):
+            rows_to_remove = np.where(rows_to_remove)[0]
+            X.data[np.isin(X.row, rows_to_remove)] = 0
+            X.data[np.isin(X.col, rows_to_remove)] = 0
+            X = X.eliminate_zeros()
+        else:
+            X[rows_to_remove] = 0
+            X[:, rows_to_remove] = 0
+
     if total_counts is None:
         total_counts = X.sum()
     for it in np.arange(max_iter):
@@ -93,6 +104,7 @@ def ICE_normalization(X, SS=None, max_iter=3000, eps=1e-4, copy=True,
         dbias = sum_ds.reshape((m, 1))
         if counts_profile is not None:
             dbias /= counts_profile[:, np.newaxis]
+            dbias[counts_profile == 0] = 0
         # To avoid numerical instabilities
         dbias /= dbias[dbias != 0].mean()
 
