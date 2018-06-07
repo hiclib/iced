@@ -10,11 +10,33 @@ warnings.warn(
     "Use only for testing purposes")
 
 
-def normalize(counts, lengths, cnv, verbose=False):
+def estimate_block_biases(counts, lengths, cnv, verbose=False):
+    """
+    Estimates block biases
+
+    Parameters
+    ----------
+    counts : ndarray or sparse arrays (n, n)
+
+    lengths : ndarray (L, )
+        number of bins associated to each chromosomes.
+
+    cnv : ndarray (n, )
+        copy number associated to each bin. Only breakpoints are useful
+
+    Returns
+    -------
+    block_biases : ndarray or sparse array (n, n)
+        The estimated block biases
+    """
     if sparse.issparse(counts):
         bias_es = np.ones(counts.data.shape)
+        loci_sums = counts.sum(axis=0).A + counts.sum(axis=1).A
     else:
         bias_es = np.ones(counts.shape)
+        loci_sums = (counts.sum(axis=0) + counts.sum(axis=1)) == 0
+        counts[loci_sums] = np.nan
+        counts[:, loci_sums] = np.nan
 
     print("")
     print("Estimating CNV-effects.")
@@ -60,6 +82,10 @@ def normalize(counts, lengths, cnv, verbose=False):
         old_bias_es = bias_es.copy()
 
     return bias_es
+
+
+def normalize(counts, lengths, cnv, verbose=False):
+    return remove_block_biases(counts, lengths, cnv, verbose=False)
 
 
 def get_expected(counts, lengths, bs=None, mapping=None):

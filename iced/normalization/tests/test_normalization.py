@@ -23,6 +23,22 @@ def test_ICE_normalization():
     assert_array_almost_equal(normed_X, X / (bias.T * bias), 6)
 
 
+def test_ICE_normalization_cancer():
+    n = 100
+    random_state = np.random.RandomState(seed=42)
+    X = random_state.randint(0, 100, size=(n, n))
+    X = X + X.T
+    profile = np.ones(n)
+    profile[:10] = 0
+    profile[50:] = 2
+    normed_X = ICE_normalization(X, eps=1e-10, counts_profile=profile)
+    assert not np.all(np.isnan(normed_X))
+    normed_X[np.isnan(normed_X)] = 0
+    inferred_profile = normed_X.sum(axis=0)
+    inferred_profile /= inferred_profile.max()
+    assert_array_almost_equal(inferred_profile, profile / profile.max())
+
+
 def test_sparse_ICE_normalization():
     n = 100
     random_state = np.random.RandomState(seed=42)

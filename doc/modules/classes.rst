@@ -24,6 +24,7 @@ Functions
 
     normalization.ICE_normalization
     normalization.SCN_normalization
+    normalization.estimate_block_biases
 
 .. _normalization_ref:
 
