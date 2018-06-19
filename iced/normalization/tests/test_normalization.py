@@ -38,6 +38,11 @@ def test_ICE_normalization_cancer():
     inferred_profile /= inferred_profile.max()
     assert_array_almost_equal(inferred_profile, profile / profile.max())
 
+    # Do the same for sparse matriecs
+    normed_X = ICE_normalization(
+        sparse.coo_matrix(X),
+        eps=1e-10, counts_profile=profile)
+
 
 def test_sparse_ICE_normalization():
     n = 100
