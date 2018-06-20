@@ -14,10 +14,10 @@ env:
     # Ubuntu 14.04 versions
     - os: linux
       python: 2.7
-      env: TEST=TRUE NUMPY_VERSION=1.13 SCIPY_VERSION=0.14
+      env: TEST=TRUE NUMPY_VERSION=1.13 SCIPY_VERSION=0.18
     - os: linux
       python: 3.6
-      env: TEST=TRUE NUMPY_VERSION=1.14 SCIPY_VERSION=0.18 COVERAGE=TRUE
+      env: TEST=TRUE NUMPY_VERSION=1.14 SCIPY_VERSION=0.19 COVERAGE=TRUE
 
 install: 
     - source build_tools/travis/install.sh
