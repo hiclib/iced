@@ -76,7 +76,7 @@ def ICE_normalization(X, SS=None, max_iter=3000, eps=1e-4, copy=True,
             rows_to_remove = np.where(rows_to_remove)[0]
             X.data[np.isin(X.row, rows_to_remove)] = 0
             X.data[np.isin(X.col, rows_to_remove)] = 0
-            X = X.eliminate_zeros()
+            X.eliminate_zeros()
         else:
             X[rows_to_remove] = 0
             X[:, rows_to_remove] = 0
