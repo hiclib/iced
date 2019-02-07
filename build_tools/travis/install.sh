@@ -12,16 +12,29 @@
 # us to keep build artefact for gcc + cython, and gain time
 
 set -e
-pip install --upgrade pip nose \
+pip install --upgrade pip nose
+
+if [[ $NUMPY_VERSION != "*" ]]; then
+    pip install --upgrade \
 	numpy==$NUMPY_VERSION
-pip install --upgrade scipy==$SCIPY_VERSION \
+else
+    pip install numpy --upgrade
+fi
+
+if [[ $SCIPY_VERSION != "*" ]]; then
+    pip install --upgrade scipy==$SCIPY_VERSION
+else
+    pip install --upgrade scipy
+fi
+
+pip install --upgrade \
 	scikit-learn \
 	pandas \
 	cython
 
 
 if [[ "$COVERAGE" == "true" ]]; then
-    pip install coverage coveralls
+    pip install pytest-cov pytest coverage coveralls
 fi
 
 if [ ! -d "$CACHED_BUILD_DIR" ]; then

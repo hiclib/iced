@@ -1,8 +1,5 @@
 language: python
 
-virtualenv:
-  system_site_packages: true
-
 notifications:
   email: false
 
@@ -18,6 +15,10 @@ env:
     - os: linux
       python: 3.6
       env: TEST=TRUE NUMPY_VERSION=1.14 SCIPY_VERSION=0.19 COVERAGE=TRUE
+    - os: linux
+      python: 3.7
+      dist: xenial
+      env: TEST=true COVERAGE=true NUMPY_VERSION="*" SCIPY_VERSION="*"
 
 install: 
     - source build_tools/travis/install.sh
@@ -40,4 +41,4 @@ after_success:
     # because the coverage report failed to be published.
     # coveralls need to be run from the git checkout
     # so we need to copy the coverage results from TEST_RUN_FOLDER
-    - if [[ "$COVERAGE" == "true" ]]; then cp "$TEST_RUN_FOLDER/.coverage" .; coveralls || echo "failed"; fi
+    - bash build_tools/travis/after_success.sh 
