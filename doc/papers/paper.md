@@ -33,10 +33,11 @@ loci at a genome-wide scale.
 
 [**Iced**](https://github.com/hiclib/iced) implements fast and memory
 efficient normalization methods, such the ICE normalization strategy or the
-SCN algorithm. It is included in the HiC-pro pipeline, that processes data
-from raw fastq files to normalized contact maps. iced eventually grew bigger
-than just being a normalization packages, and contains a number of utilities
-functions that may be useful if you are analyzing and processing Hi-C data.
+SCN algorithm [@varoquaux:iced_osf]. It is included in the HiC-pro pipeline, that processes data
+from raw fastq files to normalized contact maps [@servant:hicpro]. iced
+eventually grew bigger than just being a normalization packages, and contains
+a number of utilities functions that may be useful if you are analyzing and
+processing Hi-C data.
 
 Moving from sequencing reads to a normalized contact map is a challenging
 task. Hi-C usually requires several millions to billions of paired-end
