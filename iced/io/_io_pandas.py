@@ -65,7 +65,7 @@ def load_counts(filename, lengths=None, base=None):
             row -= 1
 
     if shape is None:
-        n = max(col.max(), row.max()) + 1
+        n = int(max(col.max(), row.max()) + 1)
         shape = (n, n)
 
     data = data.astype(float)
