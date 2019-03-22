@@ -35,7 +35,7 @@ Contacts
 
 If you have any questions or suggestions, please email nelle dot varoquaux at
 ensmp dot fr, or open a ticket on `Github
-<https://github.com/hiclib/pastis/issues>`_
+<https://github.com/hiclib/iced/issues>`_
 
 
 
