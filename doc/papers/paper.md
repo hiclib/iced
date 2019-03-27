@@ -15,7 +15,7 @@ affiliations:
    index: 1
  - name: Institut Curie
    index: 3
- - name: INSERM
+ - name: INSERM U900
    index: 4
  - name: Mines ParisTech
    index: 5
