@@ -37,7 +37,8 @@ where each row and each column correspond to a genomic window, and each entry
 to the number of times those windows have been seen interacting with one
 another.  As any genomics experiments, the resulting matrix contains unwanted
 variations depending on the GC-content, mappability, and the details of the
-protocol used.
+protocol used. Before any downstream analysis, this matrix needs to be
+appropriately normalized.
 
 ![](figures/counts_pfalc.png)
 
