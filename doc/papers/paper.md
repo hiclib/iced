@@ -29,13 +29,13 @@ bibliography: paper.bib
 
 The three-dimensional structure of the genome is thought to play an important
 role in many biological processes, such as gene regulation and replication.
-Recent technological advances allow the measurement, in a single Hi-C
+Recent technological advances allow the measurement, in a single 
 experiment, of the frequencies of physical contacts among pairs of genomic
 loci at a genome-wide scale. The Hi-C protocol results in a noisy and indirect
 measurement of the 3D structure of the genome, yielding a symmetric matrix
 where each row and each column correspond to a genomic window, and each entry
 to the number of times those windows have been seen interacting with one
-another.  As any genomics experiments, the resulting matrix contains unwanted
+another.  As with any genomics experiments, the resulting matrix contains unwanted
 variations depending on the GC-content, mappability, and the details of the
 protocol used. Before any downstream analysis, this matrix needs to be
 appropriately normalized.
@@ -44,7 +44,7 @@ appropriately normalized.
 
 [**Iced**](https://github.com/hiclib/iced) implements fast and memory
 efficient normalization methods, such the ICE normalization strategy or the
-SCN algorithm [@varoquaux:iced_osf]. It is included in the HiC-pro pipeline, that processes data
+SCN algorithm. It is included in the HiC-pro pipeline, that processes data
 from raw fastq files to normalized contact maps [@servant:hicpro]. iced
 eventually grew bigger than just being a normalization packages, and contains
 a number of utilities functions that may be useful if you are analyzing and
