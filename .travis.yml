@@ -16,6 +16,9 @@ env:
       python: 3.6
       env: TEST=TRUE NUMPY_VERSION=1.14 SCIPY_VERSION=0.19 COVERAGE=TRUE
     - os: linux
+      python: 3.6
+      env: TEST=TRUE NUMPY_VERSION=1.17 SCIPY_VERSION=1.3.1 COVERAGE=TRUE
+    - os: linux
       python: 3.7
       dist: xenial
       env: TEST=true COVERAGE=true NUMPY_VERSION="*" SCIPY_VERSION="*"
