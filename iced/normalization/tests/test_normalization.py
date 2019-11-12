@@ -31,12 +31,25 @@ def test_ICE_normalization_cancer():
     profile = np.ones(n)
     profile[:10] = 0
     profile[50:] = 2
-    normed_X = ICE_normalization(X, eps=1e-10, counts_profile=profile)
+    normed_X, bias = ICE_normalization(X, eps=1e-10, counts_profile=profile,
+                                       output_bias=True)
     assert not np.all(np.isnan(normed_X))
+
     normed_X[np.isnan(normed_X)] = 0
+    mask = np.isnan(bias).flatten()
+    bias[np.isnan(bias)] = 1
+    normed_from_bias_X = X / (bias.T * bias)
+    normed_from_bias_X[mask] = 0
+    normed_from_bias_X[:, mask] = 0
+    assert_array_almost_equal(normed_X, normed_from_bias_X, 6)
     inferred_profile = normed_X.sum(axis=0)
     inferred_profile /= inferred_profile.max()
     assert_array_almost_equal(inferred_profile, profile / profile.max())
+
+    # Do the same for sparse matriecs
+    normed_X = ICE_normalization(
+        sparse.coo_matrix(X),
+        eps=1e-10, counts_profile=profile)
 
 
 def test_sparse_ICE_normalization():

@@ -66,7 +66,7 @@ def load_counts(filename, lengths=None, base=None):
 
     if shape is None:
         n = max(col.max(), row.max()) + 1
-        shape = (n, n)
+        shape = (int(n), int(n))
 
     data = data.astype(float)
     counts = sparse.coo_matrix((data, (row, col)), shape=shape)
