@@ -9,10 +9,9 @@ The dependencies are:
 
 - python (>= 3.6)
 - setuptools
-- numpy (>= 1.9)
-- scipy (>= 0.13)
+- numpy (>= 1.14)
+- scipy (>= 0.19)
 - pandas
-- argparse if python <2.7
 
 
 All of these dependencies can be installed at once using `Anaconda
