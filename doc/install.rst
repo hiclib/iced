@@ -7,13 +7,12 @@ python modules.
 
 The dependencies are:
 
-- python (>= 2.6)
+- python (>= 3.6)
 - setuptools
-- numpy (>= 1.13)
-- scipy (>= 0.7)
+- numpy (>= 1.9)
+- scipy (>= 0.13)
 - pandas
 - argparse if python <2.7
-
 
 
 All of these dependencies can be installed at once using `Anaconda
