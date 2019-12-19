@@ -34,7 +34,7 @@ pip install --upgrade \
 
 
 if [[ "$COVERAGE" == "true" ]]; then
-    pip install pytest-cov pytest coverage coveralls
+    pip install pytest-cov pytest coverage==4.5.4 coveralls
 fi
 
 if [ ! -d "$CACHED_BUILD_DIR" ]; then

@@ -10,6 +10,8 @@ env:
 matrix:
   include:
     # Ubuntu 14.04 versions
+    - name: "Python 2.7"
+      env: TEST=TRUE NUMPY_VERSION=1.14 SCIPY_VERSION=0.19 COVERAGE=TRUE
     - name: "Python 3.6"
       python: 3.6
       env: TEST=TRUE NUMPY_VERSION=1.14 SCIPY_VERSION=0.19 COVERAGE=TRUE
