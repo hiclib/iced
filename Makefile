@@ -5,7 +5,7 @@ CTAGS ?= ctags
 
 all: clean inplace test
 
-inplace:
+inplace: cython
 	$(PYTHON) setup.py build_ext -i
 
 
