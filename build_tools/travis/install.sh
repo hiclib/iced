@@ -51,6 +51,7 @@ cd $CACHED_BUILD_DIR/iced
 python --version
 python -c "import numpy; print('numpy %s' % numpy.__version__)"
 python -c "import scipy; print('scipy %s' % scipy.__version__)"
+python setup.py build_src
 python setup.py develop
 
 if [[ "$RUN_FLAKE8" == "true" ]]; then
@@ -59,4 +60,3 @@ if [[ "$RUN_FLAKE8" == "true" ]]; then
     # python files and cause non meaningful flake8 errors
     pip install flake8==2.5.1
 fi
-
