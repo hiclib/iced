@@ -9,12 +9,6 @@
 set -e
 set -v
 
-# Get into a temp directory to run test from the installed iced and
-# check if we do not leave artifacts
-mkdir -p $TEST_DIR
-# We need the setup.cfg for the nose settings
-cp setup.cfg $TEST_DIR
-
 python --version
 python -c "import numpy; print('numpy %s' % numpy.__version__)"
 python -c "import scipy; print('scipy %s' % scipy.__version__)"
