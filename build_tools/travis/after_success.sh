@@ -11,6 +11,9 @@ if [[ "$COVERAGE" == true ]]; then
     # Need to run coveralls from a git checkout, so we copy .coverage
     # from TEST_DIR where pytests has been run
     pip install codecov
+    cp $TEST_DIR/.coverage $TRAVIS_BUILD_DIR
+    cp $TEST_DIR/coverage.xml $TRAVIS_BUILD_DIR
 
-    codecov --root $TEST_DIR || echo "codecov upload failed"
+    codecov --root $TRAVIS_BUILD_DIR || echo "codecov upload failed"
+
 fi
