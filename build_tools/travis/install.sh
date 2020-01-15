@@ -12,7 +12,7 @@
 # us to keep build artefact for gcc + cython, and gain time
 
 set -e
-pip install --upgrade pip nose
+pip install --upgrade pip pytest pytest-cov
 
 if [[ $NUMPY_VERSION != "*" ]]; then
     pip install --upgrade \
@@ -34,7 +34,7 @@ pip install --upgrade \
 
 
 if [[ "$COVERAGE" == "true" ]]; then
-    pip install pytest-cov pytest coverage==4.5.4 coveralls
+    pip install pytest-cov pytest coveralls codecov
 fi
 
 if [ ! -d "$CACHED_BUILD_DIR" ]; then
