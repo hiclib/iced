@@ -24,7 +24,7 @@ run_tests() {
     pushd $TEST_DIR
 
     if [[ "$COVERAGE" == "true" ]]; then
-        TEST_CMD="$TEST_CMD --cov iced"
+        TEST_CMD="$TEST_CMD --cov=iced --cov-report=xml"
     fi
     $TEST_CMD iced
     popd
