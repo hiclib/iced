@@ -12,7 +12,5 @@ if [[ "$COVERAGE" == true ]]; then
     # from TEST_DIR where pytests has been run
     pip install codecov
 
-    cp $TEST_DIR/.coverage $TRAVIS_BUILD_DIR
-
-    codecov --root $TRAVIS_BUILD_DIR || echo "codecov upload failed"
+    codecov --root $TEST_DIR || echo "codecov upload failed"
 fi
