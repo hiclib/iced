@@ -32,7 +32,7 @@ def load_counts(filename, lengths=None, base=None):
         shape = None
     # This is the interaction count files
     dataframe = pd.read_csv(filename, sep="\t", comment="#", header=None)
-    row, col, data = dataframe.as_matrix().T
+    row, col, data = dataframe.values.T
 
     # If there are NAs remove them
     mask = np.isnan(data)
@@ -90,7 +90,7 @@ def load_lengths(filename, return_base=False):
     lengths : the lengths of each chromosomes
     """
     data = pd.read_csv(filename, sep="\t", comment="#", header=None)
-    data = data.as_matrix()
+    data = data.values
     _, idx, lengths = np.unique(data[:, 0], return_counts=True,
                                 return_index=True)
     if return_base:
