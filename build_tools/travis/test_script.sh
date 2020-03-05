@@ -7,33 +7,35 @@
 # License: 3-clause BSD
 
 set -e
-
-# Get into a temp directory to run test from the installed iced and
-# check if we do not leave artifacts
-mkdir -p $TEST_DIR
-# We need the setup.cfg for the nose settings
-cp setup.cfg $TEST_DIR
-cd $TEST_DIR
+set -v
 
 python --version
 python -c "import numpy; print('numpy %s' % numpy.__version__)"
 python -c "import scipy; print('scipy %s' % scipy.__version__)"
 python -c "import multiprocessing as mp; print('%d CPUs' % mp.cpu_count())"
 
-# Skip tests that require large downloads over the network to save bandwidth
-# usage as travis workers are stateless and therefore traditional local
-# disk caching does not work.
-export SKLEARN_SKIP_NETWORK_TESTS=1
+run_tests() {
+    TEST_CMD="pytest --showlocals --pyargs"
 
-if [[ "$COVERAGE" == "true" ]]; then
-   nosetests -s --with-coverage --with-timer --timer-top-n 20 iced
-else
-   nosetests -s --with-timer --timer-top-n 20 iced
+    # Get into a temp directory to run test from the installed scikit learn
+    # and
+    # check if we do not leave artifacts
+    mkdir -p $TEST_DIR
+    pushd $TEST_DIR
+
+    if [[ "$COVERAGE" == "true" ]]; then
+        TEST_CMD="$TEST_CMD --cov=iced --cov-report=xml"
+    fi
+    $TEST_CMD iced
+    popd
+    
+}
+
+if [[ "$RUN_FLAKE8" == "true" ]]; then
+    source build_tools/travis/flake8_diff.sh
 fi
 
-# Is directory still empty ?
-ls -ltra
+if [[ "$SKIP_TESTS" != "true" ]]; then
+    run_tests
+fi
 
-# Test doc
-cd $CACHED_BUILD_DIR/iced
-make test-doc test-sphinxext

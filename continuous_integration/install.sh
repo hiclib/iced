@@ -9,6 +9,7 @@
 # License: 3-clause BSD
 
 set -e
+set -v
 
 # Fix the compilers to workaround avoid having the Python 3.4 build
 # lookup for g++44 unexpectedly.

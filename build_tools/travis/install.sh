@@ -12,7 +12,7 @@
 # us to keep build artefact for gcc + cython, and gain time
 
 set -e
-pip install --upgrade pip nose
+pip install --upgrade pip pytest pytest-cov
 
 if [[ $NUMPY_VERSION != "*" ]]; then
     pip install --upgrade \
@@ -34,7 +34,7 @@ pip install --upgrade \
 
 
 if [[ "$COVERAGE" == "true" ]]; then
-    pip install pytest-cov pytest coverage coveralls
+    pip install pytest-cov pytest coveralls codecov
 fi
 
 if [ ! -d "$CACHED_BUILD_DIR" ]; then
@@ -51,6 +51,8 @@ cd $CACHED_BUILD_DIR/iced
 python --version
 python -c "import numpy; print('numpy %s' % numpy.__version__)"
 python -c "import scipy; print('scipy %s' % scipy.__version__)"
+make cython
+python setup.py build_src
 python setup.py develop
 
 if [[ "$RUN_FLAKE8" == "true" ]]; then
@@ -59,4 +61,3 @@ if [[ "$RUN_FLAKE8" == "true" ]]; then
     # python files and cause non meaningful flake8 errors
     pip install flake8==2.5.1
 fi
-

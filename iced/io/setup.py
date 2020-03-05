@@ -14,19 +14,6 @@ def configuration(parent_package='', top_path=None):
 
     config = Configuration('io', parent_package, top_path)
 
-    config.add_extension(
-        'fastio_',
-        libraries=libraries,
-        sources=['fastio_.c'],
-        include_dirs=[join('..', 'src', 'cblas'),
-                      numpy.get_include()])
-    config.add_extension(
-        'read',
-        libraries=libraries,
-        sources=['read.c'],
-        include_dirs=[join('..', 'src', 'cblas'),
-                      numpy.get_include()])
-
     return config
 
 if __name__ == '__main__':

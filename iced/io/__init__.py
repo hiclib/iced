@@ -1,10 +1,5 @@
-from .fastio_ import loadtxt, savetxt
-try:
-    from ._io_pandas import load_counts, load_lengths
-    from ._io_pandas import write_counts
-except ImportError:
-    from ._io_else import load_lengths, load_counts
-    from ._io_else import write_counts
+from ._io_pandas import load_counts, load_lengths
+from ._io_pandas import write_counts
 
 
 def write_lengths(filename, lengths, resolution=1):

@@ -1,5 +1,4 @@
 import numpy as np
-from nose.tools import assert_equal
 from numpy.testing import assert_array_equal
 from scipy import sparse
 
@@ -67,7 +66,7 @@ def test_downsample_resolution():
     counts = counts + counts.T
     downsampled_counts, downsampled_lengths = downsample_resolution(
         counts, lengths)
-    assert_equal(downsampled_lengths.sum(), lengths.sum()/2)
+    assert downsampled_lengths.sum() == lengths.sum()/2
 
     lengths = np.array([10, 11])
     counts = np.triu(random_state.randint(
@@ -75,7 +74,7 @@ def test_downsample_resolution():
     counts = counts + counts.T
     downsampled_counts, downsampled_lengths = downsample_resolution(
         counts, lengths)
-    assert_equal(downsampled_lengths.sum(), 11)
+    assert downsampled_lengths.sum() == 11
 
 
 def test_undersample_per_chr():

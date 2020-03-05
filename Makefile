@@ -1,22 +1,22 @@
 PYTHON ?= python
 CYTHON ?= cython
-NOSETESTS ?= nosetests
+PYTEST ?= pytest
 CTAGS ?= ctags
 
 all: clean inplace test
 
-inplace:
+inplace: cython
 	$(PYTHON) setup.py build_ext -i
 
 
 test: test-code
 
 test-code: inplace
-	$(NOSETESTS) -s -v iced
+	$(PYTEST) --showlocals -v iced --durations=20
 
 test-coverage:
 	rm -rf coverage .coverage
-	$(NOSETESTS) -s -v --with-coverage iced --cover-package iced
+	$(PYTEST) iced --showlocals -v --cov=iced
 
 clean-ctags:
 	rm -f tags
