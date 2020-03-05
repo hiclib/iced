@@ -91,5 +91,5 @@ def load_sample_cancer():
     # Load CNVs
     cnv = pd.read_csv(lengths_filename, usecols=(3, ), comment="#", sep="\t",
                       header=None)
-    cnv = cnv.as_matrix().flatten()
+    cnv = cnv.values.flatten()
     return counts, lengths, cnv
