@@ -1,12 +1,12 @@
 #! /usr/bin/env python
-
+from __future__ import print_function
 import sys
 import argparse
 import numpy as np
 from scipy import sparse
 
 import iced
-from iced.io import loadtxt, savetxt
+from iced.io import load_counts, savetxt
 
 
 parser = argparse.ArgumentParser("ICE normalization")
@@ -55,8 +55,8 @@ if "--filtering_perc" in sys.argv:
         "'--filter_low_counts_perc' instead.'")
     # And print it again because deprecation warnings are not displayed for
     # recent versions of python
-    print "--filtering_perc is deprecated. Please use filter_low_counts_perc"
-    print "instead. This option will be removed in ice 0.3"
+    print("--filtering_perc is deprecated. Please use filter_low_counts_perc")
+    print("instead. This option will be removed in ice 0.3")
     filter_low_counts = args.filtering_perc
 if "--filter_low_counts_perc" in sys.argv and "--filtering_perc" in sys.argv:
     raise Warning("This two options are incompatible")
@@ -67,10 +67,10 @@ elif args.filter_low_counts_perc is not None:
 
 if args.verbose:
     print("Using iced version %s" % iced.__version__)
-    print "Loading files..."
+    print("Loading files...")
 
 # Loads file as i, j, counts
-i, j, data = loadtxt(filename).T
+i, j, data = load_counts(filename, base=1).T
 
 # Detecting whether the file is 0 or 1 based.
 if min(i.min(), j.min()) == 0:
@@ -88,7 +88,7 @@ else:
     counts = sparse.csr_matrix(counts)
 
 if args.verbose:
-    print "Normalizing..."
+    print("Normalizing...")
 
 if filter_low_counts_perc != 0:
     counts = iced.filter.filter_low_counts(counts,
@@ -114,7 +114,7 @@ else:
 counts = sparse.coo_matrix(counts)
 
 if args.verbose:
-    print "Writing results..."
+    print("Writing results...")
 
 savetxt(
     results_filename, counts.col + index_base, counts.row + index_base, counts.data)
