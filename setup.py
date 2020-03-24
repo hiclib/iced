@@ -6,7 +6,7 @@ DISTNAME = 'iced'
 DESCRIPTION = 'ICE normalization'
 MAINTAINER = 'Nelle Varoquaux'
 MAINTAINER_EMAIL = 'nelle.varoquaux@gmail.com'
-VERSION = '0.5.3'
+VERSION = '0.5.4'
 
 
 SCIPY_MIN_VERSION = '0.13.3'
