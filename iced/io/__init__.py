@@ -1,7 +1,6 @@
 from ._io_pandas import load_counts, load_lengths
 from ._io_pandas import write_counts
-
-loadtxt = load_counts
+from numpy import loadtxt, savetxt
 
 
 def write_lengths(filename, lengths, resolution=1):

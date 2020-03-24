@@ -70,17 +70,8 @@ if args.verbose:
     print("Loading files...")
 
 # Loads file as i, j, counts
-i, j, data = load_counts(filename, base=1).T
+counts = load_counts(filename, base=0)
 
-# Detecting whether the file is 0 or 1 based.
-if min(i.min(), j.min()) == 0:
-    index_base = 0
-    N = max(i.max(), j.max()) + 1
-    counts = sparse.coo_matrix((data, (i, j)), shape=(N, N), dtype=float)
-else:
-    index_base = 1
-    N = max(i.max(), j.max())
-    counts = sparse.coo_matrix((data, (i - 1, j - 1)), shape=(N, N), dtype=float)
 
 if args.dense:
     counts = np.array(counts.todense())
@@ -116,8 +107,11 @@ counts = sparse.coo_matrix(counts)
 if args.verbose:
     print("Writing results...")
 
+#write_counts(results_filename, counts)
 savetxt(
-    results_filename, counts.col + index_base, counts.row + index_base, counts.data)
+    results_filename, np.concatenate([counts.col, counts.row,
+    counts.data]).reshape(3, -1))
+
 
 
 if args.output_bias:
