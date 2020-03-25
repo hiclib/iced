@@ -33,7 +33,7 @@ run_tests() {
 
 run_ice_scripts() {
     pushd examples/HiC-pro
-    ice subset.matrix
+    bash launch_tests.sh
     popd
 }
 
