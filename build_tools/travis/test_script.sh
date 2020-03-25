@@ -31,11 +31,18 @@ run_tests() {
     
 }
 
+run_ice_scripts() {
+    pushd examples/HiC-pro
+    bash launch_tests.sh
+    popd
+}
+
 if [[ "$RUN_FLAKE8" == "true" ]]; then
     source build_tools/travis/flake8_diff.sh
 fi
 
 if [[ "$SKIP_TESTS" != "true" ]]; then
     run_tests
+    riun_ice_scripts
 fi
 
