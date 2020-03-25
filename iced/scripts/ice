@@ -41,7 +41,7 @@ parser.add_argument("--eps", "-e", default=0.1, type=float,
                     help="Precision")
 parser.add_argument("--dense", "-d", default=False, action="store_true")
 parser.add_argument("--output-bias", "-b", default=False, help="Output the bias vector")
-parser.add_argument("--verbose", "-v", default=False)
+parser.add_argument("--verbose", "-v", default=False, type=bool)
 
 
 args = parser.parse_args()
