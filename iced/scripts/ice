@@ -108,9 +108,9 @@ if args.verbose:
     print("Writing results...")
 
 #write_counts(results_filename, counts)
-savetxt(
-    results_filename, np.concatenate([counts.col, counts.row,
-    counts.data]).reshape(3, -1))
+write_counts(
+    results_filename,
+    counts)
 
 
 
