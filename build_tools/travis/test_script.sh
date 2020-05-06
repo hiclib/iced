@@ -43,6 +43,6 @@ fi
 
 if [[ "$SKIP_TESTS" != "true" ]]; then
     run_tests
-    riun_ice_scripts
+    run_ice_scripts
 fi
 
