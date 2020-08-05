@@ -27,9 +27,15 @@ else
     pip install --upgrade scipy
 fi
 
+if [[ $PANDAS_VERSION != "*" ]]; then
+    pip install --upgrade pandas==$PANDAS_VERSION
+else
+    pip install --upgrade pandas
+fi
+
+
 pip install --upgrade \
 	scikit-learn \
-	pandas \
 	cython
 
 

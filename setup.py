@@ -9,8 +9,8 @@ MAINTAINER_EMAIL = 'nelle.varoquaux@gmail.com'
 VERSION = '0.5.0-git'
 
 
-SCIPY_MIN_VERSION = '0.13.3'
-NUMPY_MIN_VERSION = '1.9.0'
+SCIPY_MIN_VERSION = '0.19.0'
+NUMPY_MIN_VERSION = '1.16.0'
 
 
 # Optional setuptools features
