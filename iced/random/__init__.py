@@ -75,3 +75,52 @@ def downsample_contact_map(counts, nreads=None, proportion=None,
                                  counts.col[sub_ind])),
         shape=counts.shape, dtype=float)
     return c
+
+
+def bootstrap_contact_map(counts, random_state=None):
+    """
+    Bootstrap the contact count matrix
+
+    Parameters
+    ----------
+    counts : ndarray or sparse matrix
+        The raw contact count matrix.
+
+    random_state : random_state object, optional
+
+    Returns
+    -------
+    c : downsampled contact count matrix as a COO matrix.
+    """
+    if counts.dtype != "int":
+        if np.abs(counts - np.round(counts)).sum() != 0:
+            raise ValueError("Count matrix should be integers")
+        counts = counts.astype("int")
+    if not sparse.issparse(counts):
+        # Convert into COO sparse matrix
+        counts = sparse.coo_matrix(np.triu(counts))
+    elif not sparse.isspmatrix_coo(counts):
+        # Also convert into COO sparse matrix
+        counts = sparse.coo_matrix(counts)
+
+    if random_state is None:
+        random_state = np.random.RandomState()
+    elif isinstance(random_state, int):
+        random_state = np.random.RandomState(random_state)
+
+    x, y = np.indices(counts.shape)
+    # Create a matrix of indices where each entry corresponds to an
+    # interacting pair of loci, and where interacting pairs appear the number
+    # of time they interact
+    ind = np.repeat(np.arange(len(counts.data)), counts.data, axis=0)
+
+    nreads = counts.sum()
+    # Shuffle the indices and select f*nreads number of interaction
+    sub_ind = random_state.choice(ind, size=nreads, replace=True)
+
+    # Recreate the interaction counts matrix.
+    c = sparse.coo_matrix(
+        (np.ones(len(sub_ind)), (counts.row[sub_ind],
+                                 counts.col[sub_ind])),
+        shape=counts.shape, dtype=float)
+    return c

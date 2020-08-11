@@ -3,6 +3,7 @@ from scipy import sparse
 import pytest
 
 from iced.random import downsample_contact_map
+from iced.random import bootstrap_contact_map
 from iced import datasets
 
 
@@ -32,3 +33,17 @@ def test_downsample_contact_map():
 
     with pytest.raises(ValueError):
         downsample_contact_map(counts, proportion=1.5)
+
+
+def test_bootstrap_contact_map():
+    counts, lengths = datasets.load_sample_yeast()
+    bootstrap_contact_map(counts,
+                          random_state=42)
+    with pytest.raises(ValueError):
+        bootstrap_contact_map(counts*.3,
+                              random_state=42)
+
+    # Test that it works with COO matrices
+    counts = sparse.coo_matrix(np.triu(counts))
+    bootstrap_contact_map(counts,
+                          random_state=42)
