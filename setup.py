@@ -6,7 +6,7 @@ DISTNAME = 'iced'
 DESCRIPTION = 'ICE normalization'
 MAINTAINER = 'Nelle Varoquaux'
 MAINTAINER_EMAIL = 'nelle.varoquaux@gmail.com'
-VERSION = '0.5.0-git'
+VERSION = '0.6.0-git'
 
 
 SCIPY_MIN_VERSION = '0.19.0'

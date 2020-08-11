@@ -2,5 +2,6 @@ from . import normalization
 from . import filter
 from . import io
 from . import datasets
+from . import random
 
-__version__ = "0.5.0-git"
+__version__ = "0.6.0-git"
