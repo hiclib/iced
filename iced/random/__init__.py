@@ -53,7 +53,7 @@ def downsample_contact_map(counts, nreads=None, proportion=None,
             proportion)
 
     if nreads is None:
-        nreads = proportion = counts.sum()
+        nreads = int(np.round(proportion * counts.sum()))
 
     if random_state is None:
         random_state = np.random.RandomState()
