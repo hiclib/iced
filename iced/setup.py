@@ -17,6 +17,7 @@ def configuration(parent_package='', top_path=None):
     config.add_subpackage("datasets")
     config.add_subpackage("io")
     config.add_subpackage("normalization")
+    config.add_subpackage("random")
 
     config.add_extension(
         'normalization/_normalization_',
