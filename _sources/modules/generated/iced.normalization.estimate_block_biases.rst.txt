@@ -1,0 +1,7 @@
+﻿iced.normalization.estimate_block_biases
+========================================
+
+.. currentmodule:: iced.normalization
+
+.. autofunction:: estimate_block_biases
+

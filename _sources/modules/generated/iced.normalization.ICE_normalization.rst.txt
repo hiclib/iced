@@ -1,0 +1,7 @@
+﻿iced.normalization.ICE_normalization
+====================================
+
+.. currentmodule:: iced.normalization
+
+.. autofunction:: ICE_normalization
+

@@ -1,0 +1,177 @@
+.. only:: html
+
+    .. note::
+        :class: sphx-glr-download-link-note
+
+        Click :ref:`here <sphx_glr_download_auto_examples_normalization_plot_caic_normalization.py>`     to download the full example code
+    .. rst-class:: sphx-glr-example-title
+
+    .. _sphx_glr_auto_examples_normalization_plot_caic_normalization.py:
+
+
+===================================================
+Normalizing a cancer contact count matrix with CAIC
+===================================================
+
+CAIC is a normalization method to remove copy-number biases present in a
+matrix. This example showcases how to perform such a normalization on
+simulated data with `iced`.
+
+Loading the data and normalizing
+--------------------------------
+
+The normalization is done in three step:
+
+  1. Normalize the data using LOIC, to remove GC, mappability, and other
+     biases
+  2. Estimate the block biases due to copy number.
+  3. Remove the block biases from the LOIC-normalized contact counts
+
+
+.. code-block:: default
+
+
+    from iced import datasets
+    from iced import normalization
+    import matplotlib.pyplot as plt
+    from matplotlib import colors
+
+
+    counts, lengths, cnv = datasets.load_sample_cancer()
+
+    loic_normed = normalization.ICE_normalization(counts, counts_profile=cnv)
+    block_biases = normalization.estimate_block_biases(counts, lengths, cnv)
+    caic_normed = loic_normed / block_biases
+
+
+
+
+
+.. rst-class:: sphx-glr-script-out
+
+ Out:
+
+ .. code-block:: none
+
+    /home/travis/build/hiclib/iced/iced/io/_io_pandas.py:56: UserWarning: Attempting to guess whether counts are 0 or 1 based
+      warnings.warn(
+
+    Estimating CNV-effects.
+    Computing relationship genomic distance & expected counts
+    Fitting Isotonic Regression
+    /home/travis/build/hiclib/iced/iced/normalization/_ca_utils.py:319: RuntimeWarning: invalid value encountered in double_scalars
+      bias[mask] = (c * c_exp).sum() / (c_exp**2).sum()
+    Computing relationship genomic distance & expected counts
+    Fitting Isotonic Regression
+    /home/travis/build/hiclib/iced/iced/normalization/_ca_utils.py:319: RuntimeWarning: invalid value encountered in double_scalars
+      bias[mask] = (c * c_exp).sum() / (c_exp**2).sum()
+    Computing relationship genomic distance & expected counts
+    Fitting Isotonic Regression
+    /home/travis/build/hiclib/iced/iced/normalization/_ca_utils.py:319: RuntimeWarning: invalid value encountered in double_scalars
+      bias[mask] = (c * c_exp).sum() / (c_exp**2).sum()
+    Computing relationship genomic distance & expected counts
+    Fitting Isotonic Regression
+    /home/travis/build/hiclib/iced/iced/normalization/_ca_utils.py:319: RuntimeWarning: invalid value encountered in double_scalars
+      bias[mask] = (c * c_exp).sum() / (c_exp**2).sum()
+    Computing relationship genomic distance & expected counts
+    Fitting Isotonic Regression
+    /home/travis/build/hiclib/iced/iced/normalization/_ca_utils.py:319: RuntimeWarning: invalid value encountered in double_scalars
+      bias[mask] = (c * c_exp).sum() / (c_exp**2).sum()
+    Computing relationship genomic distance & expected counts
+    Fitting Isotonic Regression
+    /home/travis/build/hiclib/iced/iced/normalization/_ca_utils.py:319: RuntimeWarning: invalid value encountered in double_scalars
+      bias[mask] = (c * c_exp).sum() / (c_exp**2).sum()
+
+
+
+
+Visualizing the results using Matplotlib
+----------------------------------------
+
+The following code visualizes the raw original data, the estimated block
+biases, and the normalized matrix using the CAIC method.
+
+
+.. code-block:: default
+
+    chromosomes = ["I", "II", "III", "IV", "V", "VI"]
+
+    fig, axes = plt.subplots(ncols=3, figsize=(14, 3))
+
+    axes[0].imshow(counts, cmap="RdBu_r", norm=colors.SymLogNorm(1),
+                   extent=(0, len(counts), 0, len(counts)))
+
+    [axes[0].axhline(i, linewidth=1, color="#000000") for i in lengths.cumsum()]
+    [axes[0].axvline(i, linewidth=1, color="#000000") for i in lengths.cumsum()]
+    axes[0].set_title("Raw contact counts", fontweight="bold")
+
+    m = axes[1].imshow(block_biases, cmap="RdBu_r", norm=colors.SymLogNorm(1),
+                       extent=(0, len(counts), 0, len(counts)))
+    [axes[1].axhline(i, linewidth=1, color="#000000") for i in lengths.cumsum()]
+    [axes[1].axvline(i, linewidth=1, color="#000000") for i in lengths.cumsum()]
+    axes[1].set_title("Estimated block biases", fontweight="bold")
+
+    m = axes[2].imshow(caic_normed,
+                       cmap="RdBu_r", norm=colors.SymLogNorm(1),
+                       extent=(0, len(counts), 0, len(counts)))
+    [axes[2].axhline(i, linewidth=1, color="#000000") for i in lengths.cumsum()]
+    [axes[2].axvline(i, linewidth=1, color="#000000") for i in lengths.cumsum()]
+    cb = fig.colorbar(m)
+    axes[2].set_title("Normalized contact counts with CAIC", fontweight="bold")
+
+
+
+.. image:: /auto_examples/normalization/images/sphx_glr_plot_caic_normalization_001.png
+    :alt: Raw contact counts, Estimated block biases, Normalized contact counts with CAIC
+    :class: sphx-glr-single-img
+
+
+.. rst-class:: sphx-glr-script-out
+
+ Out:
+
+ .. code-block:: none
+
+    /home/travis/build/hiclib/iced/examples/normalization/plot_caic_normalization.py:45: MatplotlibDeprecationWarning: default base will change from np.e to 10 in 3.4.  To suppress this warning specify the base keyword argument.
+      axes[0].imshow(counts, cmap="RdBu_r", norm=colors.SymLogNorm(1),
+    /home/travis/build/hiclib/iced/examples/normalization/plot_caic_normalization.py:52: MatplotlibDeprecationWarning: default base will change from np.e to 10 in 3.4.  To suppress this warning specify the base keyword argument.
+      m = axes[1].imshow(block_biases, cmap="RdBu_r", norm=colors.SymLogNorm(1),
+    /home/travis/build/hiclib/iced/examples/normalization/plot_caic_normalization.py:59: MatplotlibDeprecationWarning: default base will change from np.e to 10 in 3.4.  To suppress this warning specify the base keyword argument.
+      cmap="RdBu_r", norm=colors.SymLogNorm(1),
+
+    Text(0.5, 1.0, 'Normalized contact counts with CAIC')
+
+
+
+
+.. rst-class:: sphx-glr-timing
+
+   **Total running time of the script:** ( 0 minutes  22.560 seconds)
+
+
+.. _sphx_glr_download_auto_examples_normalization_plot_caic_normalization.py:
+
+
+.. only :: html
+
+ .. container:: sphx-glr-footer
+    :class: sphx-glr-footer-example
+
+
+
+  .. container:: sphx-glr-download sphx-glr-download-python
+
+     :download:`Download Python source code: plot_caic_normalization.py <plot_caic_normalization.py>`
+
+
+
+  .. container:: sphx-glr-download sphx-glr-download-jupyter
+
+     :download:`Download Jupyter notebook: plot_caic_normalization.ipynb <plot_caic_normalization.ipynb>`
+
+
+.. only:: html
+
+ .. rst-class:: sphx-glr-signature
+
+    `Gallery generated by Sphinx-Gallery <https://sphinx-gallery.github.io>`_

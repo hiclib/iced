@@ -1,0 +1,7 @@
+﻿iced.utils.downsample_resolution
+================================
+
+.. currentmodule:: iced.utils
+
+.. autofunction:: downsample_resolution
+
