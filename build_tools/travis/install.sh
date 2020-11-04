@@ -67,3 +67,8 @@ if [[ "$RUN_FLAKE8" == "true" ]]; then
     # python files and cause non meaningful flake8 errors
     pip install flake8==2.5.1
 fi
+
+if [[ "$DOC" == "true" ]]; then
+    # Let's install the documentation dependencies
+    pip install sphinx sphinx-gallery numpydoc
+fi

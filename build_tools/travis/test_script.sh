@@ -38,6 +38,12 @@ run_ice_scripts() {
     popd
 }
 
+run_doc() {
+    pushd doc
+    make
+    popd
+}
+
 if [[ "$RUN_FLAKE8" == "true" ]]; then
     source build_tools/travis/flake8_diff.sh
 fi
@@ -47,3 +53,6 @@ if [[ "$SKIP_TESTS" != "true" ]]; then
     run_ice_scripts
 fi
 
+if [[ "$DOC" == "true" ]]; then
+    run_doc
+fi
