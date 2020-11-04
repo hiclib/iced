@@ -40,6 +40,7 @@ run_ice_scripts() {
 
 run_doc() {
     pushd doc
+    mkdir -p _build/html
     make
     popd
 }

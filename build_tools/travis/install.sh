@@ -43,14 +43,9 @@ if [[ "$COVERAGE" == "true" ]]; then
     pip install pytest-cov pytest coveralls codecov
 fi
 
-if [ ! -d "$CACHED_BUILD_DIR" ]; then
-    mkdir -p $CACHED_BUILD_DIR
-fi
 
 rsync -av --exclude '.git/' --exclude='testvenv/' \
-      $TRAVIS_BUILD_DIR $CACHED_BUILD_DIR
-
-cd $CACHED_BUILD_DIR/iced
+      $TRAVIS_BUILD_DIR
 
 # Build iced in the install.sh script to collapse the verbose
 # build output in the travis output when it succeeds.

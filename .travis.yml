@@ -5,7 +5,6 @@ dist: xenial
 env:
   global:
     - TEST_DIR=/tmp/iced
-    - CACHED_BUILD_DIR="cached"
 
 matrix:
   include:
