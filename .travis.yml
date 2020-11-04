@@ -41,3 +41,16 @@ after_success:
     # coveralls need to be run from the git checkout
     # so we need to copy the coverage results from TEST_RUN_FOLDER
     - bash build_tools/travis/after_success.sh 
+
+
+deploy:
+    provider: pages
+    skip-cleanup: true
+    # Set in the settings page of your repository, as a secure variable
+    github-token: $GH_TOKEN
+    keep-history: true
+    local-dir: doc/_build/html
+    on:
+        branch: master
+        python: 3.8
+

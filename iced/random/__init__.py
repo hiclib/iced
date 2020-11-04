@@ -124,3 +124,79 @@ def bootstrap_contact_map(counts, random_state=None):
                                  counts.col[sub_ind])),
         shape=counts.shape, dtype=float)
     return c
+
+
+def permute_contact_map(counts, random_state=None, circular=False):
+    """
+    Randomize matrix preserving the distribution of elements per diagonal
+
+    Arguments
+    ---------
+    matrix : ndarray (n, n)
+        The ndarray to shuffle
+
+    circular : boolean, optional, default: False
+        Whether the chromosome is circular.
+
+    Returns
+    -------
+    Randomized matrix that preserves the contact law P(s)
+    """
+    if random_state is None:
+        random_state = np.random.RandomState()
+    elif isinstance(random_state, int):
+        random_state = np.random.RandomState(random_state)
+
+    if circular:
+        return _permute_contact_map_circular(
+            counts,
+            random_state=random_state)
+    else:
+        randomized_counts = np.zeros(counts.shape)
+
+        N = len(counts)
+
+        for s in range(0, N):
+            indices = random_state.shuffle(np.arange(N - s))
+            random_elements = np.diag(counts, k=s)[indices]
+            np.fill_diag(randomized_counts.T[s:], random_elements)
+        return randomized_counts
+
+
+def _permute_contact_map_circular(counts, random_state=None):
+    N = len(counts)
+    randomized_counts = np.zeros(counts.shape)
+
+    # Draw random samples directly from the data
+    indices = np.arange(N)
+    np.random.shuffle(indices)
+    np.fill_diagonal(randomized_counts, np.diag(counts)[indices])
+
+    for s in range(1, int(np.ceil(N / 2))):
+        # Start by upper diagonals
+        sub_diag = np.concatenate(
+            [np.diag(counts, k=s),
+             np.diag(counts, k=s-N)])
+        np.random.shuffle(indices)
+        random_elements = sub_diag[indices]
+        np.fill_diagonal(
+            randomized_counts.T[s:],
+            random_elements[:N-s])
+        np.fill_diagonal(
+            randomized_counts[N-s:],
+            random_elements[N-s:N])
+
+        # And now lower diagonals
+        sub_diag = np.concatenate(
+            [np.diag(counts, k=-s),
+             np.diag(counts, k=N-s)])
+        np.random.shuffle(indices)
+        random_elements = sub_diag[indices]
+        np.fill_diagonal(
+            randomized_counts[s:],
+            random_elements[:N-s])
+        np.fill_diagonal(
+            randomized_counts.T[N-s:],
+            random_elements[N-s:N])
+
+    return randomized_counts
