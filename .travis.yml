@@ -23,7 +23,7 @@ matrix:
       env: TEST=TRUE COVERAGE=true NUMPY_VERSION=1.17 SCIPY_VERSION=1.3 PANDAS_VERSION=1.0
     - name: "Python 3.8"
       python: 3.8
-      env: TEST=TRUE COVERAGE=true NUMPY_VERSION=* SCIPY_VERSION=* PANDAS_VERSION=*
+      env: TEST=TRUE COVERAGE=true NUMPY_VERSION=* SCIPY_VERSION=* PANDAS_VERSION=* DOC=true
 
 install: 
     - source build_tools/travis/install.sh

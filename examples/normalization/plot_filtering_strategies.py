@@ -35,7 +35,6 @@ chromosomes = ["I", "II", "III", "IV", "V", "VI"]
 
 for ax, c in zip(axes, [counts_1, counts_2, counts_3]):
     ax.imshow(c, cmap="Blues", norm=colors.SymLogNorm(1),
-              origin="bottom",
               extent=(0, len(counts), 0, len(counts)))
 
     [ax.axhline(i, linewidth=1, color="#000000") for i in lengths.cumsum()]

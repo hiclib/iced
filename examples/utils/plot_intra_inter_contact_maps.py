@@ -28,10 +28,8 @@ intra_counts = counts.copy()
 intra_counts[inter_mask] = np.nan
 
 m = axes[0].matshow(intra_counts, cmap="Blues", norm=colors.SymLogNorm(1),
-                    origin="bottom",
                     extent=(0, len(counts), 0, len(counts)))
 m = axes[1].matshow(inter_counts, cmap="Blues", norm=colors.SymLogNorm(1),
-                    origin="bottom",
                     extent=(0, len(counts), 0, len(counts)))
 
 axes[0].set_title("Intra-chromosomal maps")

@@ -70,5 +70,5 @@ fi
 
 if [[ "$DOC" == "true" ]]; then
     # Let's install the documentation dependencies
-    pip install sphinx sphinx-gallery numpydoc
+    pip install sphinx sphinx-gallery numpydoc matplotlib
 fi
