@@ -42,7 +42,7 @@ run_doc() {
     pushd doc
     mkdir -p _build/html
     make
-    touch .nojekyll
+    touch _build/html/.nojekyll
     popd
 }
 
