@@ -77,7 +77,7 @@ Normalizing a cancer contact count matrix with LOIC
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  2.128 seconds)
+   **Total running time of the script:** ( 0 minutes  2.123 seconds)
 
 
 .. _sphx_glr_download_auto_examples_normalization_plot_loic_normalization.py:
