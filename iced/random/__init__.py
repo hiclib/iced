@@ -135,7 +135,7 @@ def permute_contact_map(counts, random_state=None, circular=False):
     matrix : ndarray (n, n)
         The ndarray to shuffle
 
-    circular : boolean, optional, default: False
+    circular : boolean, optional, default: False
         Whether the chromosome is circular.
 
     Returns

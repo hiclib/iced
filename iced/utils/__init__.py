@@ -1,4 +1,5 @@
 from ._genome import *
+import warnings
 from .validation import is_symetric_or_tri, is_tri
 
 

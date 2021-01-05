@@ -112,7 +112,6 @@ write_counts(
     results_filename,
     counts)
 
-
-
 if args.output_bias:
-    np.savetxt(results_filename + ".biases", bias)
+    # Remove the first element, as it corresponds to index 0
+    np.savetxt(results_filename + ".biases", bias[1:])
