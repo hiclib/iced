@@ -47,7 +47,7 @@ contact map.
     /home/travis/build/hiclib/iced/examples/utils/plot_intra_inter_contact_maps.py:32: MatplotlibDeprecationWarning: default base will change from np.e to 10 in 3.4.  To suppress this warning specify the base keyword argument.
       m = axes[1].matshow(inter_counts, cmap="Blues", norm=colors.SymLogNorm(1),
 
-    [<matplotlib.lines.Line2D object at 0x7f56b7fe82b0>, <matplotlib.lines.Line2D object at 0x7f56b7fe8b80>, <matplotlib.lines.Line2D object at 0x7f56b7f4b670>, <matplotlib.lines.Line2D object at 0x7f56b7f4b160>, <matplotlib.lines.Line2D object at 0x7f56b7f4bf40>]
+    [<matplotlib.lines.Line2D object at 0x7fd5959eb2b0>, <matplotlib.lines.Line2D object at 0x7fd5959ebb80>, <matplotlib.lines.Line2D object at 0x7fd59594e670>, <matplotlib.lines.Line2D object at 0x7fd59594e160>, <matplotlib.lines.Line2D object at 0x7fd59594ef40>]
 
 
 
@@ -93,7 +93,7 @@ contact map.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  0.417 seconds)
+   **Total running time of the script:** ( 0 minutes  0.414 seconds)
 
 
 .. _sphx_glr_download_auto_examples_utils_plot_intra_inter_contact_maps.py:
