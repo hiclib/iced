@@ -5,14 +5,14 @@
 
 Computation times
 =================
-**00:23.190** total execution time for **auto_examples_normalization** files:
+**00:27.087** total execution time for **auto_examples_normalization** files:
 
 +-------------------------------------------------------------------------------------------------------------+-----------+--------+
-| :ref:`sphx_glr_auto_examples_normalization_plot_caic_normalization.py` (``plot_caic_normalization.py``)     | 00:20.362 | 0.0 MB |
+| :ref:`sphx_glr_auto_examples_normalization_plot_caic_normalization.py` (``plot_caic_normalization.py``)     | 00:23.913 | 0.0 MB |
 +-------------------------------------------------------------------------------------------------------------+-----------+--------+
-| :ref:`sphx_glr_auto_examples_normalization_plot_loic_normalization.py` (``plot_loic_normalization.py``)     | 00:02.060 | 0.0 MB |
+| :ref:`sphx_glr_auto_examples_normalization_plot_loic_normalization.py` (``plot_loic_normalization.py``)     | 00:02.359 | 0.0 MB |
 +-------------------------------------------------------------------------------------------------------------+-----------+--------+
-| :ref:`sphx_glr_auto_examples_normalization_plot_ice_normalization.py` (``plot_ice_normalization.py``)       | 00:00.434 | 0.0 MB |
+| :ref:`sphx_glr_auto_examples_normalization_plot_ice_normalization.py` (``plot_ice_normalization.py``)       | 00:00.445 | 0.0 MB |
 +-------------------------------------------------------------------------------------------------------------+-----------+--------+
-| :ref:`sphx_glr_auto_examples_normalization_plot_filtering_strategies.py` (``plot_filtering_strategies.py``) | 00:00.334 | 0.0 MB |
+| :ref:`sphx_glr_auto_examples_normalization_plot_filtering_strategies.py` (``plot_filtering_strategies.py``) | 00:00.370 | 0.0 MB |
 +-------------------------------------------------------------------------------------------------------------+-----------+--------+
