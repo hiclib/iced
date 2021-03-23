@@ -96,7 +96,7 @@ Different filtering strategies
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  0.331 seconds)
+   **Total running time of the script:** ( 0 minutes  0.366 seconds)
 
 
 .. _sphx_glr_download_auto_examples_normalization_plot_filtering_strategies.py:
