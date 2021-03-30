@@ -147,12 +147,6 @@ biases, and the normalized matrix using the CAIC method.
 
  .. code-block:: none
 
-    /home/travis/build/hiclib/iced/examples/normalization/plot_caic_normalization.py:45: MatplotlibDeprecationWarning: default base will change from np.e to 10 in 3.4.  To suppress this warning specify the base keyword argument.
-      axes[0].imshow(counts, cmap="RdBu_r", norm=colors.SymLogNorm(1),
-    /home/travis/build/hiclib/iced/examples/normalization/plot_caic_normalization.py:52: MatplotlibDeprecationWarning: default base will change from np.e to 10 in 3.4.  To suppress this warning specify the base keyword argument.
-      m = axes[1].imshow(block_biases, cmap="RdBu_r", norm=colors.SymLogNorm(1),
-    /home/travis/build/hiclib/iced/examples/normalization/plot_caic_normalization.py:59: MatplotlibDeprecationWarning: default base will change from np.e to 10 in 3.4.  To suppress this warning specify the base keyword argument.
-      cmap="RdBu_r", norm=colors.SymLogNorm(1),
 
     Text(0.5, 1.0, 'Normalized contact counts with CAIC')
 
@@ -161,7 +155,7 @@ biases, and the normalized matrix using the CAIC method.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  27.473 seconds)
+   **Total running time of the script:** ( 0 minutes  22.163 seconds)
 
 
 .. _sphx_glr_download_auto_examples_normalization_plot_caic_normalization.py:

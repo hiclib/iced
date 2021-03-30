@@ -5,10 +5,10 @@
 
 Computation times
 =================
-**00:00.769** total execution time for **auto_examples_utils** files:
+**00:00.740** total execution time for **auto_examples_utils** files:
 
 +-------------------------------------------------------------------------------------------------------------+-----------+--------+
-| :ref:`sphx_glr_auto_examples_utils_plot_intra_inter_contact_maps.py` (``plot_intra_inter_contact_maps.py``) | 00:00.413 | 0.0 MB |
+| :ref:`sphx_glr_auto_examples_utils_plot_intra_inter_contact_maps.py` (``plot_intra_inter_contact_maps.py``) | 00:00.401 | 0.0 MB |
 +-------------------------------------------------------------------------------------------------------------+-----------+--------+
-| :ref:`sphx_glr_auto_examples_utils_plot_extract_sample_map.py` (``plot_extract_sample_map.py``)             | 00:00.356 | 0.0 MB |
+| :ref:`sphx_glr_auto_examples_utils_plot_extract_sample_map.py` (``plot_extract_sample_map.py``)             | 00:00.339 | 0.0 MB |
 +-------------------------------------------------------------------------------------------------------------+-----------+--------+

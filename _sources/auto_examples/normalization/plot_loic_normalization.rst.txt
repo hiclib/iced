@@ -39,10 +39,6 @@ Normalizing a cancer contact count matrix with LOIC
 
     /home/travis/build/hiclib/iced/iced/io/_io_pandas.py:56: UserWarning: Attempting to guess whether counts are 0 or 1 based
       warnings.warn(
-    /home/travis/build/hiclib/iced/examples/normalization/plot_loic_normalization.py:23: MatplotlibDeprecationWarning: default base will change from np.e to 10 in 3.4.  To suppress this warning specify the base keyword argument.
-      axes[0].imshow(counts, cmap="RdBu_r", norm=colors.SymLogNorm(1),
-    /home/travis/build/hiclib/iced/examples/normalization/plot_loic_normalization.py:30: MatplotlibDeprecationWarning: default base will change from np.e to 10 in 3.4.  To suppress this warning specify the base keyword argument.
-      m = axes[1].imshow(normed, cmap="RdBu_r", norm=colors.SymLogNorm(1),
 
     Text(0.5, 1.0, 'Normalized contact counts with LOIC')
 
@@ -87,7 +83,7 @@ Normalizing a cancer contact count matrix with LOIC
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  2.628 seconds)
+   **Total running time of the script:** ( 0 minutes  2.106 seconds)
 
 
 .. _sphx_glr_download_auto_examples_normalization_plot_loic_normalization.py:

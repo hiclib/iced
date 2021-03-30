@@ -45,8 +45,6 @@ Different filtering strategies
 
     /home/travis/build/hiclib/iced/iced/io/_io_pandas.py:56: UserWarning: Attempting to guess whether counts are 0 or 1 based
       warnings.warn(
-    /home/travis/build/hiclib/iced/examples/normalization/plot_filtering_strategies.py:37: MatplotlibDeprecationWarning: default base will change from np.e to 10 in 3.4.  To suppress this warning specify the base keyword argument.
-      ax.imshow(c, cmap="Blues", norm=colors.SymLogNorm(1),
 
     Text(0.5, 1.0, 'Filtering 4% smallest interacting loci\n + all non-interacting loci')
 
@@ -96,7 +94,7 @@ Different filtering strategies
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  0.366 seconds)
+   **Total running time of the script:** ( 0 minutes  0.346 seconds)
 
 
 .. _sphx_glr_download_auto_examples_normalization_plot_filtering_strategies.py:

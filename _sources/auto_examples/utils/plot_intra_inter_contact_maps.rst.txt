@@ -42,12 +42,8 @@ contact map.
 
     /home/travis/build/hiclib/iced/iced/io/_io_pandas.py:56: UserWarning: Attempting to guess whether counts are 0 or 1 based
       warnings.warn(
-    /home/travis/build/hiclib/iced/examples/utils/plot_intra_inter_contact_maps.py:30: MatplotlibDeprecationWarning: default base will change from np.e to 10 in 3.4.  To suppress this warning specify the base keyword argument.
-      m = axes[0].matshow(intra_counts, cmap="Blues", norm=colors.SymLogNorm(1),
-    /home/travis/build/hiclib/iced/examples/utils/plot_intra_inter_contact_maps.py:32: MatplotlibDeprecationWarning: default base will change from np.e to 10 in 3.4.  To suppress this warning specify the base keyword argument.
-      m = axes[1].matshow(inter_counts, cmap="Blues", norm=colors.SymLogNorm(1),
 
-    [<matplotlib.lines.Line2D object at 0x7fd956422cd0>, <matplotlib.lines.Line2D object at 0x7fd95639a1f0>, <matplotlib.lines.Line2D object at 0x7fd95639aaf0>, <matplotlib.lines.Line2D object at 0x7fd95639af40>, <matplotlib.lines.Line2D object at 0x7fd95639a8e0>]
+    [<matplotlib.lines.Line2D object at 0x7ff120fdd460>, <matplotlib.lines.Line2D object at 0x7ff120fdda30>, <matplotlib.lines.Line2D object at 0x7ff120fddc40>, <matplotlib.lines.Line2D object at 0x7ff120fa5cd0>, <matplotlib.lines.Line2D object at 0x7ff120fa55e0>]
 
 
 
@@ -93,7 +89,7 @@ contact map.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  0.413 seconds)
+   **Total running time of the script:** ( 0 minutes  0.401 seconds)
 
 
 .. _sphx_glr_download_auto_examples_utils_plot_intra_inter_contact_maps.py:
