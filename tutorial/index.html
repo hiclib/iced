@@ -3,7 +3,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   
     <title>Iced: fast and memory efficient ICE normalization &#8212; Iced 0.5.0-git documentation</title>
   <!-- htmltitle is before nature.css - we use this hack to load bootstrap first -->
@@ -17,13 +18,13 @@
           type="text/javascript"></script>
 
 
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/basic.css" />
     <link rel="stylesheet" type="text/css" href="../_static/gallery.css" />
     <link rel="stylesheet" type="text/css" href="../_static/gallery-binder.css" />
     <link rel="stylesheet" type="text/css" href="../_static/gallery-dataframe.css" />
     <link rel="stylesheet" type="text/css" href="../_static/gallery-rendered-html.css" />
-    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
@@ -55,7 +56,7 @@
   </div>
     <div class="container">
   
-  <div class="section" id="iced-tutorial">
+  <section id="iced-tutorial">
 <span id="tutorial-menu"></span><h1><a class="toc-backref" href="#id1">Iced tutorial</a><a class="headerlink" href="#iced-tutorial" title="Permalink to this headline">¶</a></h1>
 <div class="contents topic" id="contents">
 <p class="topic-title">Contents</p>
@@ -86,7 +87,7 @@ directly into IPython without having to worry about removing the <strong>&gt;&gt
 manually.</p>
 </div></blockquote>
 </div>
-<div class="section" id="what-is-iced">
+<section id="what-is-iced">
 <h2><a class="toc-backref" href="#id2">What is iced?</a><a class="headerlink" href="#what-is-iced" title="Permalink to this headline">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">iced</span></code> is a python package that contains normalization techniques for Hi-C data.
 It is included in the HiC-pro pipeline, that processes data from raw fastq
@@ -98,8 +99,8 @@ be useful if you are analyzing and processing Hi-C data.</p>
 Varoquaux N., Lajoie BR., Viara E., Chen CJ., Vert JP., Dekker J., Heard E.,
 Barillot E. Genome Biology 2015, 16:259 doi:10.1186/s13059-015-0831-x
 http://www.genomebiology.com/2015/16/1/259</p>
-</div>
-<div class="section" id="working-with-hi-c-data-in-python">
+</section>
+<section id="working-with-hi-c-data-in-python">
 <h2><a class="toc-backref" href="#id3">Working with Hi-C data in Python</a><a class="headerlink" href="#working-with-hi-c-data-in-python" title="Permalink to this headline">¶</a></h2>
 <p>Hi-C data boils down to a matrix of contact counts. Each row and columns
 corresponds to a genomic window, and each entry to the number of times these
@@ -112,8 +113,8 @@ matrix operation.</p>
 <p>If you are not familiar with numpy and python, we strongly encourage to
 follow the short tutorial of the <a class="reference external" href="http://www.scipy-lectures.org/">scipy lecture notes</a></p>
 </div>
-</div>
-<div class="section" id="loading-an-example-dataset">
+</section>
+<section id="loading-an-example-dataset">
 <h2><a class="toc-backref" href="#id4">Loading an example dataset</a><a class="headerlink" href="#loading-an-example-dataset" title="Permalink to this headline">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">iced</span></code> comes with a sample data set that allows you to play a bit with the
 package. The sample data set included corresponds to the first 5 chromosomes
@@ -146,8 +147,8 @@ also match the lengths vector:</p>
 <p>You’ve successfully loaded your first Hi-C data!
 The corresponding image is the following.</p>
 <a class="reference external image-reference" href="../../auto_examples/datasets/plot_yeast_sample.html"><img alt="auto_examples/datasets/images/sphx_glr_plot_yeast_sample_001.png" class="align-center" src="auto_examples/datasets/images/sphx_glr_plot_yeast_sample_001.png" /></a>
-</div>
-<div class="section" id="normalizing-a-data-set-with-ice">
+</section>
+<section id="normalizing-a-data-set-with-ice">
 <h2><a class="toc-backref" href="#id5">Normalizing a data set with ICE</a><a class="headerlink" href="#normalizing-a-data-set-with-ice" title="Permalink to this headline">¶</a></h2>
 <p>Now that we have some data loaded, let’s proceed to normalizing it. There are
 two normalization algorithms implemented in <cite>iced</cite>: ICE and SCN. ICE is the
@@ -175,8 +176,8 @@ be performed prior to applying the normalization algorithm:</p>
 </pre></div>
 </div>
 <a class="reference external image-reference" href="../../auto_examples/normalization/plot_ice_normalization.html"><img alt="../_images/sphx_glr_plot_ice_normalization_001.png" class="align-center" src="../_images/sphx_glr_plot_ice_normalization_001.png" style="width: 900.0px; height: 300.0px;" /></a>
-</div>
-<div class="section" id="how-about-cancer-data-sets-loic-and-caic">
+</section>
+<section id="how-about-cancer-data-sets-loic-and-caic">
 <h2><a class="toc-backref" href="#id6">How about cancer data sets? LOIC and CAIC</a><a class="headerlink" href="#how-about-cancer-data-sets-loic-and-caic" title="Permalink to this headline">¶</a></h2>
 <p>The last section discusses normalizing Hi-C data using ICE. This method is not
 adapted to normalize cancer data sets: several of the assumptions made do not
@@ -190,8 +191,8 @@ variations</p></li>
 </ul>
 <p>Two examples are available in the gallery, showcasing how to use <code class="docutils literal notranslate"><span class="pre">LOIC</span></code>
 and <code class="docutils literal notranslate"><span class="pre">CAIC</span></code> with <code class="docutils literal notranslate"><span class="pre">ice</span></code>.</p>
-</div>
-</div>
+</section>
+</section>
 
 
     </div>
@@ -202,7 +203,7 @@ and <code class="docutils literal notranslate"><span class="pre">CAIC</span></c
     </p>
     <p>
         &copy; Copyright 2015-2017, iced contributors.<br/>
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 3.5.4.<br/>
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 4.0.1.<br/>
     </p>
 </footer>
   </body>
