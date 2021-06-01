@@ -43,7 +43,7 @@ contact map.
     /home/travis/build/hiclib/iced/iced/io/_io_pandas.py:56: UserWarning: Attempting to guess whether counts are 0 or 1 based
       warnings.warn(
 
-    [<matplotlib.lines.Line2D object at 0x7fc9d1975940>, <matplotlib.lines.Line2D object at 0x7fc9d1975cd0>, <matplotlib.lines.Line2D object at 0x7fc9d1975b20>, <matplotlib.lines.Line2D object at 0x7fc9d1af55e0>, <matplotlib.lines.Line2D object at 0x7fc9d1acdd60>]
+    [<matplotlib.lines.Line2D object at 0x7f2291098790>, <matplotlib.lines.Line2D object at 0x7f22912419d0>, <matplotlib.lines.Line2D object at 0x7f22912418b0>, <matplotlib.lines.Line2D object at 0x7f2291241790>, <matplotlib.lines.Line2D object at 0x7f22912a7d90>]
 
 
 
@@ -89,7 +89,7 @@ contact map.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  0.426 seconds)
+   **Total running time of the script:** ( 0 minutes  0.396 seconds)
 
 
 .. _sphx_glr_download_auto_examples_utils_plot_intra_inter_contact_maps.py:
