@@ -13,5 +13,5 @@ if t.shape[1] != 3:
     raise ValueError("The shape of the written matrix doesn't make sense")
 
 # Checking that the base seems fine (ie, is one)
-if np.any(counts.row < 1) or np.any(counts.col < 1):
+if t[0, 0] < 1 or t[0, 1] < 1:
     raise ValueError("The output should be 1-based, not 0 based")
