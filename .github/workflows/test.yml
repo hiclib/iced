@@ -27,6 +27,7 @@ jobs:
       # TODO run tests
       - name: Run the tests
         shell: bash -l {0}
+        run: |
             pushd /tmp
             pytest --showlocals --pyargs --cov=iced --cov-report=xml
             popd
