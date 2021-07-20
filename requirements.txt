@@ -6,3 +6,6 @@ cython
 pandas
 sphinx-gallery
 numpydoc
+pytest
+pytest-coverage
+sklearn
