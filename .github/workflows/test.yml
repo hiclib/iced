@@ -28,8 +28,13 @@ jobs:
       - name: Run the tests
         shell: bash -l {0}
         run: |
-            pushd /tmp
-            pytest --showlocals --pyargs --cov=iced --cov-report=xml
+            mkdir tests-temp
+            pushd tests-temp
+            pytest --showlocals --pyargs --cov=iced --cov-report=xml iced
+            popd
+            # Now, run the HiC-pro example with the corresponding tests.
+            pushd examples/HiC-pro
+            bash launch_tests.sh
             popd
 
       - name: Build the documentation
