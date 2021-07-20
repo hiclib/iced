@@ -25,6 +25,12 @@ jobs:
             make install
 
       # TODO run tests
+      - name: Run the tests
+        shell: bash -l {0}
+            pushd /tmp
+            pytest --showlocals --pyargs --cov=iced --cov-report=xml
+            popd
+
       - name: Build the documentation
         shell: bash -l {0}
         run: |
