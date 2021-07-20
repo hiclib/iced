@@ -119,7 +119,7 @@ if args.verbose:
 #write_counts(results_filename, counts)
 write_counts(
     results_filename,
-    counts)
+    counts, base=base)
 
 
 

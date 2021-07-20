@@ -99,7 +99,7 @@ def load_lengths(filename, return_base=False):
         return lengths[idx.argsort()]
 
 
-def write_counts(filename, counts):
+def write_counts(filename, counts, base=None):
     """
     Write counts
 
@@ -115,6 +115,10 @@ def write_counts(filename, counts):
             counts = counts.tocoo()
         else:
             counts = sparse.coo_matrix(counts)
+
+    if base is not None:
+        counts.row += base
+        counts.col += base
     # XXX this is slow and memory intensive
     data = np.concatenate([counts.row[:, np.newaxis],
                            counts.col[:, np.newaxis],
