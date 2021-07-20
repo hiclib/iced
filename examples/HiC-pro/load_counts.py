@@ -11,3 +11,7 @@ print("Checking the shape of the written matrix makes sense")
 t = np.loadtxt("/tmp/iced_matrix.matrix")
 if t.shape[1] != 3:
     raise ValueError("The shape of the written matrix doesn't make sense")
+
+# Checking that the base seems fine (ie, is one)
+if np.any(counts.row < 1) or np.any(counts.col < 1):
+    raise ValueError("The output should be 1-based, not 0 based")
