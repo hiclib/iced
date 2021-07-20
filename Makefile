@@ -8,6 +8,8 @@ all: clean inplace test
 inplace: cython
 	$(PYTHON) setup.py build_ext -i
 
+install: cython
+	$(PYTHON) setup.py install
 
 test: test-code
 
