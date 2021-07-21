@@ -9,6 +9,7 @@ jobs:
         uses: actions/checkout@v2
         with:
           persist-credentials: false
+
       - name: Setup Miniconda
         uses: conda-incubator/setup-miniconda@v2
         with:
@@ -31,18 +32,20 @@ jobs:
             # Checking this works…
             make test
 
+            mkdir tests-temp
+            pushd tests-temp
             python --version
             python -c "import numpy; print('numpy %s' % numpy.__version__)"
             python -c "import scipy; print('scipy %s' % scipy.__version__)"
             python -c "import pandas; print('pandas %s' % pandas.__version__)"
             python -c "import multiprocessing as mp; print('%d CPUs' % mp.cpu_count())"
+            python -c "import iced; print('iced %s' % iced.__version__)"
 
             # FIXME
             # And then checking intsalled version which currently fails.
-            # mkdir tests-temp
-            #pushd tests-temp
             #pytest --showlocals --pyargs --cov=iced --cov-report=xml iced
-            #popd
+            popd
+
             # Now, run the HiC-pro example with the corresponding tests.
             pushd examples/HiC-pro
             bash launch_tests.sh
