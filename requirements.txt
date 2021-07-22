@@ -1,12 +1,2 @@
-sphinx
-numpy
-scipy
-matplotlib
-cython
-pandas
-sphinx-gallery
-numpydoc
-pytest
-pytest-coverage
-sklearn
-flake8
+-r requirements/default.txt
+-r requirements/tests.txt
