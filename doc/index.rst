@@ -25,10 +25,19 @@ that may be useful if you are analyzing and processing Hi-C data.
 References
 ==========
 
-`HiC-Pro: an optimized and flexible pipeline for Hi-C data processing
-<http://link.springer.com/article/10.1186/s13059-015-0831-x/fulltext.html>`_
-\*N. Servant, N. Varoquaux, B.R. Lajoie, E. Viara, C.J. Chen, J.-P. Vert, E.
-Heard, J. Dekker, E. Barillot, Genome Biology 2015 
+If you use ``iced`` as part of HiC-Pro, please cite:
+
+  `HiC-Pro: an optimized and flexible pipeline for Hi-C data processing
+  <http://link.springer.com/article/10.1186/s13059-015-0831-x/fulltext.html>`_
+  \*N. Servant, N. Varoquaux, B.R. Lajoie, E. Viara, C.J. Chen, J.-P. Vert, E.
+  Heard, J. Dekker, E. Barillot, Genome Biology 2015 
+
+else, please cite:
+
+  `iced: fast and memory efficient normalization of contact maps
+  <https://joss.theoj.org/papers/10.21105/joss.01286.pdf>`_, N. Varoquaux, N.
+  Servant, JOSS, 2019
+
 
 Contacts
 ========
