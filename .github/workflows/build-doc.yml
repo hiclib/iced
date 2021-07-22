@@ -4,8 +4,10 @@ on:
     branches:
       - main
 
-jobs:
- 
+jobs: 
+  build:
+    name: Build docs
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout 🛎️
         uses: actions/checkout@v2
@@ -27,15 +29,6 @@ jobs:
             make install
             set +ex
 
-      - name: Run the tests
-        shell: bash -l {0}
-        run: |
-            source .github/workflows/test_script.sh 
-            # Now, run the HiC-pro example with the corresponding tests.
-            pushd examples/HiC-pro
-            bash launch_tests.sh
-            popd
-
       - name: Build the documentation
         shell: bash -l {0}
         run: |
@@ -56,9 +49,10 @@ jobs:
             git commit -m "Deployed to GitHub Pages"
             git push --force --quiet "${GH_REF}" gh-pages
             env:
-              GH_REF: git@github.com:hiclib/iced.git
-              DEPLOY_KEY: ${{ secrets.DOC_DEPLOY_KEY_PRIVATE }}
-              GIT_SSH_COMMAND: "ssh -o StrictHostKeyChecking=no"
+                GH_REF: git@github.com:hiclib/iced.git
+                DEPLOY_KEY: ${{ secrets.DOC_DEPLOY_KEY_PRIVATE }}
+                GIT_SSH_COMMAND: "ssh -o StrictHostKeyChecking=no"
+
       - name: Store docs as artifact
         uses: actions/upload-artifact@v1
         with:
