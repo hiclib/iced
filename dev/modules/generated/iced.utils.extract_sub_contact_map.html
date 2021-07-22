@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  
+    <title>Iced: fast and memory efficient ICE normalization &#8212; Iced 0.5.0-git documentation</title>
+  <!-- htmltitle is before nature.css - we use this hack to load bootstrap first -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet"
+        href="../../_static/css/bootstrap.min.css"
+	media="screen" />
+    <script src="../../_static/js/jquery.js"
+          type="text/javascript"></script>
+  <script src="../../_static/js/bootstrap.min.js"
+          type="text/javascript"></script>
+
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/basic.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/gallery.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/gallery-binder.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/gallery-dataframe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/gallery-rendered-html.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport'
+      content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<link rel="stylesheet"
+        href="../../_static/css/jhepc.css"
+         media="screen" />
+
+
+
+  </head><body><div class="navbar">
+      <a href="../../index.html">
+	
+      </a>
+    <ul class="nav nav-pills nav-stacked">
+      <li><a href="../../index.html">Home</a></li>
+      <li><a href="../../install.html">Installation</a></li>
+      <li><a href="../../documentation.html">Documentation</a></li>
+      <li><a href="../../tutorial/index.html">Tutorials</a></li>
+      <li><a href="../../auto_examples/index.html">Gallery</a></li>
+      
+    </ul>
+  </div>
+    <div class="container">
+  
+  <section id="iced-utils-extract-sub-contact-map">
+<h1>iced.utils.extract_sub_contact_map<a class="headerlink" href="#iced-utils-extract-sub-contact-map" title="Permalink to this headline">¶</a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="iced.utils.extract_sub_contact_map">
+<span class="sig-prename descclassname"><span class="pre">iced.utils.</span></span><span class="sig-name descname"><span class="pre">extract_sub_contact_map</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">counts</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lengths</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">chromosomes</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#iced.utils.extract_sub_contact_map" title="Permalink to this definition">¶</a></dt>
+<dd><p>Extract the contact map associated to a given list of chromosome</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>counts</strong> : ndarray (n, n)</p>
+<p><strong>lengths</strong> : ndarray (L, )</p>
+<p><strong>chromosomes</strong> : list of ids</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>sub_counts, sub_lengths</strong> : (ndarray, ndarray)</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">iced</span> <span class="kn">import</span> <span class="n">datasets</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">iced.utils</span> <span class="kn">import</span> <span class="n">extract_sub_contact_map</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">counts</span><span class="p">,</span> <span class="n">lengths</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">load_sample_yeast</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">scounts</span><span class="p">,</span> <span class="n">slengths</span> <span class="o">=</span> <span class="n">extract_sub_contact_map</span><span class="p">(</span><span class="n">counts</span><span class="p">,</span> <span class="n">lengths</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">counts</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">scounts</span><span class="p">))</span>
+<span class="gp">... </span>
+<span class="go">350 56</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</section>
+
+
+    </div>
+<footer class="footer">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2015-2017, iced contributors.<br/>
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 4.1.1.<br/>
+    </p>
+</footer>
+  </body>
+</html>

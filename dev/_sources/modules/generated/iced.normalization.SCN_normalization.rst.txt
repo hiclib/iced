@@ -1,0 +1,7 @@
+﻿iced.normalization.SCN_normalization
+====================================
+
+.. currentmodule:: iced.normalization
+
+.. autofunction:: SCN_normalization
+

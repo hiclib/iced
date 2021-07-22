@@ -1,0 +1,7 @@
+﻿iced.datasets.load_sample_yeast
+===============================
+
+.. currentmodule:: iced.datasets
+
+.. autofunction:: load_sample_yeast
+

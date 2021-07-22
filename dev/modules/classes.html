@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  
+    <title>Iced: fast and memory efficient ICE normalization &#8212; Iced 0.5.0-git documentation</title>
+  <!-- htmltitle is before nature.css - we use this hack to load bootstrap first -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet"
+        href="../_static/css/bootstrap.min.css"
+	media="screen" />
+    <script src="../_static/js/jquery.js"
+          type="text/javascript"></script>
+  <script src="../_static/js/bootstrap.min.js"
+          type="text/javascript"></script>
+
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/basic.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/gallery.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/gallery-binder.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/gallery-dataframe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/gallery-rendered-html.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport'
+      content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<link rel="stylesheet"
+        href="../_static/css/jhepc.css"
+         media="screen" />
+
+
+
+  </head><body><div class="navbar">
+      <a href="../index.html">
+	
+      </a>
+    <ul class="nav nav-pills nav-stacked">
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="../install.html">Installation</a></li>
+      <li><a href="../documentation.html">Documentation</a></li>
+      <li><a href="../tutorial/index.html">Tutorials</a></li>
+      <li><a href="../auto_examples/index.html">Gallery</a></li>
+      
+    </ul>
+  </div>
+    <div class="container">
+  
+  <section id="reference">
+<h1>Reference<a class="headerlink" href="#reference" title="Permalink to this headline">¶</a></h1>
+<p>This is the class and reference of iced.</p>
+<section id="module-iced.normalization">
+<span id="iced-normalization-normalization"></span><span id="base-ref"></span><h2><a class="reference internal" href="#module-iced.normalization" title="iced.normalization"><code class="xref py py-mod docutils literal notranslate"><span class="pre">iced.normalization</span></code></a>: Normalization<a class="headerlink" href="#module-iced.normalization" title="Permalink to this headline">¶</a></h2>
+<section id="functions">
+<h3>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h3>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/iced.normalization.ICE_normalization.html#iced.normalization.ICE_normalization" title="iced.normalization.ICE_normalization"><code class="xref py py-obj docutils literal notranslate"><span class="pre">normalization.ICE_normalization</span></code></a>(X[, SS, …])</p></td>
+<td><p>ICE normalization</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/iced.normalization.SCN_normalization.html#iced.normalization.SCN_normalization" title="iced.normalization.SCN_normalization"><code class="xref py py-obj docutils literal notranslate"><span class="pre">normalization.SCN_normalization</span></code></a>(X[, …])</p></td>
+<td><p>Sequential Component Normalization</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/iced.normalization.estimate_block_biases.html#iced.normalization.estimate_block_biases" title="iced.normalization.estimate_block_biases"><code class="xref py py-obj docutils literal notranslate"><span class="pre">normalization.estimate_block_biases</span></code></a>(counts, …)</p></td>
+<td><p>Estimates block biases</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="module-iced.filter">
+<span id="iced-filter-filter"></span><span id="normalization-ref"></span><h2><a class="reference internal" href="#module-iced.filter" title="iced.filter"><code class="xref py py-mod docutils literal notranslate"><span class="pre">iced.filter</span></code></a>: Filter<a class="headerlink" href="#module-iced.filter" title="Permalink to this headline">¶</a></h2>
+<section id="id1">
+<h3>Functions<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/iced.filter.filter_low_counts.html#iced.filter.filter_low_counts" title="iced.filter.filter_low_counts"><code class="xref py py-obj docutils literal notranslate"><span class="pre">filter.filter_low_counts</span></code></a>(X[, lengths, …])</p></td>
+<td><p>Filter rows and columns with low counts</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/iced.filter.filter_high_counts.html#iced.filter.filter_high_counts" title="iced.filter.filter_high_counts"><code class="xref py py-obj docutils literal notranslate"><span class="pre">filter.filter_high_counts</span></code></a>(X[, lengths, …])</p></td>
+<td><p>Filter rows and columns with high counts</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="module-iced.datasets">
+<span id="iced-datasets-datasets"></span><span id="filter-ref"></span><h2><a class="reference internal" href="#module-iced.datasets" title="iced.datasets"><code class="xref py py-mod docutils literal notranslate"><span class="pre">iced.datasets</span></code></a>: Datasets<a class="headerlink" href="#module-iced.datasets" title="Permalink to this headline">¶</a></h2>
+<section id="id2">
+<h3>Functions<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/iced.datasets.load_sample_yeast.html#iced.datasets.load_sample_yeast" title="iced.datasets.load_sample_yeast"><code class="xref py py-obj docutils literal notranslate"><span class="pre">datasets.load_sample_yeast</span></code></a>()</p></td>
+<td><p>Load and return a sample of S.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="module-iced.utils">
+<span id="iced-utils-utils"></span><span id="datasets-ref"></span><h2><a class="reference internal" href="#module-iced.utils" title="iced.utils"><code class="xref py py-mod docutils literal notranslate"><span class="pre">iced.utils</span></code></a>: Utils<a class="headerlink" href="#module-iced.utils" title="Permalink to this headline">¶</a></h2>
+<section id="id3">
+<h3>Functions<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/iced.utils.get_intra_mask.html#iced.utils.get_intra_mask" title="iced.utils.get_intra_mask"><code class="xref py py-obj docutils literal notranslate"><span class="pre">utils.get_intra_mask</span></code></a>(lengths[, counts])</p></td>
+<td><p>Returns a mask for intrachromosomal interactions</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/iced.utils.get_inter_mask.html#iced.utils.get_inter_mask" title="iced.utils.get_inter_mask"><code class="xref py py-obj docutils literal notranslate"><span class="pre">utils.get_inter_mask</span></code></a>(lengths)</p></td>
+<td><p>Returns a mask for interchromosomal interactions</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/iced.utils.extract_sub_contact_map.html#iced.utils.extract_sub_contact_map" title="iced.utils.extract_sub_contact_map"><code class="xref py py-obj docutils literal notranslate"><span class="pre">utils.extract_sub_contact_map</span></code></a>(counts, …)</p></td>
+<td><p>Extract the contact map associated to a given list of chromosome</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/iced.utils.downsample_resolution.html#iced.utils.downsample_resolution" title="iced.utils.downsample_resolution"><code class="xref py py-obj docutils literal notranslate"><span class="pre">utils.downsample_resolution</span></code></a>(counts, lengths)</p></td>
+<td><p>Downsamples the resolution of a matrix</p></td>
+</tr>
+</tbody>
+</table>
+<span class="target" id="utils-ref"></span></section>
+</section>
+</section>
+
+
+    </div>
+<footer class="footer">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2015-2017, iced contributors.<br/>
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 4.1.1.<br/>
+    </p>
+</footer>
+  </body>
+</html>

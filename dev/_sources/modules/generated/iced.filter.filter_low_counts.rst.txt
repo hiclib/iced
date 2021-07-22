@@ -1,0 +1,7 @@
+﻿iced.filter.filter_low_counts
+=============================
+
+.. currentmodule:: iced.filter
+
+.. autofunction:: filter_low_counts
+

@@ -1,0 +1,7 @@
+﻿iced.utils.extract_sub_contact_map
+==================================
+
+.. currentmodule:: iced.utils
+
+.. autofunction:: extract_sub_contact_map
+

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  
+    <title>Iced: fast and memory efficient ICE normalization &#8212; Iced 0.5.0-git documentation</title>
+  <!-- htmltitle is before nature.css - we use this hack to load bootstrap first -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet"
+        href="../../_static/css/bootstrap.min.css"
+	media="screen" />
+    <script src="../../_static/js/jquery.js"
+          type="text/javascript"></script>
+  <script src="../../_static/js/bootstrap.min.js"
+          type="text/javascript"></script>
+
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/basic.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/gallery.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/gallery-binder.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/gallery-dataframe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/gallery-rendered-html.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport'
+      content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<link rel="stylesheet"
+        href="../../_static/css/jhepc.css"
+         media="screen" />
+
+
+
+  </head><body><div class="navbar">
+      <a href="../../index.html">
+	
+      </a>
+    <ul class="nav nav-pills nav-stacked">
+      <li><a href="../../index.html">Home</a></li>
+      <li><a href="../../install.html">Installation</a></li>
+      <li><a href="../../documentation.html">Documentation</a></li>
+      <li><a href="../../tutorial/index.html">Tutorials</a></li>
+      <li><a href="../../auto_examples/index.html">Gallery</a></li>
+      
+    </ul>
+  </div>
+    <div class="container">
+  
+  <section id="iced-normalization-ice-normalization">
+<h1>iced.normalization.ICE_normalization<a class="headerlink" href="#iced-normalization-ice-normalization" title="Permalink to this headline">¶</a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="iced.normalization.ICE_normalization">
+<span class="sig-prename descclassname"><span class="pre">iced.normalization.</span></span><span class="sig-name descname"><span class="pre">ICE_normalization</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">SS</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_iter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0001</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">copy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">norm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'l1'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_bias</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">total_counts</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">counts_profile</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#iced.normalization.ICE_normalization" title="Permalink to this definition">¶</a></dt>
+<dd><p>ICE normalization</p>
+<p>The imakaev normalization of Hi-C data consists of iteratively estimating
+the bias such that all the rows and columns (ie loci) have equal
+visibility.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>X</strong> : ndarray or sparse array (n, n)</p>
+<blockquote>
+<div><p>raw interaction frequency matrix</p>
+</div></blockquote>
+<p><strong>max_iter</strong> : integer, optional, default: 3000</p>
+<blockquote>
+<div><p>Maximum number of iteration</p>
+</div></blockquote>
+<p><strong>eps</strong> : float, optional, default: 1e-4</p>
+<blockquote>
+<div><p>the relative increment in the results before declaring convergence.</p>
+</div></blockquote>
+<p><strong>copy</strong> : boolean, optional, default: True</p>
+<blockquote>
+<div><p>If copy is True, the original data is not modified.</p>
+</div></blockquote>
+<p><strong>norm</strong> : string, optional, default: l1</p>
+<blockquote>
+<div><p>If set to “l1”, will compute the ICE algorithm of the paper. Else, the
+algorithm is adapted to use the l2 norm, as suggested in the SCN
+paper.</p>
+</div></blockquote>
+<p><strong>output_bias</strong> : boolean, optional, default: False</p>
+<blockquote>
+<div><p>whether to output the bias vector.</p>
+</div></blockquote>
+<p><strong>total_counts</strong> : float, optional, default: None</p>
+<blockquote>
+<div><p>the total number of contact counts that the normalized matrix should
+contain. If set to None, the normalized contact count matrix will be
+such that the total number of contact counts equals the initial number
+of interactions.</p>
+</div></blockquote>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>X, (bias)</strong> : ndarray (n, n)</p>
+<blockquote>
+<div><p>Normalized IF matrix and bias of output_bias is True</p>
+</div></blockquote>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+
+
+    </div>
+<footer class="footer">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2015-2017, iced contributors.<br/>
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 4.1.1.<br/>
+    </p>
+</footer>
+  </body>
+</html>

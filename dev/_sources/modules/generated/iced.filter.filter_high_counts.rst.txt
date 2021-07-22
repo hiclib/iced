@@ -1,0 +1,7 @@
+﻿iced.filter.filter_high_counts
+==============================
+
+.. currentmodule:: iced.filter
+
+.. autofunction:: filter_high_counts
+

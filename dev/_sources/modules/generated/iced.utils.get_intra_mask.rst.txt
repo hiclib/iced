@@ -1,0 +1,7 @@
+﻿iced.utils.get_intra_mask
+=========================
+
+.. currentmodule:: iced.utils
+
+.. autofunction:: get_intra_mask
+
