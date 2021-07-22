@@ -2,6 +2,7 @@ name: Build documentation
 on:
   push:
     branches:
+      - master
       - main
 
 jobs: 
