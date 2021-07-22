@@ -177,7 +177,7 @@ def extract_sub_contact_map(counts, lengths, chromosomes):
     >>> from iced.utils import extract_sub_contact_map
     >>> counts, lengths = datasets.load_sample_yeast()
     >>> scounts, slengths = extract_sub_contact_map(counts, lengths, [0, 2])
-    >>> print len(counts), len(scounts)
+    >>> print(len(counts), len(scounts))
     ... # doctest: +ELLIPSIS, +NORMALIZE_WHITESPACE
     350 56
     """
