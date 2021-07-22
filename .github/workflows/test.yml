@@ -38,6 +38,7 @@ jobs:
       - name: Build the documentation
         shell: bash -l {0}
         run: |
+            pip install -r requirements/docs.txt
             pushd doc
             # FIXME let's give up on warnings for now
             make html # SPHINXOPTS="-W"
