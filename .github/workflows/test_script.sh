@@ -7,4 +7,5 @@ python -m pip list
 (cd .. && pytest --doctest-modules --cov=iced --pyargs iced)
 flake8 --exit-zero iced examples
 
+(cd examples/HiC-pro && source launch_tests.sh)
 set +ev
