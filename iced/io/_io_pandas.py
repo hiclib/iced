@@ -116,6 +116,7 @@ def write_counts(filename, counts, base=None):
         else:
             counts = sparse.coo_matrix(counts)
 
+    counts.eliminate_zeros()
     if base is not None:
         counts.row += base
         counts.col += base

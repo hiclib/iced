@@ -15,3 +15,7 @@ if t.shape[1] != 3:
 # Checking that the base seems fine (ie, is one)
 if t[0, 0] < 1 or t[0, 1] < 1:
     raise ValueError("The output should be 1-based, not 0 based")
+
+# Checking that there are no 0 in the written file
+if np.any(counts.data == 0):
+    raise ValueError("The output contains 0")
