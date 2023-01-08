@@ -57,7 +57,7 @@ def ICE_normalization(X, SS=None, max_iter=3000, eps=1e-4, copy=True,
 
     if sparse.issparse(X):
         if not sparse.isspmatrix_coo(X):
-            X = sparse.coo_matrix(X, dtype="float")
+            X = sparse.coo_matrix(X, dtype=float)
     else:
         X[np.isnan(X)] = 0
     X = X.astype('float')
