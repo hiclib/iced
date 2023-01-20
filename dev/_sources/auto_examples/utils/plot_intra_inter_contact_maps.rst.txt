@@ -29,21 +29,20 @@ contact map.
 
 
 
-.. image:: /auto_examples/utils/images/sphx_glr_plot_intra_inter_contact_maps_001.png
-    :alt: Intra-chromosomal maps, Inter-chromosomal maps
-    :class: sphx-glr-single-img
+.. image-sg:: /auto_examples/utils/images/sphx_glr_plot_intra_inter_contact_maps_001.png
+   :alt: Intra-chromosomal maps, Inter-chromosomal maps
+   :srcset: /auto_examples/utils/images/sphx_glr_plot_intra_inter_contact_maps_001.png
+   :class: sphx-glr-single-img
 
 
 .. rst-class:: sphx-glr-script-out
 
- Out:
-
  .. code-block:: none
 
-    /opt/hostedtoolcache/Python/3.8.11/x64/lib/python3.8/site-packages/iced/io/_io_pandas.py:56: UserWarning: Attempting to guess whether counts are 0 or 1 based
+    /opt/hostedtoolcache/Python/3.8.16/x64/lib/python3.8/site-packages/iced/io/_io_pandas.py:56: UserWarning: Attempting to guess whether counts are 0 or 1 based
       warnings.warn(
 
-    [<matplotlib.lines.Line2D object at 0x7f88c4431280>, <matplotlib.lines.Line2D object at 0x7f88b01ad520>, <matplotlib.lines.Line2D object at 0x7f88b01ad880>, <matplotlib.lines.Line2D object at 0x7f88b01ad250>, <matplotlib.lines.Line2D object at 0x7f88af6395b0>]
+    [<matplotlib.lines.Line2D object at 0x7f858d8a5730>, <matplotlib.lines.Line2D object at 0x7f858d8a5460>, <matplotlib.lines.Line2D object at 0x7f858d8a56a0>, <matplotlib.lines.Line2D object at 0x7f858d8a9940>, <matplotlib.lines.Line2D object at 0x7f858d896400>]
 
 
 
@@ -89,28 +88,23 @@ contact map.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  0.375 seconds)
+   **Total running time of the script:** ( 0 minutes  0.417 seconds)
 
 
 .. _sphx_glr_download_auto_examples_utils_plot_intra_inter_contact_maps.py:
 
+.. only:: html
 
-.. only :: html
-
- .. container:: sphx-glr-footer
-    :class: sphx-glr-footer-example
+  .. container:: sphx-glr-footer sphx-glr-footer-example
 
 
+    .. container:: sphx-glr-download sphx-glr-download-python
 
-  .. container:: sphx-glr-download sphx-glr-download-python
+      :download:`Download Python source code: plot_intra_inter_contact_maps.py <plot_intra_inter_contact_maps.py>`
 
-     :download:`Download Python source code: plot_intra_inter_contact_maps.py <plot_intra_inter_contact_maps.py>`
+    .. container:: sphx-glr-download sphx-glr-download-jupyter
 
-
-
-  .. container:: sphx-glr-download sphx-glr-download-jupyter
-
-     :download:`Download Jupyter notebook: plot_intra_inter_contact_maps.ipynb <plot_intra_inter_contact_maps.ipynb>`
+      :download:`Download Jupyter notebook: plot_intra_inter_contact_maps.ipynb <plot_intra_inter_contact_maps.ipynb>`
 
 
 .. only:: html

@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
   
     <title>Iced: fast and memory efficient ICE normalization &#8212; Iced 0.5.0-git documentation</title>
@@ -20,14 +20,13 @@
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/basic.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/gallery.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/gallery-binder.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/gallery-dataframe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/gallery-rendered-html.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-binder.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-dataframe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-rendered-html.css" />
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
 <meta charset='utf-8'>
@@ -57,8 +56,8 @@
     <div class="container">
   
   <section id="iced-tutorial">
-<span id="tutorial-menu"></span><h1><a class="toc-backref" href="#id1">Iced tutorial</a><a class="headerlink" href="#iced-tutorial" title="Permalink to this headline">¶</a></h1>
-<div class="contents topic" id="contents">
+<span id="tutorial-menu"></span><h1><a class="toc-backref" href="#id1" role="doc-backlink">Iced tutorial</a><a class="headerlink" href="#iced-tutorial" title="Permalink to this heading">¶</a></h1>
+<nav class="contents" id="contents">
 <p class="topic-title">Contents</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="#iced-tutorial" id="id1">Iced tutorial</a></p>
@@ -71,7 +70,7 @@
 </ul>
 </li>
 </ul>
-</div>
+</nav>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p><strong>Doctest Mode</strong></p>
@@ -88,7 +87,7 @@ manually.</p>
 </div></blockquote>
 </div>
 <section id="what-is-iced">
-<h2><a class="toc-backref" href="#id2">What is iced?</a><a class="headerlink" href="#what-is-iced" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id2" role="doc-backlink">What is iced?</a><a class="headerlink" href="#what-is-iced" title="Permalink to this heading">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">iced</span></code> is a python package that contains normalization techniques for Hi-C data.
 It is included in the HiC-pro pipeline, that processes data from raw fastq
 files to normalized contact maps. Eventually, <code class="docutils literal notranslate"><span class="pre">iced</span></code> grew bigger than just being a
@@ -101,7 +100,7 @@ Barillot E. Genome Biology 2015, 16:259 doi:10.1186/s13059-015-0831-x
 http://www.genomebiology.com/2015/16/1/259</p>
 </section>
 <section id="working-with-hi-c-data-in-python">
-<h2><a class="toc-backref" href="#id3">Working with Hi-C data in Python</a><a class="headerlink" href="#working-with-hi-c-data-in-python" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id3" role="doc-backlink">Working with Hi-C data in Python</a><a class="headerlink" href="#working-with-hi-c-data-in-python" title="Permalink to this heading">¶</a></h2>
 <p>Hi-C data boils down to a matrix of contact counts. Each row and columns
 corresponds to a genomic window, and each entry to the number of times these
 genomic windows have been observed to interact with one another. Python
@@ -115,7 +114,7 @@ follow the short tutorial of the <a class="reference external" href="http://www.
 </div>
 </section>
 <section id="loading-an-example-dataset">
-<h2><a class="toc-backref" href="#id4">Loading an example dataset</a><a class="headerlink" href="#loading-an-example-dataset" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id4" role="doc-backlink">Loading an example dataset</a><a class="headerlink" href="#loading-an-example-dataset" title="Permalink to this heading">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">iced</span></code> comes with a sample data set that allows you to play a bit with the
 package. The sample data set included corresponds to the first 5 chromosomes
 of the budding yeast <em>S. cerevisiae</em>. In the following, we start a Python or
@@ -149,7 +148,7 @@ The corresponding image is the following.</p>
 <a class="reference external image-reference" href="../../auto_examples/datasets/plot_yeast_sample.html"><img alt="auto_examples/datasets/images/sphx_glr_plot_yeast_sample_001.png" class="align-center" src="auto_examples/datasets/images/sphx_glr_plot_yeast_sample_001.png" /></a>
 </section>
 <section id="normalizing-a-data-set-with-ice">
-<h2><a class="toc-backref" href="#id5">Normalizing a data set with ICE</a><a class="headerlink" href="#normalizing-a-data-set-with-ice" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id5" role="doc-backlink">Normalizing a data set with ICE</a><a class="headerlink" href="#normalizing-a-data-set-with-ice" title="Permalink to this heading">¶</a></h2>
 <p>Now that we have some data loaded, let’s proceed to normalizing it. There are
 two normalization algorithms implemented in <cite>iced</cite>: ICE and SCN. ICE is the
 most widely used normalization technique on Hi-C data, so this is the one we
@@ -178,7 +177,7 @@ be performed prior to applying the normalization algorithm:</p>
 <a class="reference external image-reference" href="../../auto_examples/normalization/plot_ice_normalization.html"><img alt="../_images/sphx_glr_plot_ice_normalization_001.png" class="align-center" src="../_images/sphx_glr_plot_ice_normalization_001.png" style="width: 900.0px; height: 300.0px;" /></a>
 </section>
 <section id="how-about-cancer-data-sets-loic-and-caic">
-<h2><a class="toc-backref" href="#id6">How about cancer data sets? LOIC and CAIC</a><a class="headerlink" href="#how-about-cancer-data-sets-loic-and-caic" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id6" role="doc-backlink">How about cancer data sets? LOIC and CAIC</a><a class="headerlink" href="#how-about-cancer-data-sets-loic-and-caic" title="Permalink to this heading">¶</a></h2>
 <p>The last section discusses normalizing Hi-C data using ICE. This method is not
 adapted to normalize cancer data sets: several of the assumptions made do not
 hold in the presence of copy number variation.</p>
@@ -203,7 +202,7 @@ and <code class="docutils literal notranslate"><span class="pre">CAIC</span></c
     </p>
     <p>
         &copy; Copyright 2015-2017, iced contributors.<br/>
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 4.1.2.<br/>
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 6.1.3.<br/>
     </p>
 </footer>
   </body>

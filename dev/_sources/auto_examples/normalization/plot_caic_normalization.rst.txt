@@ -57,42 +57,18 @@ The normalization is done in three step:
 
 
 
-
-
 .. rst-class:: sphx-glr-script-out
 
- Out:
+.. code-block:: pytb
 
- .. code-block:: none
-
-    /opt/hostedtoolcache/Python/3.8.11/x64/lib/python3.8/site-packages/iced/io/_io_pandas.py:56: UserWarning: Attempting to guess whether counts are 0 or 1 based
-      warnings.warn(
-
-    Estimating CNV-effects.
-    Computing relationship genomic distance & expected counts
-    Fitting Isotonic Regression
-    /opt/hostedtoolcache/Python/3.8.11/x64/lib/python3.8/site-packages/iced/normalization/_ca_utils.py:319: RuntimeWarning: invalid value encountered in double_scalars
-      bias[mask] = (c * c_exp).sum() / (c_exp**2).sum()
-    Computing relationship genomic distance & expected counts
-    Fitting Isotonic Regression
-    /opt/hostedtoolcache/Python/3.8.11/x64/lib/python3.8/site-packages/iced/normalization/_ca_utils.py:319: RuntimeWarning: invalid value encountered in double_scalars
-      bias[mask] = (c * c_exp).sum() / (c_exp**2).sum()
-    Computing relationship genomic distance & expected counts
-    Fitting Isotonic Regression
-    /opt/hostedtoolcache/Python/3.8.11/x64/lib/python3.8/site-packages/iced/normalization/_ca_utils.py:319: RuntimeWarning: invalid value encountered in double_scalars
-      bias[mask] = (c * c_exp).sum() / (c_exp**2).sum()
-    Computing relationship genomic distance & expected counts
-    Fitting Isotonic Regression
-    /opt/hostedtoolcache/Python/3.8.11/x64/lib/python3.8/site-packages/iced/normalization/_ca_utils.py:319: RuntimeWarning: invalid value encountered in double_scalars
-      bias[mask] = (c * c_exp).sum() / (c_exp**2).sum()
-    Computing relationship genomic distance & expected counts
-    Fitting Isotonic Regression
-    /opt/hostedtoolcache/Python/3.8.11/x64/lib/python3.8/site-packages/iced/normalization/_ca_utils.py:319: RuntimeWarning: invalid value encountered in double_scalars
-      bias[mask] = (c * c_exp).sum() / (c_exp**2).sum()
-    Computing relationship genomic distance & expected counts
-    Fitting Isotonic Regression
-    /opt/hostedtoolcache/Python/3.8.11/x64/lib/python3.8/site-packages/iced/normalization/_ca_utils.py:319: RuntimeWarning: invalid value encountered in double_scalars
-      bias[mask] = (c * c_exp).sum() / (c_exp**2).sum()
+    Traceback (most recent call last):
+      File "/home/runner/work/iced/iced/examples/normalization/plot_caic_normalization.py", line 32, in <module>
+        block_biases = normalization.estimate_block_biases(counts, lengths, cnv)
+      File "/opt/hostedtoolcache/Python/3.8.16/x64/lib/python3.8/site-packages/iced/normalization/_ca_utils.py", line 52, in estimate_block_biases
+        mapping = get_mapping(counts, lengths, bias_es, verbose=True)
+      File "/opt/hostedtoolcache/Python/3.8.16/x64/lib/python3.8/site-packages/iced/normalization/_ca_utils.py", line 188, in get_mapping
+        from sklearn.isotonic import IsotonicRegression
+    ModuleNotFoundError: No module named 'sklearn'
 
 
 
@@ -135,48 +111,25 @@ biases, and the normalized matrix using the CAIC method.
     axes[2].set_title("Normalized contact counts with CAIC", fontweight="bold")
 
 
-
-.. image:: /auto_examples/normalization/images/sphx_glr_plot_caic_normalization_001.png
-    :alt: Raw contact counts, Estimated block biases, Normalized contact counts with CAIC
-    :class: sphx-glr-single-img
-
-
-.. rst-class:: sphx-glr-script-out
-
- Out:
-
- .. code-block:: none
-
-
-    Text(0.5, 1.0, 'Normalized contact counts with CAIC')
-
-
-
-
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  22.328 seconds)
+   **Total running time of the script:** ( 0 minutes  6.289 seconds)
 
 
 .. _sphx_glr_download_auto_examples_normalization_plot_caic_normalization.py:
 
+.. only:: html
 
-.. only :: html
-
- .. container:: sphx-glr-footer
-    :class: sphx-glr-footer-example
+  .. container:: sphx-glr-footer sphx-glr-footer-example
 
 
+    .. container:: sphx-glr-download sphx-glr-download-python
 
-  .. container:: sphx-glr-download sphx-glr-download-python
+      :download:`Download Python source code: plot_caic_normalization.py <plot_caic_normalization.py>`
 
-     :download:`Download Python source code: plot_caic_normalization.py <plot_caic_normalization.py>`
+    .. container:: sphx-glr-download sphx-glr-download-jupyter
 
-
-
-  .. container:: sphx-glr-download sphx-glr-download-jupyter
-
-     :download:`Download Jupyter notebook: plot_caic_normalization.ipynb <plot_caic_normalization.ipynb>`
+      :download:`Download Jupyter notebook: plot_caic_normalization.ipynb <plot_caic_normalization.ipynb>`
 
 
 .. only:: html

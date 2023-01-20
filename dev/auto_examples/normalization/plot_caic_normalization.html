@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
   
     <title>Iced: fast and memory efficient ICE normalization &#8212; Iced 0.5.0-git documentation</title>
@@ -20,14 +20,13 @@
 
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/basic.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/gallery.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/gallery-binder.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/gallery-dataframe.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/gallery-rendered-html.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-binder.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-dataframe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css" />
     <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/jquery.js"></script>
-    <script src="../../_static/underscore.js"></script>
     <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
 <meta charset='utf-8'>
@@ -62,12 +61,12 @@
 to download the full example code</p>
 </div>
 <section class="sphx-glr-example-title" id="normalizing-a-cancer-contact-count-matrix-with-caic">
-<span id="sphx-glr-auto-examples-normalization-plot-caic-normalization-py"></span><h1>Normalizing a cancer contact count matrix with CAIC<a class="headerlink" href="#normalizing-a-cancer-contact-count-matrix-with-caic" title="Permalink to this headline">¶</a></h1>
+<span id="sphx-glr-auto-examples-normalization-plot-caic-normalization-py"></span><h1>Normalizing a cancer contact count matrix with CAIC<a class="headerlink" href="#normalizing-a-cancer-contact-count-matrix-with-caic" title="Permalink to this heading">¶</a></h1>
 <p>CAIC is a normalization method to remove copy-number biases present in a
 matrix. This example showcases how to perform such a normalization on
 simulated data with <cite>iced</cite>.</p>
 <section id="loading-the-data-and-normalizing">
-<h2>Loading the data and normalizing<a class="headerlink" href="#loading-the-data-and-normalizing" title="Permalink to this headline">¶</a></h2>
+<h2>Loading the data and normalizing<a class="headerlink" href="#loading-the-data-and-normalizing" title="Permalink to this heading">¶</a></h2>
 <p>The normalization is done in three step:</p>
 <blockquote>
 <div><ol class="arabic simple">
@@ -90,40 +89,19 @@ biases</p></li>
 <span class="n">caic_normed</span> <span class="o">=</span> <span class="n">loic_normed</span> <span class="o">/</span> <span class="n">block_biases</span>
 </pre></div>
 </div>
-<p class="sphx-glr-script-out">Out:</p>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.8.11/x64/lib/python3.8/site-packages/iced/io/_io_pandas.py:56: UserWarning: Attempting to guess whether counts are 0 or 1 based
-  warnings.warn(
-
-Estimating CNV-effects.
-Computing relationship genomic distance &amp; expected counts
-Fitting Isotonic Regression
-/opt/hostedtoolcache/Python/3.8.11/x64/lib/python3.8/site-packages/iced/normalization/_ca_utils.py:319: RuntimeWarning: invalid value encountered in double_scalars
-  bias[mask] = (c * c_exp).sum() / (c_exp**2).sum()
-Computing relationship genomic distance &amp; expected counts
-Fitting Isotonic Regression
-/opt/hostedtoolcache/Python/3.8.11/x64/lib/python3.8/site-packages/iced/normalization/_ca_utils.py:319: RuntimeWarning: invalid value encountered in double_scalars
-  bias[mask] = (c * c_exp).sum() / (c_exp**2).sum()
-Computing relationship genomic distance &amp; expected counts
-Fitting Isotonic Regression
-/opt/hostedtoolcache/Python/3.8.11/x64/lib/python3.8/site-packages/iced/normalization/_ca_utils.py:319: RuntimeWarning: invalid value encountered in double_scalars
-  bias[mask] = (c * c_exp).sum() / (c_exp**2).sum()
-Computing relationship genomic distance &amp; expected counts
-Fitting Isotonic Regression
-/opt/hostedtoolcache/Python/3.8.11/x64/lib/python3.8/site-packages/iced/normalization/_ca_utils.py:319: RuntimeWarning: invalid value encountered in double_scalars
-  bias[mask] = (c * c_exp).sum() / (c_exp**2).sum()
-Computing relationship genomic distance &amp; expected counts
-Fitting Isotonic Regression
-/opt/hostedtoolcache/Python/3.8.11/x64/lib/python3.8/site-packages/iced/normalization/_ca_utils.py:319: RuntimeWarning: invalid value encountered in double_scalars
-  bias[mask] = (c * c_exp).sum() / (c_exp**2).sum()
-Computing relationship genomic distance &amp; expected counts
-Fitting Isotonic Regression
-/opt/hostedtoolcache/Python/3.8.11/x64/lib/python3.8/site-packages/iced/normalization/_ca_utils.py:319: RuntimeWarning: invalid value encountered in double_scalars
-  bias[mask] = (c * c_exp).sum() / (c_exp**2).sum()
+<div class="sphx-glr-script-out highlight-pytb notranslate"><div class="highlight"><pre><span></span><span class="gt">Traceback (most recent call last):</span>
+  File <span class="nb">&quot;/home/runner/work/iced/iced/examples/normalization/plot_caic_normalization.py&quot;</span>, line <span class="m">32</span>, in <span class="n">&lt;module&gt;</span>
+<span class="w">    </span><span class="n">block_biases</span> <span class="o">=</span> <span class="n">normalization</span><span class="o">.</span><span class="n">estimate_block_biases</span><span class="p">(</span><span class="n">counts</span><span class="p">,</span> <span class="n">lengths</span><span class="p">,</span> <span class="n">cnv</span><span class="p">)</span>
+  File <span class="nb">&quot;/opt/hostedtoolcache/Python/3.8.16/x64/lib/python3.8/site-packages/iced/normalization/_ca_utils.py&quot;</span>, line <span class="m">52</span>, in <span class="n">estimate_block_biases</span>
+<span class="w">    </span><span class="n">mapping</span> <span class="o">=</span> <span class="n">get_mapping</span><span class="p">(</span><span class="n">counts</span><span class="p">,</span> <span class="n">lengths</span><span class="p">,</span> <span class="n">bias_es</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+  File <span class="nb">&quot;/opt/hostedtoolcache/Python/3.8.16/x64/lib/python3.8/site-packages/iced/normalization/_ca_utils.py&quot;</span>, line <span class="m">188</span>, in <span class="n">get_mapping</span>
+<span class="w">    </span><span class="kn">from</span> <span class="nn">sklearn.isotonic</span> <span class="kn">import</span> <span class="n">IsotonicRegression</span>
+<span class="gr">ModuleNotFoundError</span>: <span class="n">No module named &#39;sklearn&#39;</span>
 </pre></div>
 </div>
 </section>
 <section id="visualizing-the-results-using-matplotlib">
-<h2>Visualizing the results using Matplotlib<a class="headerlink" href="#visualizing-the-results-using-matplotlib" title="Permalink to this headline">¶</a></h2>
+<h2>Visualizing the results using Matplotlib<a class="headerlink" href="#visualizing-the-results-using-matplotlib" title="Permalink to this heading">¶</a></h2>
 <p>The following code visualizes the raw original data, the estimated block
 biases, and the normalized matrix using the CAIC method.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">chromosomes</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;I&quot;</span><span class="p">,</span> <span class="s2">&quot;II&quot;</span><span class="p">,</span> <span class="s2">&quot;III&quot;</span><span class="p">,</span> <span class="s2">&quot;IV&quot;</span><span class="p">,</span> <span class="s2">&quot;V&quot;</span><span class="p">,</span> <span class="s2">&quot;VI&quot;</span><span class="p">]</span>
@@ -152,13 +130,8 @@ biases, and the normalized matrix using the CAIC method.</p>
 <span class="n">axes</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Normalized contact counts with CAIC&quot;</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s2">&quot;bold&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<img alt="Raw contact counts, Estimated block biases, Normalized contact counts with CAIC" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_caic_normalization_001.png" />
-<p class="sphx-glr-script-out">Out:</p>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Normalized contact counts with CAIC&#39;)
-</pre></div>
-</div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  22.328 seconds)</p>
-<div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-normalization-plot-caic-normalization-py">
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  6.289 seconds)</p>
+<div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-normalization-plot-caic-normalization-py">
 <div class="sphx-glr-download sphx-glr-download-python docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/feaee253672f2d60318b0c44c119cfbb/plot_caic_normalization.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_caic_normalization.py</span></code></a></p>
 </div>
@@ -179,7 +152,7 @@ biases, and the normalized matrix using the CAIC method.</p>
     </p>
     <p>
         &copy; Copyright 2015-2017, iced contributors.<br/>
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 4.1.2.<br/>
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 6.1.3.<br/>
     </p>
 </footer>
   </body>

@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
   
     <title>Iced: fast and memory efficient ICE normalization &#8212; Iced 0.5.0-git documentation</title>
@@ -20,14 +20,13 @@
 
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/basic.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/gallery.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/gallery-binder.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/gallery-dataframe.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/gallery-rendered-html.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-binder.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-dataframe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css" />
     <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/jquery.js"></script>
-    <script src="../../_static/underscore.js"></script>
     <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
 <meta charset='utf-8'>
@@ -57,13 +56,13 @@
     <div class="container">
   
   <section id="iced-normalization-estimate-block-biases">
-<h1>iced.normalization.estimate_block_biases<a class="headerlink" href="#iced-normalization-estimate-block-biases" title="Permalink to this headline">¶</a></h1>
+<h1>iced.normalization.estimate_block_biases<a class="headerlink" href="#iced-normalization-estimate-block-biases" title="Permalink to this heading">¶</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="iced.normalization.estimate_block_biases">
 <span class="sig-prename descclassname"><span class="pre">iced.normalization.</span></span><span class="sig-name descname"><span class="pre">estimate_block_biases</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">counts</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lengths</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cnv</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#iced.normalization.estimate_block_biases" title="Permalink to this definition">¶</a></dt>
 <dd><p>Estimates block biases</p>
 <dl class="field-list">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>counts</strong> : ndarray or sparse arrays (n, n)</p>
 <p><strong>lengths</strong> : ndarray (L, )</p>
 <blockquote>
@@ -74,7 +73,7 @@
 <div><p>copy number associated to each bin. Only breakpoints are useful</p>
 </div></blockquote>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><strong>block_biases</strong> : ndarray or sparse array (n, n)</p>
 <blockquote>
 <div><p>The estimated block biases</p>
@@ -94,7 +93,7 @@
     </p>
     <p>
         &copy; Copyright 2015-2017, iced contributors.<br/>
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 4.1.2.<br/>
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 6.1.3.<br/>
     </p>
 </footer>
   </body>

@@ -1,0 +1,63 @@
+
+
+.. _sphx_glr_auto_examples_utils:
+
+.. _utils_examples:
+
+Utils
+-------------
+
+Examples concerning the :mod:`iced.utils` module.
+
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This example shows how to extract contact counts associated to some chromosomes of the contact ...">
+
+.. only:: html
+
+  .. image:: /auto_examples/utils/images/thumb/sphx_glr_plot_extract_sample_map_thumb.png
+    :alt: Extracting parts of a contact map
+
+  :ref:`sphx_glr_auto_examples_utils_plot_extract_sample_map.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Extracting parts of a contact map</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This examples shows how to use a mask to plot only the inter or the intra contact map.">
+
+.. only:: html
+
+  .. image:: /auto_examples/utils/images/thumb/sphx_glr_plot_intra_inter_contact_maps_thumb.png
+    :alt: Extracting parts of a contact map
+
+  :ref:`sphx_glr_auto_examples_utils_plot_intra_inter_contact_maps.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Extracting parts of a contact map</div>
+    </div>
+
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /auto_examples/utils/plot_extract_sample_map
+   /auto_examples/utils/plot_intra_inter_contact_maps
+

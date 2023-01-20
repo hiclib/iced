@@ -26,18 +26,17 @@ Normalizing a cancer contact count matrix with LOIC
 
 
 
-.. image:: /auto_examples/normalization/images/sphx_glr_plot_loic_normalization_001.png
-    :alt: Raw contact counts, Normalized contact counts with LOIC
-    :class: sphx-glr-single-img
+.. image-sg:: /auto_examples/normalization/images/sphx_glr_plot_loic_normalization_001.png
+   :alt: Raw contact counts, Normalized contact counts with LOIC
+   :srcset: /auto_examples/normalization/images/sphx_glr_plot_loic_normalization_001.png
+   :class: sphx-glr-single-img
 
 
 .. rst-class:: sphx-glr-script-out
 
- Out:
-
  .. code-block:: none
 
-    /opt/hostedtoolcache/Python/3.8.11/x64/lib/python3.8/site-packages/iced/io/_io_pandas.py:56: UserWarning: Attempting to guess whether counts are 0 or 1 based
+    /opt/hostedtoolcache/Python/3.8.16/x64/lib/python3.8/site-packages/iced/io/_io_pandas.py:56: UserWarning: Attempting to guess whether counts are 0 or 1 based
       warnings.warn(
 
     Text(0.5, 1.0, 'Normalized contact counts with LOIC')
@@ -83,28 +82,23 @@ Normalizing a cancer contact count matrix with LOIC
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  2.403 seconds)
+   **Total running time of the script:** ( 0 minutes  4.712 seconds)
 
 
 .. _sphx_glr_download_auto_examples_normalization_plot_loic_normalization.py:
 
+.. only:: html
 
-.. only :: html
-
- .. container:: sphx-glr-footer
-    :class: sphx-glr-footer-example
+  .. container:: sphx-glr-footer sphx-glr-footer-example
 
 
+    .. container:: sphx-glr-download sphx-glr-download-python
 
-  .. container:: sphx-glr-download sphx-glr-download-python
+      :download:`Download Python source code: plot_loic_normalization.py <plot_loic_normalization.py>`
 
-     :download:`Download Python source code: plot_loic_normalization.py <plot_loic_normalization.py>`
+    .. container:: sphx-glr-download sphx-glr-download-jupyter
 
-
-
-  .. container:: sphx-glr-download sphx-glr-download-jupyter
-
-     :download:`Download Jupyter notebook: plot_loic_normalization.ipynb <plot_loic_normalization.ipynb>`
+      :download:`Download Jupyter notebook: plot_loic_normalization.ipynb <plot_loic_normalization.ipynb>`
 
 
 .. only:: html
