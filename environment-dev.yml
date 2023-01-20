@@ -8,3 +8,8 @@ dependencies:
     - pandas
     - scikit-learn
     - scipy>0.19
+    # requirements/test.txt
+    - codecov
+    - flake8
+    - pytest>=5.2
+    - pytest-cov>=2.7
