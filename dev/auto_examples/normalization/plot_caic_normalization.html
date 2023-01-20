@@ -89,14 +89,34 @@ biases</p></li>
 <span class="n">caic_normed</span> <span class="o">=</span> <span class="n">loic_normed</span> <span class="o">/</span> <span class="n">block_biases</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-pytb notranslate"><div class="highlight"><pre><span></span><span class="gt">Traceback (most recent call last):</span>
-  File <span class="nb">&quot;/home/runner/work/iced/iced/examples/normalization/plot_caic_normalization.py&quot;</span>, line <span class="m">32</span>, in <span class="n">&lt;module&gt;</span>
-<span class="w">    </span><span class="n">block_biases</span> <span class="o">=</span> <span class="n">normalization</span><span class="o">.</span><span class="n">estimate_block_biases</span><span class="p">(</span><span class="n">counts</span><span class="p">,</span> <span class="n">lengths</span><span class="p">,</span> <span class="n">cnv</span><span class="p">)</span>
-  File <span class="nb">&quot;/opt/hostedtoolcache/Python/3.8.16/x64/lib/python3.8/site-packages/iced/normalization/_ca_utils.py&quot;</span>, line <span class="m">52</span>, in <span class="n">estimate_block_biases</span>
-<span class="w">    </span><span class="n">mapping</span> <span class="o">=</span> <span class="n">get_mapping</span><span class="p">(</span><span class="n">counts</span><span class="p">,</span> <span class="n">lengths</span><span class="p">,</span> <span class="n">bias_es</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-  File <span class="nb">&quot;/opt/hostedtoolcache/Python/3.8.16/x64/lib/python3.8/site-packages/iced/normalization/_ca_utils.py&quot;</span>, line <span class="m">188</span>, in <span class="n">get_mapping</span>
-<span class="w">    </span><span class="kn">from</span> <span class="nn">sklearn.isotonic</span> <span class="kn">import</span> <span class="n">IsotonicRegression</span>
-<span class="gr">ModuleNotFoundError</span>: <span class="n">No module named &#39;sklearn&#39;</span>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.8.16/x64/lib/python3.8/site-packages/iced/io/_io_pandas.py:56: UserWarning: Attempting to guess whether counts are 0 or 1 based
+  warnings.warn(
+
+Estimating CNV-effects.
+Computing relationship genomic distance &amp; expected counts
+Fitting Isotonic Regression
+/opt/hostedtoolcache/Python/3.8.16/x64/lib/python3.8/site-packages/iced/normalization/_ca_utils.py:319: RuntimeWarning: invalid value encountered in scalar divide
+  bias[mask] = (c * c_exp).sum() / (c_exp**2).sum()
+Computing relationship genomic distance &amp; expected counts
+Fitting Isotonic Regression
+/opt/hostedtoolcache/Python/3.8.16/x64/lib/python3.8/site-packages/iced/normalization/_ca_utils.py:319: RuntimeWarning: invalid value encountered in scalar divide
+  bias[mask] = (c * c_exp).sum() / (c_exp**2).sum()
+Computing relationship genomic distance &amp; expected counts
+Fitting Isotonic Regression
+/opt/hostedtoolcache/Python/3.8.16/x64/lib/python3.8/site-packages/iced/normalization/_ca_utils.py:319: RuntimeWarning: invalid value encountered in scalar divide
+  bias[mask] = (c * c_exp).sum() / (c_exp**2).sum()
+Computing relationship genomic distance &amp; expected counts
+Fitting Isotonic Regression
+/opt/hostedtoolcache/Python/3.8.16/x64/lib/python3.8/site-packages/iced/normalization/_ca_utils.py:319: RuntimeWarning: invalid value encountered in scalar divide
+  bias[mask] = (c * c_exp).sum() / (c_exp**2).sum()
+Computing relationship genomic distance &amp; expected counts
+Fitting Isotonic Regression
+/opt/hostedtoolcache/Python/3.8.16/x64/lib/python3.8/site-packages/iced/normalization/_ca_utils.py:319: RuntimeWarning: invalid value encountered in scalar divide
+  bias[mask] = (c * c_exp).sum() / (c_exp**2).sum()
+Computing relationship genomic distance &amp; expected counts
+Fitting Isotonic Regression
+/opt/hostedtoolcache/Python/3.8.16/x64/lib/python3.8/site-packages/iced/normalization/_ca_utils.py:319: RuntimeWarning: invalid value encountered in scalar divide
+  bias[mask] = (c * c_exp).sum() / (c_exp**2).sum()
 </pre></div>
 </div>
 </section>
@@ -130,7 +150,10 @@ biases, and the normalized matrix using the CAIC method.</p>
 <span class="n">axes</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Normalized contact counts with CAIC&quot;</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s2">&quot;bold&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  6.289 seconds)</p>
+<img src="../../_images/sphx_glr_plot_caic_normalization_001.png" srcset="../../_images/sphx_glr_plot_caic_normalization_001.png" alt="Raw contact counts, Estimated block biases, Normalized contact counts with CAIC" class = "sphx-glr-single-img"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Normalized contact counts with CAIC&#39;)
+</pre></div>
+</div>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  18.738 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-normalization-plot-caic-normalization-py">
 <div class="sphx-glr-download sphx-glr-download-python docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/feaee253672f2d60318b0c44c119cfbb/plot_caic_normalization.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_caic_normalization.py</span></code></a></p>
