@@ -42,7 +42,7 @@ contact map.
     /opt/hostedtoolcache/Python/3.8.16/x64/lib/python3.8/site-packages/iced/io/_io_pandas.py:56: UserWarning: Attempting to guess whether counts are 0 or 1 based
       warnings.warn(
 
-    [<matplotlib.lines.Line2D object at 0x7f007ce58f40>, <matplotlib.lines.Line2D object at 0x7f007ce58e80>, <matplotlib.lines.Line2D object at 0x7f007ce58430>, <matplotlib.lines.Line2D object at 0x7f008c0ddc40>, <matplotlib.lines.Line2D object at 0x7f007ce54220>]
+    [<matplotlib.lines.Line2D object at 0x7f9b4f739a00>, <matplotlib.lines.Line2D object at 0x7f9b4f7392e0>, <matplotlib.lines.Line2D object at 0x7f9b4f739280>, <matplotlib.lines.Line2D object at 0x7f9b5e5cafd0>, <matplotlib.lines.Line2D object at 0x7f9b5e5e06a0>]
 
 
 
@@ -88,7 +88,7 @@ contact map.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  0.283 seconds)
+   **Total running time of the script:** ( 0 minutes  0.413 seconds)
 
 
 .. _sphx_glr_download_auto_examples_utils_plot_intra_inter_contact_maps.py:
