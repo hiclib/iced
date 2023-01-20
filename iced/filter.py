@@ -52,7 +52,7 @@ def filter_low_counts(X, lengths=None, percentage=0.02, copy=True,
             mask = utils.get_inter_mask(lengths)
         else:
             weights = np.ones(X.shape[0])
-            mask = np.zeros(X.shape, dtype=np.bool)
+            mask = np.zeros(X.shape, dtype=bool)
 
         return _filter_low_sparse(X, weights, mask, percentage=percentage,
                                   remove_all_zeros_loci=remove_all_zeros_loci,

@@ -28,7 +28,7 @@ def downsample_contact_map(counts, nreads=None, proportion=None,
     -------
     c : downsampled contact count matrix as a COO matrix.
     """
-    if counts.dtype != "int":
+    if not np.issubdtype(counts.dtype, np.integer):
         if np.abs(counts - np.round(counts)).sum() != 0:
             raise ValueError("Count matrix should be integers")
         counts = counts.astype("int")
@@ -92,7 +92,7 @@ def bootstrap_contact_map(counts, random_state=None):
     -------
     c : downsampled contact count matrix as a COO matrix.
     """
-    if counts.dtype != "int":
+    if not np.issubdtype(counts.dtype, np.integer):
         if np.abs(counts - np.round(counts)).sum() != 0:
             raise ValueError("Count matrix should be integers")
         counts = counts.astype("int")
