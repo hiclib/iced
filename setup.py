@@ -1,5 +1,7 @@
 import os
 import sys
+from setuptools import Extension, setup, find_packages
+import numpy as np
 
 
 DISTNAME = 'iced'
@@ -7,106 +9,44 @@ DESCRIPTION = 'ICE normalization'
 MAINTAINER = 'Nelle Varoquaux'
 MAINTAINER_EMAIL = 'nelle.varoquaux@gmail.com'
 VERSION = "0.6.0a0.dev0"
+LICENSE = "BSD"
 
 
 SCIPY_MIN_VERSION = '0.19.0'
 NUMPY_MIN_VERSION = '1.16.0'
 
-
-# Optional setuptools features
-# We need to import setuptools early, if we want setuptools features,
-# as it monkey-patches the 'setup' function
-# For some commands, use setuptools
-SETUPTOOLS_COMMANDS = set([
-    'develop', 'release', 'bdist_egg', 'bdist_rpm',
-    'bdist_wininst', 'install_egg_info', 'build_sphinx',
-    'egg_info', 'easy_install', 'upload', 'bdist_wheel',
-    '--single-version-externally-managed',
-])
-
-if SETUPTOOLS_COMMANDS.intersection(sys.argv):
-    import setuptools
-
-    extra_setuptools_args = dict(
-        zip_safe=False,  # the package can run out of an .egg file
-        include_package_data=True,
-        extras_require={
-            'alldeps': (
-                'numpy >= {0}'.format(NUMPY_MIN_VERSION),
-                'scipy >= {0}'.format(SCIPY_MIN_VERSION),
-            ),
-        },
-    )
-else:
-    extra_setuptools_args = dict()
+extension_config = {
+    "_filter": [
+        {"sources": ["_filter.pyx"]}
+    ],
+    "normalization": [
+        {"sources": ["_normalization.pyx"]}
+    ]
+}
 
 
-def configuration(parent_package='', top_path=None):
-    if os.path.exists('MANIFEST'):
-        os.remove('MANIFEST')
+setup(
+    name=DISTNAME,
+    version=VERSION,
+    author=MAINTAINER,
+    author_email=MAINTAINER_EMAIL,
+    description=DESCRIPTION,
+    license=LICENSE,
+    classifiers=[
+        "Development Status :: 3 - Alpha",
+        "Topic :: Utilities",
+        "License :: OSI Approved :: BSD License",
+    ],
+    packages=find_packages(where="."),
+    ext_modules=[
+        Extension(name="iced._filter_",
+                  sources=["iced/_filter_.pyx"],
+                  include_dirs=[np.get_include()]
+        ),
+        Extension(name="iced.normalization/_normalization_",
+                  sources=["iced/normalization/_normalization_.pyx"],
+                  include_dirs=[np.get_include()]
+                  )],
+    include_package_data=True,
+)
 
-    from numpy.distutils.misc_util import Configuration
-
-    config = Configuration(None, parent_package, top_path)
-    # Avoid non-useful msg:
-    # "Ignoring attempt to set 'name' (from ... "
-    config.set_options(ignore_setup_xxx_py=True,
-                       assume_default_configuration=True,
-                       delegate_options_to_subpackages=True,
-                       quiet=True)
-
-    config.add_subpackage('iced')
-
-    return config
-
-
-def setup_package():
-    metadata = dict(
-        configuration=configuration,
-        name=DISTNAME,
-        maintainer=MAINTAINER,
-        maintainer_email=MAINTAINER_EMAIL,
-        description=DESCRIPTION,
-        version=VERSION,
-        scripts=['iced/scripts/ice'],
-        classifiers=[
-            'Intended Audience :: Science/Research',
-            'Intended Audience :: Developers',
-            'License :: OSI Approved',
-            'Programming Language :: C',
-            'Programming Language :: Python',
-            'Topic :: Software Development',
-            'Topic :: Scientific/Engineering',
-            'Operating System :: Microsoft :: Windows',
-            'Operating System :: POSIX',
-            'Operating System :: Unix',
-            'Operating System :: MacOS'],
-        **extra_setuptools_args)
-
-    if len(sys.argv) == 1 or (
-            len(sys.argv) >= 2 and ('--help' in sys.argv[1:] or
-                                    sys.argv[1] in ('--help-commands',
-                                                    'egg_info',
-                                                    '--version',
-                                                    'clean'))):
-        # For these actions, NumPy is not required
-        #
-        # They are required to succeed without Numpy for example when
-        # pip is used to install Scikit-learn when Numpy is not yet present in
-        # the system.
-        try:
-            from setuptools import setup
-        except ImportError:
-            from distutils.core import setup
-
-        metadata['version'] = VERSION
-    else:
-        from numpy.distutils.core import setup
-
-        metadata['configuration'] = configuration
-
-    setup(**metadata)
-
-
-if __name__ == "__main__":
-    setup_package()
