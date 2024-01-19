@@ -1,0 +1,53 @@
+name: Build documentation
+on:
+  push:
+    branches:
+      - master
+      - main
+
+jobs: 
+  build:
+    name: Build docs
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout 🛎️
+        uses: actions/checkout@v2
+        with:
+          persist-credentials: false
+
+      - name: Setup Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.8
+
+      - name: Installation of the package
+        shell: bash -l {0}
+        run: |
+            set -ex
+            python -m pip install --upgrade pip
+            python -m pip install -r requirements/default.txt
+            python -m pip install -r requirements/docs.txt
+            make install
+            set +ex
+
+      - name: Build the documentation
+        shell: bash -l {0}
+        run: |
+            pushd doc
+            make html # SPHINXOPTS="-W"
+            touch _build/html/.nojekyll
+
+      - name: Deploy documentation
+        uses: JamesIves/github-pages-deploy-action@4.1.4
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BRANCH: gh-pages
+          FOLDER: doc/_build/html
+          CLEAN: false
+
+      - name: Store docs as artifact
+        uses: actions/upload-artifact@v1
+        with:
+          name: docs
+          path: doc/_build/html
+

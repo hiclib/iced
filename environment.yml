@@ -1,0 +1,8 @@
+name: iced
+channels:
+    - default
+dependencies:
+    - python
+    - pip
+    - pip:
+        - -r file:requirements.txt

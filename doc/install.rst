@@ -9,7 +9,7 @@ The dependencies are:
 
 - python (>= 3.6)
 - setuptools
-- numpy (>= 1.14)
+- numpy (>= 1.16)
 - scipy (>= 0.19)
 - pandas
 

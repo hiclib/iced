@@ -1,5 +1,8 @@
+from __future__ import print_function
 from iced import io
 import numpy as np
+
+print("Checking the normalized matrix can be re-loaded")
 
 counts = io.load_counts("/tmp/iced_matrix.matrix")
 

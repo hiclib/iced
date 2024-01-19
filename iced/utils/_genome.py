@@ -177,7 +177,7 @@ def extract_sub_contact_map(counts, lengths, chromosomes):
     >>> from iced.utils import extract_sub_contact_map
     >>> counts, lengths = datasets.load_sample_yeast()
     >>> scounts, slengths = extract_sub_contact_map(counts, lengths, [0, 2])
-    >>> print len(counts), len(scounts)
+    >>> print(len(counts), len(scounts))
     ... # doctest: +ELLIPSIS, +NORMALIZE_WHITESPACE
     350 56
     """
@@ -267,7 +267,7 @@ def undersample_per_chr(X, lengths):
     return undersampled_X
 
 
-def downsample_resolution(counts, lengths, factor=2):
+def downsample_resolution(counts, lengths, factor=2, normalize=False):
     """
     Downsamples the resolution of a matrix
 
@@ -307,12 +307,14 @@ def downsample_resolution(counts, lengths, factor=2):
             sub_target_counts = target_counts[target_begin_i:target_end_i,
                                               target_begin_j:target_end_j]
             d = np.zeros(sub_target_counts.shape)
-            for start in range(factor):
-                s = sub_counts[start::factor, start::factor]
-                d[:s.shape[0], :s.shape[1]] += np.invert(np.isnan(s))
-                s[np.isnan(s)] = 0
-                sub_target_counts[:s.shape[0], :s.shape[1]] += s
-            sub_target_counts /= d
+            for i_start in range(factor):
+                for j_start in range(factor):
+                    s = sub_counts[i_start::factor, j_start::factor]
+                    d[:s.shape[0], :s.shape[1]] += np.invert(np.isnan(s))
+                    s[np.isnan(s)] = 0
+                    sub_target_counts[:s.shape[0], :s.shape[1]] += s
+            if normalize:
+                sub_target_counts /= d
 
             begin_j = end_j
             target_begin_j = target_end_j

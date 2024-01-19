@@ -1,4 +1,5 @@
 PYTHON ?= python
+PIP ?= pip
 CYTHON ?= cython
 PYTEST ?= pytest
 CTAGS ?= ctags
@@ -8,6 +9,8 @@ all: clean inplace test
 inplace: cython
 	$(PYTHON) setup.py build_ext -i
 
+install: cython
+	python -m pip install .
 
 test: test-code
 
