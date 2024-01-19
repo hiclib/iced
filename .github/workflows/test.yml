@@ -9,7 +9,7 @@ jobs:
     strategy:
       fail-fast: true
       matrix:
-        python-version: [3.7, 3.8, 3.9]
+        python-version: ["3.9", "3.10", "3.11", "3.12"]
         PIP_FLAGS: [""]
         MINIMUM_REQUIREMENTS: [0]
         include:
@@ -17,11 +17,6 @@ jobs:
             python-version: 3.7
             MINIMUM_REQUIREMENTS: 1
             OPTIONS_NAME: "min"
-          - platform_id: manylinux_x86_64
-            python-version: 3.9
-            PIP_FLAGS: "--pre"
-            # test pre-releases
-            OPTIONS_NAME: "pre"
 
     steps:
       - name: Checkout 🛎️
