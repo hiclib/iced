@@ -10,7 +10,7 @@
     .. note::
         :class: sphx-glr-download-link-note
 
-        Click :ref:`here <sphx_glr_download_auto_examples_utils_plot_extract_sample_map.py>`
+        :ref:`Go to the end <sphx_glr_download_auto_examples_utils_plot_extract_sample_map.py>`
         to download the full example code
 
 .. rst-class:: sphx-glr-example-title
@@ -40,7 +40,7 @@ yeasts contact map
 
  .. code-block:: none
 
-    /opt/hostedtoolcache/Python/3.8.16/x64/lib/python3.8/site-packages/iced/io/_io_pandas.py:56: UserWarning: Attempting to guess whether counts are 0 or 1 based
+    /opt/hostedtoolcache/Python/3.8.18/x64/lib/python3.8/site-packages/iced/io/_io_pandas.py:56: UserWarning: Attempting to guess whether counts are 0 or 1 based
       warnings.warn(
 
     Text(0.5, 1.064183501683502, 'Chromosomes I, IV and V of yeast')
@@ -51,7 +51,7 @@ yeasts contact map
 
 |
 
-.. code-block:: default
+.. code-block:: Python
 
     import matplotlib.pyplot as plt
     from matplotlib import colors
@@ -75,7 +75,7 @@ yeasts contact map
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  0.256 seconds)
+   **Total running time of the script:** (0 minutes 0.200 seconds)
 
 
 .. _sphx_glr_download_auto_examples_utils_plot_extract_sample_map.py:
@@ -84,14 +84,13 @@ yeasts contact map
 
   .. container:: sphx-glr-footer sphx-glr-footer-example
 
+    .. container:: sphx-glr-download sphx-glr-download-jupyter
+
+      :download:`Download Jupyter notebook: plot_extract_sample_map.ipynb <plot_extract_sample_map.ipynb>`
 
     .. container:: sphx-glr-download sphx-glr-download-python
 
       :download:`Download Python source code: plot_extract_sample_map.py <plot_extract_sample_map.py>`
-
-    .. container:: sphx-glr-download sphx-glr-download-jupyter
-
-      :download:`Download Jupyter notebook: plot_extract_sample_map.ipynb <plot_extract_sample_map.ipynb>`
 
 
 .. only:: html

@@ -3,7 +3,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   
     <title>Iced: fast and memory efficient ICE normalization &#8212; Iced 0.5.0-git documentation</title>
@@ -18,15 +18,15 @@
           type="text/javascript"></script>
 
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/basic.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-binder.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-dataframe.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css" />
-    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/sphinx_highlight.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/basic.css?v=2a422f08" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery.css?v=61a4c737" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-binder.css?v=f4aeca0c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js?v=a1001a35"></script>
+    <script src="../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../_static/sphinx_highlight.js?v=4825356b"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
 <meta charset='utf-8'>
@@ -57,7 +57,7 @@
   
   <div class="sphx-glr-download-link-note admonition note">
 <p class="admonition-title">Note</p>
-<p>Click <a class="reference internal" href="#sphx-glr-download-auto-examples-normalization-plot-filtering-strategies-py"><span class="std std-ref">here</span></a>
+<p><a class="reference internal" href="#sphx-glr-download-auto-examples-normalization-plot-filtering-strategies-py"><span class="std std-ref">Go to the end</span></a>
 to download the full example code</p>
 </div>
 <section class="sphx-glr-example-title" id="different-filtering-strategies">
@@ -70,7 +70,7 @@ to download the full example code</p>
 <li><p>filtering of the smallest x% <strong>interacting</strong> rows and columns</p></li>
 </ul>
 </div></blockquote>
-<img src="../../_images/sphx_glr_plot_filtering_strategies_001.png" srcset="../../_images/sphx_glr_plot_filtering_strategies_001.png" alt="Filtering 4% sparsest loci, Filtering 4% smallest interacting loci, Filtering 4% smallest interacting loci  + all non-interacting loci" class = "sphx-glr-single-img"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.8.16/x64/lib/python3.8/site-packages/iced/io/_io_pandas.py:56: UserWarning: Attempting to guess whether counts are 0 or 1 based
+<img src="../../_images/sphx_glr_plot_filtering_strategies_001.png" srcset="../../_images/sphx_glr_plot_filtering_strategies_001.png" alt="Filtering 4% sparsest loci, Filtering 4% smallest interacting loci, Filtering 4% smallest interacting loci  + all non-interacting loci" class = "sphx-glr-single-img"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.8.18/x64/lib/python3.8/site-packages/iced/io/_io_pandas.py:56: UserWarning: Attempting to guess whether counts are 0 or 1 based
   warnings.warn(
 
 Text(0.5, 1.0, &#39;Filtering 4% smallest interacting loci\n + all non-interacting loci&#39;)
@@ -79,7 +79,7 @@ Text(0.5, 1.0, &#39;Filtering 4% smallest interacting loci\n + all non-interacti
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">colors</span>
 
 <span class="kn">from</span> <span class="nn">iced</span> <span class="kn">import</span> <span class="n">datasets</span>
@@ -115,13 +115,13 @@ Text(0.5, 1.0, &#39;Filtering 4% smallest interacting loci\n + all non-interacti
                   <span class="s2">&quot;non-interacting loci&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  0.427 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 0.265 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-normalization-plot-filtering-strategies-py">
-<div class="sphx-glr-download sphx-glr-download-python docutils container">
-<p><a class="reference download internal" download="" href="../../_downloads/02d41bb77d97079180eaca9c29d89235/plot_filtering_strategies.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_filtering_strategies.py</span></code></a></p>
-</div>
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/5a41e634be2e2f129b20bc5f24d672ac/plot_filtering_strategies.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_filtering_strategies.ipynb</span></code></a></p>
+</div>
+<div class="sphx-glr-download sphx-glr-download-python docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/02d41bb77d97079180eaca9c29d89235/plot_filtering_strategies.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_filtering_strategies.py</span></code></a></p>
 </div>
 </div>
 <p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
@@ -136,7 +136,7 @@ Text(0.5, 1.0, &#39;Filtering 4% smallest interacting loci\n + all non-interacti
     </p>
     <p>
         &copy; Copyright 2015-2017, iced contributors.<br/>
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 6.1.3.<br/>
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 7.1.2.<br/>
     </p>
 </footer>
   </body>

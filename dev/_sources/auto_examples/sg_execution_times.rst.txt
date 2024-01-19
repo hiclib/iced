@@ -1,12 +1,12 @@
 
 :orphan:
 
-.. _sphx_glr_auto_examples_utils_sg_execution_times:
+.. _sphx_glr_auto_examples_sg_execution_times:
 
 
 Computation times
 =================
-**00:00.515** total execution time for 2 files **from auto_examples/utils**:
+**00:00.000** total execution time for 0 files **from auto_examples**:
 
 .. container::
 
@@ -32,9 +32,6 @@ Computation times
    * - Example
      - Time
      - Mem (MB)
-   * - :ref:`sphx_glr_auto_examples_utils_plot_intra_inter_contact_maps.py` (``plot_intra_inter_contact_maps.py``)
-     - 00:00.315
-     - 0.0
-   * - :ref:`sphx_glr_auto_examples_utils_plot_extract_sample_map.py` (``plot_extract_sample_map.py``)
-     - 00:00.200
-     - 0.0
+   * - N/A
+     - N/A
+     - N/A

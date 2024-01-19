@@ -10,7 +10,7 @@
     .. note::
         :class: sphx-glr-download-link-note
 
-        Click :ref:`here <sphx_glr_download_auto_examples_normalization_plot_caic_normalization.py>`
+        :ref:`Go to the end <sphx_glr_download_auto_examples_normalization_plot_caic_normalization.py>`
         to download the full example code
 
 .. rst-class:: sphx-glr-example-title
@@ -40,7 +40,7 @@ The normalization is done in three step:
 
 .. GENERATED FROM PYTHON SOURCE LINES 22-35
 
-.. code-block:: default
+.. code-block:: Python
 
 
     from iced import datasets
@@ -63,33 +63,33 @@ The normalization is done in three step:
 
  .. code-block:: none
 
-    /opt/hostedtoolcache/Python/3.8.16/x64/lib/python3.8/site-packages/iced/io/_io_pandas.py:56: UserWarning: Attempting to guess whether counts are 0 or 1 based
+    /opt/hostedtoolcache/Python/3.8.18/x64/lib/python3.8/site-packages/iced/io/_io_pandas.py:56: UserWarning: Attempting to guess whether counts are 0 or 1 based
       warnings.warn(
 
     Estimating CNV-effects.
     Computing relationship genomic distance & expected counts
     Fitting Isotonic Regression
-    /opt/hostedtoolcache/Python/3.8.16/x64/lib/python3.8/site-packages/iced/normalization/_ca_utils.py:319: RuntimeWarning: invalid value encountered in scalar divide
+    /opt/hostedtoolcache/Python/3.8.18/x64/lib/python3.8/site-packages/iced/normalization/_ca_utils.py:319: RuntimeWarning: invalid value encountered in scalar divide
       bias[mask] = (c * c_exp).sum() / (c_exp**2).sum()
     Computing relationship genomic distance & expected counts
     Fitting Isotonic Regression
-    /opt/hostedtoolcache/Python/3.8.16/x64/lib/python3.8/site-packages/iced/normalization/_ca_utils.py:319: RuntimeWarning: invalid value encountered in scalar divide
+    /opt/hostedtoolcache/Python/3.8.18/x64/lib/python3.8/site-packages/iced/normalization/_ca_utils.py:319: RuntimeWarning: invalid value encountered in scalar divide
       bias[mask] = (c * c_exp).sum() / (c_exp**2).sum()
     Computing relationship genomic distance & expected counts
     Fitting Isotonic Regression
-    /opt/hostedtoolcache/Python/3.8.16/x64/lib/python3.8/site-packages/iced/normalization/_ca_utils.py:319: RuntimeWarning: invalid value encountered in scalar divide
+    /opt/hostedtoolcache/Python/3.8.18/x64/lib/python3.8/site-packages/iced/normalization/_ca_utils.py:319: RuntimeWarning: invalid value encountered in scalar divide
       bias[mask] = (c * c_exp).sum() / (c_exp**2).sum()
     Computing relationship genomic distance & expected counts
     Fitting Isotonic Regression
-    /opt/hostedtoolcache/Python/3.8.16/x64/lib/python3.8/site-packages/iced/normalization/_ca_utils.py:319: RuntimeWarning: invalid value encountered in scalar divide
+    /opt/hostedtoolcache/Python/3.8.18/x64/lib/python3.8/site-packages/iced/normalization/_ca_utils.py:319: RuntimeWarning: invalid value encountered in scalar divide
       bias[mask] = (c * c_exp).sum() / (c_exp**2).sum()
     Computing relationship genomic distance & expected counts
     Fitting Isotonic Regression
-    /opt/hostedtoolcache/Python/3.8.16/x64/lib/python3.8/site-packages/iced/normalization/_ca_utils.py:319: RuntimeWarning: invalid value encountered in scalar divide
+    /opt/hostedtoolcache/Python/3.8.18/x64/lib/python3.8/site-packages/iced/normalization/_ca_utils.py:319: RuntimeWarning: invalid value encountered in scalar divide
       bias[mask] = (c * c_exp).sum() / (c_exp**2).sum()
     Computing relationship genomic distance & expected counts
     Fitting Isotonic Regression
-    /opt/hostedtoolcache/Python/3.8.16/x64/lib/python3.8/site-packages/iced/normalization/_ca_utils.py:319: RuntimeWarning: invalid value encountered in scalar divide
+    /opt/hostedtoolcache/Python/3.8.18/x64/lib/python3.8/site-packages/iced/normalization/_ca_utils.py:319: RuntimeWarning: invalid value encountered in scalar divide
       bias[mask] = (c * c_exp).sum() / (c_exp**2).sum()
 
 
@@ -105,7 +105,7 @@ biases, and the normalized matrix using the CAIC method.
 
 .. GENERATED FROM PYTHON SOURCE LINES 41-65
 
-.. code-block:: default
+.. code-block:: Python
 
     chromosomes = ["I", "II", "III", "IV", "V", "VI"]
 
@@ -152,7 +152,7 @@ biases, and the normalized matrix using the CAIC method.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  32.614 seconds)
+   **Total running time of the script:** (0 minutes 11.521 seconds)
 
 
 .. _sphx_glr_download_auto_examples_normalization_plot_caic_normalization.py:
@@ -161,14 +161,13 @@ biases, and the normalized matrix using the CAIC method.
 
   .. container:: sphx-glr-footer sphx-glr-footer-example
 
+    .. container:: sphx-glr-download sphx-glr-download-jupyter
+
+      :download:`Download Jupyter notebook: plot_caic_normalization.ipynb <plot_caic_normalization.ipynb>`
 
     .. container:: sphx-glr-download sphx-glr-download-python
 
       :download:`Download Python source code: plot_caic_normalization.py <plot_caic_normalization.py>`
-
-    .. container:: sphx-glr-download sphx-glr-download-jupyter
-
-      :download:`Download Jupyter notebook: plot_caic_normalization.ipynb <plot_caic_normalization.ipynb>`
 
 
 .. only:: html

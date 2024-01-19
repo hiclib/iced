@@ -10,7 +10,7 @@
     .. note::
         :class: sphx-glr-download-link-note
 
-        Click :ref:`here <sphx_glr_download_auto_examples_utils_plot_intra_inter_contact_maps.py>`
+        :ref:`Go to the end <sphx_glr_download_auto_examples_utils_plot_intra_inter_contact_maps.py>`
         to download the full example code
 
 .. rst-class:: sphx-glr-example-title
@@ -39,10 +39,10 @@ contact map.
 
  .. code-block:: none
 
-    /opt/hostedtoolcache/Python/3.8.16/x64/lib/python3.8/site-packages/iced/io/_io_pandas.py:56: UserWarning: Attempting to guess whether counts are 0 or 1 based
+    /opt/hostedtoolcache/Python/3.8.18/x64/lib/python3.8/site-packages/iced/io/_io_pandas.py:56: UserWarning: Attempting to guess whether counts are 0 or 1 based
       warnings.warn(
 
-    [<matplotlib.lines.Line2D object at 0x7f9b4f739a00>, <matplotlib.lines.Line2D object at 0x7f9b4f7392e0>, <matplotlib.lines.Line2D object at 0x7f9b4f739280>, <matplotlib.lines.Line2D object at 0x7f9b5e5cafd0>, <matplotlib.lines.Line2D object at 0x7f9b5e5e06a0>]
+    [<matplotlib.lines.Line2D object at 0x7fc3c98de310>, <matplotlib.lines.Line2D object at 0x7fc3c43a3430>, <matplotlib.lines.Line2D object at 0x7fc3c43a3160>, <matplotlib.lines.Line2D object at 0x7fc3c2273d30>, <matplotlib.lines.Line2D object at 0x7fc3c22a9cd0>]
 
 
 
@@ -50,7 +50,7 @@ contact map.
 
 |
 
-.. code-block:: default
+.. code-block:: Python
 
     import numpy as np
     import matplotlib.pyplot as plt
@@ -88,7 +88,7 @@ contact map.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  0.413 seconds)
+   **Total running time of the script:** (0 minutes 0.315 seconds)
 
 
 .. _sphx_glr_download_auto_examples_utils_plot_intra_inter_contact_maps.py:
@@ -97,14 +97,13 @@ contact map.
 
   .. container:: sphx-glr-footer sphx-glr-footer-example
 
+    .. container:: sphx-glr-download sphx-glr-download-jupyter
+
+      :download:`Download Jupyter notebook: plot_intra_inter_contact_maps.ipynb <plot_intra_inter_contact_maps.ipynb>`
 
     .. container:: sphx-glr-download sphx-glr-download-python
 
       :download:`Download Python source code: plot_intra_inter_contact_maps.py <plot_intra_inter_contact_maps.py>`
-
-    .. container:: sphx-glr-download sphx-glr-download-jupyter
-
-      :download:`Download Jupyter notebook: plot_intra_inter_contact_maps.ipynb <plot_intra_inter_contact_maps.ipynb>`
 
 
 .. only:: html

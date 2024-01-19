@@ -38,7 +38,7 @@ Examples concerning the :mod:`iced.normalization` module.
 .. only:: html
 
   .. image:: /auto_examples/normalization/images/thumb/sphx_glr_plot_loic_normalization_thumb.png
-    :alt: Normalizing a cancer contact count matrix with LOIC
+    :alt:
 
   :ref:`sphx_glr_auto_examples_normalization_plot_loic_normalization.py`
 
@@ -50,29 +50,12 @@ Examples concerning the :mod:`iced.normalization` module.
 
 .. raw:: html
 
-    <div class="sphx-glr-thumbcontainer" tooltip="iced provides different filtering strategies. In short:">
-
-.. only:: html
-
-  .. image:: /auto_examples/normalization/images/thumb/sphx_glr_plot_filtering_strategies_thumb.png
-    :alt: Different filtering strategies
-
-  :ref:`sphx_glr_auto_examples_normalization_plot_filtering_strategies.py`
-
-.. raw:: html
-
-      <div class="sphx-glr-thumbnail-title">Different filtering strategies</div>
-    </div>
-
-
-.. raw:: html
-
     <div class="sphx-glr-thumbcontainer" tooltip="This example showcases some basic filtering and normalization.">
 
 .. only:: html
 
   .. image:: /auto_examples/normalization/images/thumb/sphx_glr_plot_ice_normalization_thumb.png
-    :alt: Normalizing a contact count matrix
+    :alt:
 
   :ref:`sphx_glr_auto_examples_normalization_plot_ice_normalization.py`
 
@@ -84,12 +67,29 @@ Examples concerning the :mod:`iced.normalization` module.
 
 .. raw:: html
 
+    <div class="sphx-glr-thumbcontainer" tooltip="iced provides different filtering strategies. In short:">
+
+.. only:: html
+
+  .. image:: /auto_examples/normalization/images/thumb/sphx_glr_plot_filtering_strategies_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_auto_examples_normalization_plot_filtering_strategies.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Different filtering strategies</div>
+    </div>
+
+
+.. raw:: html
+
     <div class="sphx-glr-thumbcontainer" tooltip="CAIC is a normalization method to remove copy-number biases present in a matrix. This example s...">
 
 .. only:: html
 
   .. image:: /auto_examples/normalization/images/thumb/sphx_glr_plot_caic_normalization_thumb.png
-    :alt: Normalizing a cancer contact count matrix with CAIC
+    :alt:
 
   :ref:`sphx_glr_auto_examples_normalization_plot_caic_normalization.py`
 
@@ -123,7 +123,7 @@ Examples concerning the :mod:`iced.utils` module.
 .. only:: html
 
   .. image:: /auto_examples/utils/images/thumb/sphx_glr_plot_extract_sample_map_thumb.png
-    :alt: Extracting parts of a contact map
+    :alt:
 
   :ref:`sphx_glr_auto_examples_utils_plot_extract_sample_map.py`
 
@@ -140,7 +140,7 @@ Examples concerning the :mod:`iced.utils` module.
 .. only:: html
 
   .. image:: /auto_examples/utils/images/thumb/sphx_glr_plot_intra_inter_contact_maps_thumb.png
-    :alt: Extracting parts of a contact map
+    :alt:
 
   :ref:`sphx_glr_auto_examples_utils_plot_intra_inter_contact_maps.py`
 
@@ -158,6 +158,7 @@ Examples concerning the :mod:`iced.utils` module.
 .. toctree::
    :hidden:
    :includehidden:
+
 
    /auto_examples/normalization/index.rst
    /auto_examples/utils/index.rst
