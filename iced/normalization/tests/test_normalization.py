@@ -102,7 +102,7 @@ def test_sparse_ICE_normalization_triu():
     total_counts = 5000
     normed_X = ICE_normalization(sparse_X, eps=1e-10,
                                  total_counts=total_counts)
-    assert pytest.approx(normed_X.sum(), total_counts)
+    assert pytest.approx(normed_X.sum()) == total_counts
 
 
 def test_SCN_normalization():
