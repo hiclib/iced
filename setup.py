@@ -48,5 +48,10 @@ setup(
                   include_dirs=[np.get_include()]
                   )],
     include_package_data=True,
+    entry_points={
+        'console_scripts': [
+            'ice = iced.scripts.ice:main',
+        ]
+    }
 )
 
