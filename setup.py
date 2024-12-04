@@ -1,6 +1,7 @@
 import os
 import sys
 from setuptools import Extension, setup, find_packages
+from Cython.Build import cythonize
 import numpy as np
 
 
@@ -43,7 +44,7 @@ setup(
                   sources=["iced/_filter_.pyx"],
                   include_dirs=[np.get_include()]
         ),
-        Extension(name="iced.normalization/_normalization_",
+        Extension(name="iced.normalization._normalization_",
                   sources=["iced/normalization/_normalization_.pyx"],
                   include_dirs=[np.get_include()]
                   )],
