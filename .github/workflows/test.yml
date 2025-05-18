@@ -16,7 +16,7 @@ jobs:
         MINIMUM_REQUIREMENTS: [0]
         include:
           - platform_id: manylinux_x86_64
-            python-version: 3.8
+            python-version: 3.9
             MINIMUM_REQUIREMENTS: 1
             OPTIONS_NAME: "min"
 
