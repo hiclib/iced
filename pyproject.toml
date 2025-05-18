@@ -1,10 +1,10 @@
 [build-system]
-requires = ["setuptools", "wheel", "numpy", "scipy", "cython"]
+requires = ["setuptools>=77", "wheel", "numpy", "scipy", "cython"]
 build-backend = "setuptools.build_meta"
 
 [project]
 name = "iced"
-requires-python = ">= 3.8"
+requires-python = ">= 3.9"
 version = "0.6.0a0.dev0"
 dependencies = [
   "numpy>=1.16.0",
