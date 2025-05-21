@@ -1,2 +1,48 @@
 [build-system]
-requires=['setuptools', 'wheel', 'numpy', 'scipy']
+requires = ["setuptools>=77", "wheel", "numpy", "scipy", "cython"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "iced"
+requires-python = ">= 3.9"
+version = "0.6.0a0.dev0"
+dependencies = [
+  "numpy>=1.16.0",
+  "scipy>=0.19.0",
+]
+readme = "README.rst"
+description = "ICE normalization"
+license = "BSD-3-Clause"
+license-files = ["LICENSE"]
+keywords = ["iced", "hi-c", "chromatin"]
+authors = [
+  {name = "Nelle Varoquaux", email = "nelle.varoquaux@gmail.com"}
+]
+maintainers = [
+  {name = "Nelle Varoquaux", email = "nelle.varoquaux@gmail.com"}
+]
+classifiers=[
+  'Development Status :: 3 - Alpha',
+  'Intended Audience :: Science/Research',
+  'Intended Audience :: Developers',
+  'Programming Language :: Python',
+  'Topic :: Utilities',
+  'Topic :: Software Development',
+  'Topic :: Scientific/Engineering',
+  'Operating System :: Microsoft :: Windows',
+  'Operating System :: POSIX',
+  'Operating System :: Unix',
+  'Operating System :: MacOS']
+
+[project.scripts]
+ice = "iced.scripts.ice:main"
+
+[project.urls]
+Homepage = "https://hiclib.github.io/iced/"
+Documentation = "https://hiclib.github.io/iced/documentation.html"
+Repository = "https://github.com/hiclib/iced.git"
+Issues = "https://github.com/hiclib/iced/issues"
+Download = "https://github.com/hiclib/iced/releases"
+
+[tool.setuptools]
+include-package-data = true

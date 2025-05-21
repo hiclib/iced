@@ -9,6 +9,12 @@ jobs:
   build:
     name: Build docs
     runs-on: ubuntu-latest
+
+    timeout-minutes: 10
+
+    strategy:
+      fail-fast: false
+
     steps:
       - name: Checkout 🛎️
         uses: actions/checkout@v2
@@ -18,7 +24,7 @@ jobs:
       - name: Setup Python
         uses: actions/setup-python@v2
         with:
-          python-version: 3.8
+          python-version: 3.9
 
       - name: Installation of the package
         shell: bash -l {0}
