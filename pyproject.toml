@@ -12,8 +12,6 @@ dependencies = [
 ]
 readme = "README.rst"
 description = "ICE normalization"
-license = "BSD-3-Clause"
-license-files = ["LICENSE"]
 keywords = ["iced", "hi-c", "chromatin"]
 authors = [
   {name = "Nelle Varoquaux", email = "nelle.varoquaux@gmail.com"}
