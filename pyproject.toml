@@ -16,10 +16,10 @@ license = "BSD-3-Clause"
 license-files = ["LICENSE"]
 keywords = ["iced", "hi-c", "chromatin"]
 authors = [
-  {name = "Nelle Varoquaux", email = "nelle.varoquaux@ensmp.fr"}
+  {name = "Nelle Varoquaux", email = "nelle.varoquaux@gmail.com"}
 ]
 maintainers = [
-  {name = "Nelle Varoquaux", email = "nelle.varoquaux@ensmp.fr"}
+  {name = "Nelle Varoquaux", email = "nelle.varoquaux@gmail.com"}
 ]
 classifiers=[
   'Development Status :: 3 - Alpha',
