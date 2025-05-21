@@ -4,4 +4,4 @@ from . import io
 from . import datasets
 from . import random
 
-__version__ = "0.6.0a0.dev0"
+__version__ = "0.6.0"
